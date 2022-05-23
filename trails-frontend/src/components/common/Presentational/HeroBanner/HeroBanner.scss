@@ -1,0 +1,15 @@
+.carosual-cls {
+    .img-cls {
+        height: 500px;
+        .legend {
+           background: none;
+           font-size: 40px;
+           font-weight: 500; 
+           
+        }
+        .img {
+            object-fit: cover;
+            height: inherit;
+        }
+    }
+}

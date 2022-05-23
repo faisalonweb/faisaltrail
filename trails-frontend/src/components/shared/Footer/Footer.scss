@@ -1,0 +1,68 @@
+.footer-cls {
+    height: 450px;
+    background-color: #fff;
+    margin-top: 100px;
+    .container-cls {
+        .list-head {
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .list-items {
+            margin-bottom: 30px;
+            font-size: 15px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: grey;
+        }
+    }
+    .footer-connect-section {
+        display: flex;
+        font-size: 18px;
+        font-weight: 600;
+        justify-content: space-between;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-bottom: 20px;
+        .appoutdoor-section {
+            display: flex;
+            .app-outdoor-store {
+                .app-store-icons {
+                    display: flex;
+                    justify-content: space-around;
+                }
+            }
+            .app-outdoor-sec {
+                margin-left: 25px;
+                .app-outdoor-members {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+            img {
+                height: 40px;
+                width: 40px;
+            }
+        }
+        .app-outdoor {
+            width: 30%;
+          p {
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+          }
+          img {
+            height: 40px;
+            width: 40px;
+          }
+          .app-outdoor-connect {
+              display: flex;
+              justify-content: space-around;
+          }
+        }
+    }
+    .footer-signature {
+        margin-top: 10px;
+        font-size: 12px;
+        font-weight: 600;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}
