@@ -18,6 +18,10 @@
                 justify-content: flex-end;
                     .help-btn {
                         margin-right: 20px;
+                        font-size: 14px;
+                        font-family: Arial, Helvetica, sans-serif;
+                        text-transform: capitalize;
+                        color: black;
                     }
                     .pro-btn {
                         background: #219ad8;
@@ -28,6 +32,8 @@
                         margin-right: 20px;
                         font-size: 1x;
                         border-radius: 8px;
+                        font-size: 14px;
+                        font-family: Arial, Helvetica, sans-serif;
                         text-transform: capitalize;
                         &:hover {
                             background: grey;
@@ -39,6 +45,9 @@
         }
         .list-buttons {
             .list-items {
+                font-size: 14px;
+                font-family: Arial, Helvetica, sans-serif;
+                text-transform: capitalize;
                 color: black;
             }
         }

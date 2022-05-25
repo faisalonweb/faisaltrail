@@ -6,6 +6,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Autocomplete from '@mui/material/Autocomplete'
 import { withStyles, createStyles, Link } from '@material-ui/core';
 import  MultiCarosual  from 'src/components/shared/MultiCarousal/MultiCarosual'
+import AdventureTabs from 'src/components/common/Smart/AdventureTabs/AdventureTabs'
 import 'src/components/common/Smart/Home/Home.scss'
 import Paper from '@mui/material/Paper';
 
@@ -88,6 +89,10 @@ const Home = () => {
          <div className="multi-carousal-cls">
            <MultiCarosual />
          </div>
+         <div className="adventure-panel">
+           <AdventureTabs />   
+         </div>
+
          
 
          

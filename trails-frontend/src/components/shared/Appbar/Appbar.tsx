@@ -2,29 +2,29 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import {useNavigate} from 'react-router-dom';
+
+
 import 'src/components/shared/Appbar/Appbar.scss';
 
 
-const pages = ['Explore', 'Saved', 'Shop'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  let navigate = useNavigate();
 
   
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  // const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorElUser(event.currentTarget);
+  // };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -33,22 +33,59 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
+  function handleClick(event:any) {
+    if (anchorEl !== event.currentTarget) {
+      setAnchorEl(event.currentTarget);
+    }
+  }
+
+  function handleClose() {
+    setAnchorEl(null);
+  }
   return (
     <AppBar className="app-bar" position="static">
       <Container className="container-class" maxWidth="xl">
         <Toolbar className="toolbar-class" disableGutters>
           <Box className="list-buttons" sx={{ flexGrow:1, display: { xs: 'none', md: 'flex'} }}>
-            {pages.map((page) => (
               <Button
                 className="list-items"
-                key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                Explore
               </Button>
-            ))}
+              <Button
+               aria-owns={anchorEl ? "simple-menu" : undefined}
+               className="list-items"
+               aria-haspopup="true"
+               onClick={handleClick}
+               onMouseOver={handleClick}
+              >
+                Saved
+              </Button>
+              <Menu
+                id="simple-menu"
+                className="list-items"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+                MenuListProps={{ onMouseLeave: handleClose }}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+              </Menu>
+
+              <Button
+               aria-owns={anchorEl ? "simple-menu" : undefined}
+               aria-haspopup="true"
+               className="list-items"
+               onClick={handleClick}
+               onMouseOver={handleClick}
+              >
+                Shop
+              </Button>
           </Box>
          <Box className="logo-class" sx={{ flexGrow: 1 }}>
          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'black' }} />
@@ -80,11 +117,13 @@ const ResponsiveAppBar = () => {
                 Help
           </Button>
           <Button
+          onClick={() => navigate('/signup')}
           className="pro-btn"
           >
           Sign up
            </Button>
-           <Button
+          <Button
+          onClick={() => navigate('/login')}
           className="pro-btn"
           >
           Login
