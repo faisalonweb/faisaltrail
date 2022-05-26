@@ -5,6 +5,7 @@ import SignUpPage from 'src/components/common/Presentational/SignUpPage/SignUpPa
 import LoginPage from 'src/components/common/Presentational/LoginPage/LoginPage'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import './App.css';
+import Trails from './components/common/Smart/Trails/Trails';
 
 function App() {
   return (
@@ -12,8 +13,9 @@ function App() {
       <Layout>
       <Routes>
       <Route path="/" element={<HomeView />} />
-      <Route path="/signup" element={<SignUpPage />} />
-      <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/trails" element={<Trails />} />
       </Routes>
       </Layout>
     </div>
