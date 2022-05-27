@@ -26,7 +26,12 @@ export default function Footer() {
           <Grid container spacing={5}>
             <Grid item xs={12} sm={3}>
             <Box className="list-head" borderBottom={1}>Explore</Box>  
-              <Box className="list-items" borderBottom={1}>Help</Box>
+              {/* <Box className="list-items" borderBottom={1}>Help</Box> */}
+              <Box className="list-items">
+                <Link href="/trails" color="inherit">
+                  Trails
+                </Link>
+              </Box>
               <Box className="list-items">
                 <Link href="/" color="inherit">
                   Contact
