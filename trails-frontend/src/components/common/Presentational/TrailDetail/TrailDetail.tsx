@@ -13,6 +13,7 @@ const TrailDetail = () => {
         <img
           src={trail.image}
           style={{ height: 350, width: "100%", objectFit: "cover" }}
+          alt="img"
         >
         </img>
       </Box>

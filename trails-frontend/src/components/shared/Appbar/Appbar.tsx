@@ -17,7 +17,7 @@ import 'src/components/shared/Appbar/Appbar.scss';
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const ResponsiveAppBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  // const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   let navigate = useNavigate();
 
@@ -26,9 +26,9 @@ const ResponsiveAppBar = () => {
   //   setAnchorElUser(event.currentTarget);
   // };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  // const handleCloseNavMenu = () => {
+  //   setAnchorElNav(null);
+  // };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -51,7 +51,7 @@ const ResponsiveAppBar = () => {
           <Box className="list-buttons" sx={{ flexGrow:1, display: { xs: 'none', md: 'flex'} }}>
               <Button
                 className="list-items"
-                onClick={handleCloseNavMenu}
+                onClick={() => navigate('/explore')}
               >
                 Explore
               </Button>

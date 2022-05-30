@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import AdventureTabsCard from 'src/components/common/Presentational/AdventureTabsCard/AdventureTabsCard';
 import oneLogo from "src/assets/images/one.jpg";
 import twoLogo from "src/assets/images/two.jpg";
 import threeLogo from "src/assets/images/three.jpg";
@@ -18,7 +19,7 @@ interface TabPanelProps {
   {
   id: "1",
   trail_image:oneLogo,
-  title: "Huaqing Pool",
+  title: "Huaqiggng Pool",
   distance: '1.4km',
   time: '22m'
   },
@@ -178,33 +179,16 @@ export default function AdventureTabs() {
         <>
           {
           trails.map((trail)=>(
-            <div className="trail-info">
-                        <div className="trail-img">
-                          <img
-                              style={{ width: "100px", height: "100px", borderRadius:'10px',objectFit:"cover" }}
-                              src={trail.trail_image}
-                              alt="img"
-                          />
-                        </div>
-                          <div className="trail-name">
-                            <p className="trail-title">{trail.title}</p>
-                            <div className="trail-info">
-                            <p className ="trail-distance">{trail.distance}</p>
-                            <p className="trail-time">{trail.time}</p>
-                          </div>
-                          </div>
-                          
-            </div>
+            <AdventureTabsCard 
+              trail_img={trail.trail_image} 
+              trail_distance={trail.distance} 
+              trail_time={trail.time} 
+              trail_title={trail.title}/>
+            
           ))
           }
          </>
-         
-       
-          
         </div>
-
-       
-
       </TabPanel>
       <TabPanel value={value} index={1}>
         parks worth a look

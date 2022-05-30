@@ -115,6 +115,7 @@ const Trails = () => {
                 <img
                   src={trail.image}
                   style={{ height: 240, borderRadius: 10, objectFit: "cover"}}
+                  alt="img"
                 >
 
                 </img>
