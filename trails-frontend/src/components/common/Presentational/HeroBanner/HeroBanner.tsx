@@ -2,9 +2,6 @@ import React from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import oneLogo from "src/assets/images/one.jpg";
-import twoLogo from "src/assets/images/two.jpg";
-import threeLogo from "src/assets/images/three.jpg";
-import fourLogo from "src/assets/images/four.jpg";
 import 'src/components/common/Presentational/HeroBanner/HeroBanner.scss';
 
 const getConfigurableProps = () => ({
