@@ -7,7 +7,7 @@ import ExplorePage from './components/common/Smart/Explore/Explore';
 import { Routes, Route} from 'react-router-dom'
 import './App.css';
 import Trails from './components/common/Smart/Trails/Trails';
-import TrailDetail from './views/TrailDetail/TrailDetail';
+import TrailDetail from './components/common/Presentational/TrailDetail/TrailDetail';
 
 function App() {
   return (
