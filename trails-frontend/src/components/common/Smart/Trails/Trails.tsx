@@ -24,7 +24,12 @@ const trails: TrailProps[] = [
     up to the Lake Agnes Tea House which was built by the Canadian
     Pacific Railway in 1901 as a refuge for hikers travelling to
     higher locations. The trail has an elevation gain of 400 metres
-    and offers fantastic views of the Nokhu Crags and Lake Louise.`,
+    and offers fantastic views of the Nokhu Crags and Lake Louise.
+    up to the Lake Agnes Tea House which was built by the Canadian
+    Pacific Railway in 1901 as a refuge for hikers travelling to
+    higher locations. The trail has an elevation gain of 400 metres
+    and offers fantastic views of the Nokhu Crags and Lake Louise.
+    `,
   },
   {
     id: 2,
@@ -40,7 +45,12 @@ const trails: TrailProps[] = [
     up to the Lake Agnes Tea House which was built by the Canadian
     Pacific Railway in 1901 as a refuge for hikers travelling to
     higher locations. The trail has an elevation gain of 400 metres
-    and offers fantastic views of the Nokhu Crags and Lake Louise.`,
+    and offers fantastic views of the Nokhu Crags and Lake Louise.
+    up to the Lake Agnes Tea House which was built by the Canadian
+    Pacific Railway in 1901 as a refuge for hikers travelling to
+    higher locations. The trail has an elevation gain of 400 metres
+    and offers fantastic views of the Nokhu Crags and Lake Louise.
+    `,
   },
   {
     id: 3,
@@ -56,7 +66,12 @@ const trails: TrailProps[] = [
     up to the Lake Agnes Tea House which was built by the Canadian
     Pacific Railway in 1901 as a refuge for hikers travelling to
     higher locations. The trail has an elevation gain of 400 metres
-    and offers fantastic views of the Nokhu Crags and Lake Louise.`,
+    and offers fantastic views of the Nokhu Crags and Lake Louise.
+    up to the Lake Agnes Tea House which was built by the Canadian
+    Pacific Railway in 1901 as a refuge for hikers travelling to
+    higher locations. The trail has an elevation gain of 400 metres
+    and offers fantastic views of the Nokhu Crags and Lake Louise.
+    `,
   },
   {
     id: 4,
@@ -72,7 +87,12 @@ const trails: TrailProps[] = [
     up to the Lake Agnes Tea House which was built by the Canadian
     Pacific Railway in 1901 as a refuge for hikers travelling to
     higher locations. The trail has an elevation gain of 400 metres
-    and offers fantastic views of the Nokhu Crags and Lake Louise.`,
+    and offers fantastic views of the Nokhu Crags and Lake Louise.
+    up to the Lake Agnes Tea House which was built by the Canadian
+    Pacific Railway in 1901 as a refuge for hikers travelling to
+    higher locations. The trail has an elevation gain of 400 metres
+    and offers fantastic views of the Nokhu Crags and Lake Louise.
+    `,
   },
   {
     id: 5,
@@ -88,7 +108,12 @@ const trails: TrailProps[] = [
     up to the Lake Agnes Tea House which was built by the Canadian
     Pacific Railway in 1901 as a refuge for hikers travelling to
     higher locations. The trail has an elevation gain of 400 metres
-    and offers fantastic views of the Nokhu Crags and Lake Louise.`,
+    and offers fantastic views of the Nokhu Crags and Lake Louise.
+    up to the Lake Agnes Tea House which was built by the Canadian
+    Pacific Railway in 1901 as a refuge for hikers travelling to
+    higher locations. The trail has an elevation gain of 400 metres
+    and offers fantastic views of the Nokhu Crags and Lake Louise.
+    `,
   },
 ];
 
@@ -99,7 +124,7 @@ const Trails = () => {
     <>
       {trails.map((trail, index) => {
         return (
-          <Container onClick={() => navigate(`/trails/trail-details/${trail.id}`, { state: trail })}>
+          <Container onClick={() => navigate(`/trails/trail-info/${trail.id}`, { state: trail })}>
             <Stack
               direction={{ xs: "column", md: "row" }}
               spacing={5}

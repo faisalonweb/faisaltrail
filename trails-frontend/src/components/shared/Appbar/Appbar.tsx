@@ -45,7 +45,7 @@ const ResponsiveAppBar = () => {
     setAnchorEl(null);
   }
   return (
-    <AppBar className="app-bar" position="static">
+    <AppBar className="app-bar" position="static" elevation={1}>
       <Container className="container-class" maxWidth="xl">
         <Toolbar className="toolbar-class" disableGutters>
           <Box className="list-buttons" sx={{ flexGrow:1, display: { xs: 'none', md: 'flex'} }}>
