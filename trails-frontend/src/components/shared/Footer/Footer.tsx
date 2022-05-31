@@ -34,17 +34,22 @@ export default function Footer() {
               </Box>
               <Box className="list-items">
                 <Link href="/" color="inherit">
-                  Contact
+                  Countries
                 </Link>
               </Box>
               <Box className="list-items">
                 <Link href="/" color="inherit">
-                  Support
+                  Regions
                 </Link>
               </Box>
               <Box className="list-items">
                 <Link href="/" color="inherit">
-                  Privacy
+                  Cities
+                </Link>
+              </Box>
+              <Box className="list-items">
+                <Link href="/" color="inherit">
+                  Parks
                 </Link>
               </Box>
             </Grid>
@@ -52,30 +57,22 @@ export default function Footer() {
               <Box className="list-head" borderBottom={1}>Maps</Box>
               <Box className="list-items">
                 <Link href="/" color="inherit">
-                  Login
+                  My maps
                 </Link>
               </Box>
               <Box className="list-items">
                 <Link href="/" color="inherit">
-                  Register
-                </Link>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <Box className="list-head" borderBottom={1}>Community</Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  Backup
+                  Create map
                 </Link>
               </Box>
               <Box className="list-items">
                 <Link href="/" color="inherit">
-                  History
+                  Prints maps
                 </Link>
               </Box>
               <Box className="list-items">
                 <Link href="/" color="inherit">
-                  Roll
+                  Route Converter
                 </Link>
               </Box>
             </Grid>
@@ -83,17 +80,40 @@ export default function Footer() {
               <Box className="list-head" borderBottom={1}>Company</Box>
               <Box className="list-items">
                 <Link href="/" color="inherit">
-                  Backup
+                  About
                 </Link>
               </Box>
               <Box className="list-items">
                 <Link href="/" color="inherit">
-                  History
+                  Jobs
                 </Link>
               </Box>
               <Box className="list-items">
                 <Link href="/" color="inherit">
-                  Roll
+                  Press
+                </Link>
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <Box className="list-head" borderBottom={1}>Community</Box>
+              <Box className="list-items">
+                <Link href="/" color="inherit">
+                  Support
+                </Link>
+              </Box>
+              <Box className="list-items">
+                <Link href="/" color="inherit">
+                  Members
+                </Link>
+              </Box>
+              <Box className="list-items">
+                <Link href="/" color="inherit">
+                  Give Pro
+                </Link>
+              </Box>
+              <Box className="list-items">
+                <Link href="/" color="inherit">
+                  AllTrails Gear
                 </Link>
               </Box>
             </Grid>
