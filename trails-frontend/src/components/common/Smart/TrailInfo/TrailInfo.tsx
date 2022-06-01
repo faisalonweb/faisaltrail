@@ -12,6 +12,9 @@ import three from "src/assets/images/three.jpg";
 import four from "src/assets/images/four.jpg";
 import 'src/components/common/Smart/TrailInfo/TrailInfo.scss'
 import { TrailProps } from "src/utils/interfaces/trailsInterface";
+import DesTabs from 'src/components/common/Presentational/DesTabs/DesTabs'
+import WeatherTabs from 'src/components/common/Presentational/WeatherTabs/WeatherTabs'
+import ReviewsTabs from 'src/components/common/Presentational/ReviewsTabs/ReviewsTabs'
 import { useLocation } from "react-router-dom";
 
 const trails = [
@@ -121,7 +124,7 @@ const TrailInfo = () => {
             </Box>    
            
               <Divider sx={{marginY:'20px'}}/>
-              <Stack direction="row" spacing={{ xs: 10, md: 15, lg: 15 }}>
+              <Stack className='stack-cls' direction="row" spacing={{ xs: 10, md: 15, lg: 15 }}>
                 <Box>
                 <Typography fontWeight='bold'>Length</Typography>
                 <Typography variant="subtitle2">7.4</Typography>
@@ -129,7 +132,7 @@ const TrailInfo = () => {
 
                 <Box>
                 <Typography fontWeight='bold'>Elevation gain</Typography>
-                <Typography variant="subtitle2">1034</Typography>
+                <Typography variant="subtitle2">1034km</Typography>
                 </Box>
 
                 <Box>
@@ -137,7 +140,7 @@ const TrailInfo = () => {
                 <Typography variant="subtitle2">Out & back</Typography>
                 </Box>
             </Stack>
-            <Box mt={3}>
+            <Box className='chip-cls' mt={3}>
             <Chip label="Dogs on leash" color="success" size="medium" variant="outlined" sx={{ mr: 1, mt: 1 }} />
             <Chip label="Kid Friendly" color="success" size="medium" variant="outlined" sx={{ mr: 1, mt: 1 }} />
             <Chip label="Hiking" color="success" size="medium" variant="outlined" sx={{ mr: 1, mt: 1 }} />
@@ -156,6 +159,15 @@ const TrailInfo = () => {
             <Chip label="Rocky" color="success" size="medium" variant="outlined" sx={{ mr: 1, mt: 1 }} />
             <Chip label="Hsitoric site" color="success" size="medium" variant="outlined" sx={{ mr: 1, mt: 1 }} />
             <Chip label="Fee" color="success" size="medium" variant="outlined" sx={{ mr: 1, mt: 1 }} />
+           </Box>
+           <Box sx={{mt: '30px'}}>
+               <DesTabs />
+           </Box>
+           <Box sx={{mt:'30px'}}>
+             <WeatherTabs />
+           </Box>
+           <Box sx={{mt:'30px'}}>
+             <ReviewsTabs />
            </Box>
             </Box>
             </Grid>   
