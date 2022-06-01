@@ -115,7 +115,7 @@ const TrailInfo = () => {
             <Grid className="left-grid" item xs={8} md={8} lg={8}>
             <Box className='left-clm'>
             <Box className='des-box'>
-            <Typography variant='body1'>
+            <Typography component={'span'} variant='body1'>
                {dataForDisplay}
               </Typography>
               <Button onClick={() => setExpanded(!expanded)}>
@@ -177,6 +177,7 @@ const TrailInfo = () => {
             <>
                 {
                 trails.map((trail)=>(
+                <div key={trail.id}>
                 <TrailDetailCard 
                     title={trail.title}
                     time={trail.time}
@@ -187,7 +188,7 @@ const TrailInfo = () => {
                     reviews={trail.reviews}
                     length={trail.length}
                     />
-                    
+                </div>  
                 ))
                 }
             </>
