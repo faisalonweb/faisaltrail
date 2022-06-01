@@ -6,11 +6,17 @@
             border-right: 1px solid lightgray;
             padding-bottom: 20px;
             .left-clm {
-                padding: 20px;
                 .des-box {
+                    padding: 20px;
                     button {
                         text-transform: capitalize;
                     }
+                }
+                .stack-cls {
+                    padding: 20px;
+                }
+                .chip-cls {
+                    padding: 20px;
                 }
                
             }

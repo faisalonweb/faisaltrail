@@ -53,7 +53,7 @@ const MultiCarosual = () => {
     >
       {images.map(image => {
         return (
-          <div className="head-text">
+          <div className="head-text" key={image}>
              <div className="head-image">
                 <img
                 style={{ width: "100%", height: "100%", borderRadius:'10px' }}
