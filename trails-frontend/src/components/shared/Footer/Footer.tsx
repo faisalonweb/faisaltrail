@@ -16,151 +16,151 @@ import 'src/components/shared/Footer/Footer.scss'
 import Divider from '@mui/material/Divider';
 
 export default function Footer() {
-  return (
-    <footer>
-      <Box
-        className="footer-cls"
-        bgcolor="black"
-      >
-        <Container className="container-cls" maxWidth="lg">
-          <Grid container spacing={5}>
-            <Grid item xs={12} sm={3}>
-            <Box className="list-head" borderBottom={1}>Explore</Box>  
-              {/* <Box className="list-items" borderBottom={1}>Help</Box> */}
-              <Box className="list-items">
-                <Link href="/trails" color="inherit">
-                  Trails
-                </Link>
-              </Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  Countries
-                </Link>
-              </Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  Regions
-                </Link>
-              </Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  Cities
-                </Link>
-              </Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  Parks
-                </Link>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <Box className="list-head" borderBottom={1}>Maps</Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  My maps
-                </Link>
-              </Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  Create map
-                </Link>
-              </Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  Prints maps
-                </Link>
-              </Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  Route Converter
-                </Link>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <Box className="list-head" borderBottom={1}>Company</Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  About
-                </Link>
-              </Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  Jobs
-                </Link>
-              </Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  Press
-                </Link>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <Box className="list-head" borderBottom={1}>Community</Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  Support
-                </Link>
-              </Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  Members
-                </Link>
-              </Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  Give Pro
-                </Link>
-              </Box>
-              <Box className="list-items">
-                <Link href="/" color="inherit">
-                  AllTrails Gear
-                </Link>
-              </Box>
-            </Grid>
+return (
+  <footer>
+    <Box
+      className="footer-cls"
+      bgcolor="black"
+    >
+      <Container className="container-cls" maxWidth="lg">
+        <Grid container spacing={5}>
+          <Grid item xs={12} sm={3}>
+          <Box className="list-head" borderBottom={1}>Explore</Box>  
+            {/* <Box className="list-items" borderBottom={1}>Help</Box> */}
+            <Box className="list-items">
+              <Link href="/trails" color="inherit">
+                Trails
+              </Link>
+            </Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                Countries
+              </Link>
+            </Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                Regions
+              </Link>
+            </Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                Cities
+              </Link>
+            </Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                Parks
+              </Link>
+            </Box>
           </Grid>
-          <Box className="footer-connect-section">
-                 <div className="appoutdoor-section">
-                 <div className="app-outdoor-store">
-                      <p>An app for the outdoors</p>
-                      <div className="app-store-icons">
-                      <div>
-                      <img src={googleLogo} alt="img"/>
-                      </div>
-                      <div>
-                      <img src={AppleLogo} alt="img"/>
-                      </div>
-                      </div>
-                  </div>
-                  <div className="app-outdoor-sec">
-                      <p>Members for the planet</p>
-                      <div className="app-outdoor-members">
-                      <img src={recLogo} alt="img"/>
-                      <img src={playLogo} alt="img"/>
-                      <img src={bidirectLogo} alt="img"/>
-                      </div>
-                  </div>
-                 </div>
-                
-                  <div className="app-outdoor">
-                      <p>Connect with us</p>
-                      <div className="app-outdoor-connect">
-                      <img src={twitterLogo} alt="img"/>
-                      <img src={youtubeLogo} alt="img"/>
-                      <img src={instaLogo} alt="img"/>
-                      <img src={fbLogo} alt="img"/>
-                      </div>
-                  </div>
+          <Grid item xs={12} sm={3}>
+            <Box className="list-head" borderBottom={1}>Maps</Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                My maps
+              </Link>
+            </Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                Create map
+              </Link>
+            </Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                Prints maps
+              </Link>
+            </Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                Route Converter
+              </Link>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            <Box className="list-head" borderBottom={1}>Company</Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                About
+              </Link>
+            </Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                Jobs
+              </Link>
+            </Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                Press
+              </Link>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            <Box className="list-head" borderBottom={1}>Community</Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                Support
+              </Link>
+            </Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                Members
+              </Link>
+            </Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                Give Pro
+              </Link>
+            </Box>
+            <Box className="list-items">
+              <Link href="/" color="inherit">
+                AllTrails Gear
+              </Link>
+            </Box>
+          </Grid>
+        </Grid>
+        <Box className="footer-connect-section">
+                <div className="appoutdoor-section">
+                <div className="app-outdoor-store">
+                    <p>An app for the outdoors</p>
+                    <div className="app-store-icons">
+                    <div>
+                    <img src={googleLogo} alt="img"/>
+                    </div>
+                    <div>
+                    <img src={AppleLogo} alt="img"/>
+                    </div>
+                    </div>
+                </div>
+                <div className="app-outdoor-sec">
+                    <p>Members for the planet</p>
+                    <div className="app-outdoor-members">
+                    <img src={recLogo} alt="img"/>
+                    <img src={playLogo} alt="img"/>
+                    <img src={bidirectLogo} alt="img"/>
+                    </div>
+                </div>
+                </div>
+              
+                <div className="app-outdoor">
+                    <p>Connect with us</p>
+                    <div className="app-outdoor-connect">
+                    <img src={twitterLogo} alt="img"/>
+                    <img src={youtubeLogo} alt="img"/>
+                    <img src={instaLogo} alt="img"/>
+                    <img src={fbLogo} alt="img"/>
+                    </div>
+                </div>
 
-          </Box>
-          <Divider />
-          <Box className="footer-signature" textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
-            Pak Trails and Tracks &reg;
-            {new Date().getFullYear()}
-          </Box>
-        </Container>
-      </Box>
-    </footer>
-  );
+        </Box>
+        <Divider />
+        <Box className="footer-signature" textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
+          Pak Trails and Tracks &reg;
+          {new Date().getFullYear()}
+        </Box>
+      </Container>
+    </Box>
+  </footer>
+);
 }
 
 
