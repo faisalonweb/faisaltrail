@@ -1,0 +1,26 @@
+.container-cls {
+        .content-cls {
+            margin-left: 20px;
+            margin-top: 20px;
+            .rating-box {
+                display: flex;
+                .review-nbm {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-left: 5px;
+                }
+            }
+        
+    }
+    .img-cls {
+        img {
+            border-radius: 20px;
+            height: 60%;
+            width: 60%;
+            object-fit: cover;
+        }
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+}

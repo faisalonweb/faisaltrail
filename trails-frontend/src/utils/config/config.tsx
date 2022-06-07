@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const config = () => {
-    return (
-        <div>
-            config
-        </div>
-    )
-}
+  return <div>config</div>;
+};
 
-export default config
+export default config;

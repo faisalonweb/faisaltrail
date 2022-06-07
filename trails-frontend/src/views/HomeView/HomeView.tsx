@@ -1,12 +1,12 @@
-import React from 'react'
-import Home from 'src/components/common/Smart/Home/Home'
+import React from 'react';
+import Home from 'src/components/common/Smart/Home/Home';
 
 const HomeView = () => {
-    return (
-        <div>
-            <Home />
-        </div>
-    )
-}
+  return (
+    <div>
+      <Home />
+    </div>
+  );
+};
 
-export default HomeView
+export default HomeView;

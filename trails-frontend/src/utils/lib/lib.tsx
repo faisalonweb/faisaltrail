@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const lib = () => {
-    return (
-        <div>
-            lib
-        </div>
-    )
-}
+  return <div>lib</div>;
+};
 
-export default lib
+export default lib;
