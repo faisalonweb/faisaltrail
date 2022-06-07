@@ -67,18 +67,37 @@ export default function SignUpPage() {
     }
   };
   const handleErrors = () => {
-    !email
-      ? setEmailError('Email is required.')
-      : !checkValidEmail(email)
-      ? setEmailError('Invalid Email.')
-      : setEmailError('');
-    !password
-      ? setPasswordError('Password is required.')
-      : !checkValidPassword(password)
-      ? setPasswordError('Password must be eight characters, at least one letter and one number')
-      : setPasswordError('');
-    !firstname ? setFirstNameError('First Name is required.') : setFirstNameError('');
-    !lastname ? setLastNameError('Last Name is required.') : setLastNameError('');
+    if(!email) {
+      setEmailError('Email is required.')
+    }
+    else if(!checkValidEmail(email)) {
+      setEmailError('Invalid Email.')
+    }
+    else {
+      setEmailError('');
+    }
+    if(!password) {
+      setPasswordError('Password is required.')
+    }
+    else if(!checkValidPassword(password)) {
+      setPasswordError('Password must be eight characters, at least one letter and one number')
+    }
+    else {
+      setPasswordError('');
+    }
+    if(!firstname) {
+      setFirstNameError('First Name is required.')
+    }
+    else {
+      setFirstNameError('');
+    }
+    if(!lastname) {
+      setLastNameError('Last Name is required.')
+    }
+    else {
+      setLastNameError('')
+    }
+    
   };
   const verifyErrors = () => {
     if (

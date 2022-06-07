@@ -1,6 +1,7 @@
 import { Container, Box, Stack, Typography, Chip, Rating, Divider } from '@mui/material';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { chipList } from 'src/utils/constants/constants'
 import { TrailProps } from 'src/utils/interfaces/trailsInterface';
 
 const TrailDetail = () => {
@@ -61,64 +62,20 @@ const TrailDetail = () => {
       </Stack>
 
       <Box mt={3}>
-        <Chip
-          label='Kid Friendly'
-          color='success'
-          size='medium'
-          variant='outlined'
-          sx={{ mr: 1, mt: 1 }}
-        />
-        <Chip
-          label='Kid Friendly'
-          color='success'
-          size='medium'
-          variant='outlined'
-          sx={{ mr: 1, mt: 1 }}
-        />
-        <Chip
-          label='Kid Friendly'
-          color='success'
-          size='medium'
-          variant='outlined'
-          sx={{ mr: 1, mt: 1 }}
-        />
-        <Chip
-          label='Kid Friendly'
-          color='success'
-          size='medium'
-          variant='outlined'
-          sx={{ mr: 1, mt: 1 }}
-        />
-        <Chip
-          label='Kid Friendly'
-          color='success'
-          size='medium'
-          variant='outlined'
-          sx={{ mr: 1, mt: 1 }}
-        />
-        <Chip
-          label='Kid Friendly'
-          color='success'
-          size='medium'
-          variant='outlined'
-          sx={{ mr: 1, mt: 1 }}
-        />
-        <Chip
-          label='Kid Friendly'
-          color='success'
-          size='medium'
-          variant='outlined'
-          sx={{ mr: 1, mt: 1 }}
-        />
-        <Chip
-          label='Kid Friendly'
-          color='success'
-          size='medium'
-          variant='outlined'
-          sx={{ mr: 1, mt: 1 }}
-        />
+        <Box  className='chip-cls'>
+            {chipList?.map((label) => (
+              <Box key={label}>
+                <Chip
+                      label={label}
+                      color='success'
+                      size='medium'
+                      variant='outlined'
+                      sx={{ mr: 1,mt:1}}
+                    />
+              </Box>
+              ))}
+            </Box>
       </Box>
-
       <Box mt={5}>
         <Typography variant='h6'>Description</Typography>
         <Divider sx={{ marginY: 2 }} />

@@ -3,6 +3,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
+import { footerdata } from 'src/data/data'
 import googleLogo from 'src/assets/images/googlestore.png';
 import AppleLogo from 'src/assets/images/playstore.png';
 import fbLogo from 'src/assets/images/fb.png';
@@ -23,104 +24,53 @@ export default function Footer() {
           <Grid container spacing={5}>
             <Grid item xs={12} sm={3}>
               <Box className='list-head' borderBottom={1}>
-                Explore
+                {footerdata.exploredata.heading}
               </Box>
-              {/* <Box className="list-items" borderBottom={1}>Help</Box> */}
-              <Box className='list-items'>
-                <Link href='/trails' color='inherit'>
-                  Trails
+              {footerdata.exploredata.links.map((links) => (
+                 <Box key={links.name} className='list-items'>
+                <Link href={links.to} color='inherit'>
+                  {links.name}
                 </Link>
               </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  Countries
-                </Link>
-              </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  Regions
-                </Link>
-              </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  Cities
-                </Link>
-              </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  Parks
-                </Link>
-              </Box>
+              ))}
+             
             </Grid>
             <Grid item xs={12} sm={3}>
               <Box className='list-head' borderBottom={1}>
-                Maps
+                {footerdata.mapsdata.heading}
               </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  My maps
+              {footerdata.mapsdata.links.map((links) => (
+                 <Box key={links.name} className='list-items'>
+                <Link href={links.to} color='inherit'>
+                  {links.name}
                 </Link>
               </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  Create map
-                </Link>
-              </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  Prints maps
-                </Link>
-              </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  Route Converter
-                </Link>
-              </Box>
+              ))}
             </Grid>
             <Grid item xs={12} sm={3}>
               <Box className='list-head' borderBottom={1}>
-                Company
+                {footerdata.companydata.heading}
               </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  About
+              {footerdata.companydata.links.map((links) => (
+                 <Box key={links.name} className='list-items'>
+                <Link href={links.to} color='inherit'>
+                  {links.name}
                 </Link>
               </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  Jobs
-                </Link>
-              </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  Press
-                </Link>
-              </Box>
+              ))}
             </Grid>
             <Grid item xs={12} sm={3}>
               <Box className='list-head' borderBottom={1}>
-                Community
+                {footerdata.communitydata.heading}
               </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  Support
+              {footerdata.communitydata.links.map((links) => (
+                 <Box key={links.name} className='list-items'>
+                <Link href={links.to} color='inherit'>
+                  {links.name}
                 </Link>
               </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  Members
-                </Link>
-              </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  Give Pro
-                </Link>
-              </Box>
-              <Box className='list-items'>
-                <Link href='/' color='inherit'>
-                  AllTrails Gear
-                </Link>
-              </Box>
+              ))}
+             
             </Grid>
           </Grid>
           <Box className='footer-connect-section'>
