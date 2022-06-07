@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const constants = () => {
-    return (
-        <div>
-            constants
-        </div>
-    )
-}
+  return <div>constants</div>;
+};
 
-export default constants
+export default constants;
