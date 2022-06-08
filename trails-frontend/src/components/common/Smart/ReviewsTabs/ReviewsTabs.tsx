@@ -7,7 +7,9 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TrailPhotos from 'src/components/common/Presentational/TrailPhotos/TrailPhotos';
 import UserComment from 'src/components/common/Presentational/UserComment/UserComment';
-import 'src/components/common/Presentational/ReviewsTabs/ReviewsTabs.scss';
+import ActivitesTabs from 'src/components/common/Presentational/ActivitesTabs/ActivitesTabs'
+import UserCompleteTabs from 'src/components/common/Presentational/UserCompleteTabs/UserCompleteTabs'
+import 'src/components/common/Smart/ReviewsTabs/ReviewsTabs.scss';
 
 interface TabPanelProps {
 children?: React.ReactNode;
@@ -90,6 +92,12 @@ return (
     </TabPanel>
     <TabPanel value={value} index={1} dir={theme.direction}>
       <TrailPhotos />
+    </TabPanel>
+    <TabPanel value={value} index={2} dir={theme.direction}>
+      <ActivitesTabs />
+    </TabPanel>
+    <TabPanel value={value} index={3} dir={theme.direction}>
+      <UserCompleteTabs />
     </TabPanel>
   </Box>
 );

@@ -10,13 +10,17 @@ import 'src/components/common/Smart/TrailInfo/TrailInfo.scss';
 import { TrailProps } from 'src/utils/interfaces/trailsInterface';
 import DesTabs from 'src/components/common/Presentational/DesTabs/DesTabs';
 import WeatherTabs from 'src/components/common/Presentational/WeatherTabs/WeatherTabs';
-import ReviewsTabs from 'src/components/common/Presentational/ReviewsTabs/ReviewsTabs';
+import ReviewsTabs from 'src/components/common/Smart/ReviewsTabs/ReviewsTabs';
+import { localizedData } from 'src/utils/helpers/language';
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
 import { useAppSelector } from 'src/store/hooks';
 import { chipList } from 'src/utils/constants/constants'
 import { useLocation } from 'react-router-dom';
 
 const TrailInfo = () => {
 const { trailCards } = useAppSelector((state) => state.appData);
+const constantData: LocalizationInterface = localizedData();
+const { length, elevation, route } = constantData.trailInfo;
 const [expanded, setExpanded] = useState(false);
 const location = useLocation();
 const trail = location.state as TrailProps;
@@ -65,17 +69,17 @@ return (
             <Divider sx={{ marginY: '20px' }} />
             <Stack className='stack-cls' direction='row' spacing={{ xs: 10, md: 15, lg: 15 }}>
               <Box>
-                <Typography fontWeight='bold'>Length</Typography>
+                <Typography fontWeight='bold'>{length}</Typography>
                 <Typography variant='subtitle2'>7.4</Typography>
               </Box>
 
               <Box>
-                <Typography fontWeight='bold'>Elevation gain</Typography>
+                <Typography fontWeight='bold'>{elevation}</Typography>
                 <Typography variant='subtitle2'>1034km</Typography>
               </Box>
 
               <Box>
-                <Typography fontWeight='bold'>Route type</Typography>
+                <Typography fontWeight='bold'>{route}</Typography>
                 <Typography variant='subtitle2'>Out & back</Typography>
               </Box>
             </Stack>

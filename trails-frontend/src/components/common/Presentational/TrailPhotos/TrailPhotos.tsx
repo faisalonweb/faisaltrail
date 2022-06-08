@@ -7,24 +7,28 @@ import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
 import { useAppSelector } from 'src/store/hooks';
 import AdventureTabsCard from 'src/components/common/Presentational/AdventureTabsCard/AdventureTabsCard';
+import { localizedData } from 'src/utils/helpers/language';
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
 import 'src/components/common/Presentational/TrailPhotos/TrailPhotos.scss';
 
 const TrailPhotos = () => {
   const { trails } = useAppSelector((state) => state.appData);
+  const constantData: LocalizationInterface = localizedData();
+  const { title, subTitle, sortBy, uploadBtn } = constantData.trailPhotos;
   return (
     <Box className='user-photo-section'>
       <Box className='photos-section'>
         <Box className='photos-des'>
           <Typography variant='h6' fontWeight='bold'>
-            Add photos of this trail
+            {title}
           </Typography>
           <Typography>
-            Photos help others preview the trail. Upload photos about this trail to inspire others.
+            {subTitle}
           </Typography>
           <Box sx={{ minWidth: 20, marginY: '30px' }}>
             <FormControl>
               <InputLabel variant='standard' htmlFor='uncontrolled-native'>
-                Sort by
+                {sortBy}
               </InputLabel>
               <NativeSelect
                 defaultValue={30}
@@ -42,7 +46,7 @@ const TrailPhotos = () => {
         </Box>
         <Box className='upload-btn'>
           <Button variant='contained' color='success'>
-            Upload Phtoto
+            {uploadBtn}
           </Button>
         </Box>
       </Box>

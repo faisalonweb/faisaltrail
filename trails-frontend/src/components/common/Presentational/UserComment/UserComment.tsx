@@ -63,7 +63,7 @@ const UserComment = () => {
               </Box>
             </Box>
             <Box className='review-btn'>
-              <Button variant='contained' size='large' color='success'>
+              <Button variant='contained' color='success'>
                 Review
               </Button>
             </Box>

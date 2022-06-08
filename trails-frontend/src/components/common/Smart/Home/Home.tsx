@@ -6,6 +6,8 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { withStyles, Link } from '@material-ui/core';
 import MultiCarosual from 'src/components/shared/MultiCarousal/MultiCarosual';
 import AdventureTabs from 'src/components/common/Smart/AdventureTabs/AdventureTabs';
+import { localizedData } from 'src/utils/helpers/language';
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
 import 'src/components/common/Smart/Home/Home.scss';
 import Paper from '@mui/material/Paper';
 
@@ -48,6 +50,8 @@ const top100Films = [
 ];
 
 const Home = () => {
+  const constantData: LocalizationInterface = localizedData();
+  const { findNext, exploreNear } = constantData.home;
   const CustomTextField = withStyles({
     root: {
       '& .MuiOutlinedInput-root': {
@@ -62,7 +66,7 @@ const Home = () => {
     <div className='home-page'>
       <HeroBanner />
       <div className='text-field'>
-        <p className='heading'>Find Your Next Trail.</p>
+        <p className='heading'>{findNext}</p>
         <Paper className='paper-cls' elevation={6}>
           <Autocomplete
             className='autocomplete-cls'
@@ -81,7 +85,7 @@ const Home = () => {
           />
         </Paper>
         <Link className='explore' href='/' color='inherit'>
-          Explore nearby trails
+          {exploreNear}
         </Link>
       </div>
       <div className='multi-carousal-cls'>

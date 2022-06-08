@@ -20,5 +20,26 @@
   "reviewRightSideBar": {
     "Publish": "Publish",
     "Share": "Share"
-  }
+  },
+  "activitesTabs": {
+    "title": "Share your route with others",
+    "subTitle": "Help other users find their next route. Upload your activity and inspire others.",
+    "sortBy": "Sort By",
+    "uploadBtn": "Upload Activites"
+  },
+  "trailPhotos": {
+    "title": "Add photos of this trail",
+    "subTitle": "Photos help others preview the trail. Upload photos about this trail to inspire others.",
+    "sortBy": "Sort By",
+    "uploadBtn": "Upload Phtoto"
+  },
+  "home": {
+    "findNext": "Find Your Next Trail.",
+    "exploreNear": "Explore nearby trails"
+  },
+  "trailInfo": {
+    "length": "Length",
+    "elevation": "Elevation Gain",
+    "route": "Route Type"
+  }    
 }

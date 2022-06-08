@@ -15,7 +15,8 @@
             justify-content: space-around;
             .review-btn {
                 button {
-                text-transform: capitalize;
+                    min-width: 180px;
+                    text-transform: capitalize;
 
                 }
             }

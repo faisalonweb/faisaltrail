@@ -41,4 +41,9 @@ export const chipList =  [ 'Dogs on leash',
                             
                             
                             ];
+                            export const sortbyData =  [
+                                'Newest First',
+                                'Kid Friendly',
+                                'Hiking',
+                            ];
                             

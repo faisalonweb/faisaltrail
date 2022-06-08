@@ -1,0 +1,24 @@
+.user-complete-section {
+    .activity-section {
+        display: flex;
+        .upload-btn {
+            button {
+                min-width: 180px;
+                text-transform: capitalize;
+            }
+        }
+    }
+    .user-detail {
+        display: flex;
+        padding: 50px;
+        .user-review-img {
+            height: 60px;
+            width: 60px;
+            border-radius: 30px;
+            background-color: lightgray;
+        }
+        .user-name-section {
+            margin-left: 10px;
+        }
+    }
+}
