@@ -36,21 +36,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
-    "prepare": "husky install",
-    "format": "prettier --write ."
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint"
-    ]
-  },
-  "lint-prepush": {
-    "base": "develop",
-    "tasks": {
-      "*.{js,jsx,ts,tsx}": [
-        "eslint"
-      ]
-    }
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "browserslist": {
     "production": [
@@ -73,11 +59,6 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.0",
-    "husky": "^6.0.0",
-    "jest": "^26.6.3",
-    "lint-prepush": "^2.2.1",
-    "lint-staged": "^11.2.6",
-    "precise-commits": "^1.0.2",
     "prettier": "^2.6.2"
   }
 }
