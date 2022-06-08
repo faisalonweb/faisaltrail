@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm precise-commits && npm lint-staged
+npm run lint:fix && npm run format
