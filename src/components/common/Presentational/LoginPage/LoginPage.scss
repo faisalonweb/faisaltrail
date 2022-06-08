@@ -1,0 +1,30 @@
+.Login-Page {
+  .login-title {
+    color: #1e1f22;
+  }
+  .inputs {
+    .inputs-section {
+      .remember-me {
+        color: #1e1f22;
+      }
+      .errorText {
+        color: #ff1744;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.8rem;
+        margin-top: 0px;
+      }
+    }
+    .css-mhc70k-MuiGrid-root > .MuiGrid-item {
+      padding-top: 0;
+    }
+    .submit-button {
+      background-color: #1976d2;
+    }
+    .forgot-link {
+      color: #1976d2;
+    }
+    .signup-link {
+      color: #1976d2;
+    }
+  }
+}
