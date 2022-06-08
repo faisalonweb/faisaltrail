@@ -1,46 +1,43 @@
 .review-section-cls {
-    .rating-cls {
-        .rating {
-            .rating-section {
-                display: flex;
-                .stars-cls {
-                    display: flex;
-                    flex-direction: column;
-                }
-
-            }
+  .rating-cls {
+    .rating {
+      .rating-section {
+        display: flex;
+        .stars-cls {
+          display: flex;
+          flex-direction: column;
         }
-        .total-stars {
-            display: flex;
-            justify-content: space-around;
-            .review-btn {
-                button {
-                    min-width: 180px;
-                    text-transform: capitalize;
-
-                }
-            }
-        }
-
+      }
     }
-    .user-review {
-        .user-review-section {
-            display: flex;
-            .user-review-img {
-                height: 60px;
-                width: 60px;
-                border-radius: 30px;
-                background-color: lightgray;
-            }
-            .user-name-section {
-                margin-left: 10px;
-                .user-date {
-                    display: flex;
-                }
-            }
+    .total-stars {
+      display: flex;
+      justify-content: space-around;
+      .review-btn {
+        button {
+          min-width: 180px;
+          text-transform: capitalize;
         }
-        .user-review-desc {
-            margin-top: 10px;
-        }
+      }
     }
+  }
+  .user-review {
+    .user-review-section {
+      display: flex;
+      .user-review-img {
+        height: 60px;
+        width: 60px;
+        border-radius: 30px;
+        background-color: lightgray;
+      }
+      .user-name-section {
+        margin-left: 10px;
+        .user-date {
+          display: flex;
+        }
+      }
+    }
+    .user-review-desc {
+      margin-top: 10px;
+    }
+  }
 }

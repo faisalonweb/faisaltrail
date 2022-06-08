@@ -1,57 +1,52 @@
-
 .app-bar {
-    .container-class {
-        padding: 0px;
-        max-width: none;
-        background-color: #fff;
-        .toolbar-class {
-            display: flex;
-            margin: 0px 10px 0px 10px;
-            justify-content: space-between;
-            .logo-class {
-                display: flex;
-                justify-content: center;
-                
-            }
-            .dropdown-class {
-                display: flex;
-                justify-content: flex-end;
-                    .help-btn {
-                        margin-right: 20px;
-                        font-size: 14px;
-                        font-family: Arial, Helvetica, sans-serif;
-                        text-transform: capitalize;
-                        color: black;
-                    }
-                    .pro-btn {
-                        background: #219ad8;
-                        color: white;
-                        width: 15%;
-                        height: 40px;
-                        margin-top: 15px;
-                        margin-right: 20px;
-                        font-size: 1x;
-                        border-radius: 8px;
-                        font-size: 14px;
-                        font-family: Arial, Helvetica, sans-serif;
-                        text-transform: capitalize;
-                        &:hover {
-                            background: grey;
-                            color: black;
-                        }
-                      }
-                
-            }
+  .container-class {
+    padding: 0px;
+    max-width: none;
+    background-color: #fff;
+    .toolbar-class {
+      display: flex;
+      margin: 0px 10px 0px 10px;
+      justify-content: space-between;
+      .logo-class {
+        display: flex;
+        justify-content: center;
+      }
+      .dropdown-class {
+        display: flex;
+        justify-content: flex-end;
+        .help-btn {
+          margin-right: 20px;
+          font-size: 14px;
+          font-family: Arial, Helvetica, sans-serif;
+          text-transform: capitalize;
+          color: black;
         }
-        .list-buttons {
-            .list-items {
-                font-size: 14px;
-                font-family: Arial, Helvetica, sans-serif;
-                text-transform: capitalize;
-                color: black;
-            }
+        .pro-btn {
+          background: #219ad8;
+          color: white;
+          width: 15%;
+          height: 40px;
+          margin-top: 15px;
+          margin-right: 20px;
+          font-size: 1x;
+          border-radius: 8px;
+          font-size: 14px;
+          font-family: Arial, Helvetica, sans-serif;
+          text-transform: capitalize;
+          &:hover {
+            background: grey;
+            color: black;
+          }
         }
+      }
     }
-   
-   
+    .list-buttons {
+      .list-items {
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: capitalize;
+        color: black;
+      }
+    }
+  }
 }

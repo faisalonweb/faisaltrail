@@ -1,41 +1,40 @@
 .user-activity-section {
-    .activity-section {
-        display: flex;
-        .upload-btn {
-            button {
-                min-width: 180px;
-                text-transform: capitalize;
-            }
-        }
+  .activity-section {
+    display: flex;
+    .upload-btn {
+      button {
+        min-width: 180px;
+        text-transform: capitalize;
+      }
     }
-    .activity-info-cls {
-        display: flex;
-        flex-direction: column;
-        .user-review-section {
-            display: flex;
-            .user-review-img {
-                height: 60px;
-                width: 60px;
-                border-radius: 30px;
-                background-color: lightgray;
-            }
-            .user-name-section {
-                margin-left: 10px;
-                .user-date {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-            }
+  }
+  .activity-info-cls {
+    display: flex;
+    flex-direction: column;
+    .user-review-section {
+      display: flex;
+      .user-review-img {
+        height: 60px;
+        width: 60px;
+        border-radius: 30px;
+        background-color: lightgray;
+      }
+      .user-name-section {
+        margin-left: 10px;
+        .user-date {
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
-        .activity-img-cls {
-            img {
-                margin-top: 20px;
-                width: 100%;
-                object-fit: cover;
-                border-radius: 10px;
-            }
-        }
-       
+      }
     }
+    .activity-img-cls {
+      img {
+        margin-top: 20px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+    }
+  }
 }

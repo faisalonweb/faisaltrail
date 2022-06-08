@@ -1,18 +1,17 @@
 .user-photo-section {
-    .photos-section {
-        display: flex;
-        .upload-btn {
-            button {
-                min-width: 180px;
-                text-transform: capitalize;
-            }
-        }
+  .photos-section {
+    display: flex;
+    .upload-btn {
+      button {
+        min-width: 180px;
+        text-transform: capitalize;
+      }
     }
-    .trail-info-cls {
-        height: 450px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap:  wrap;
-       
-    }
+  }
+  .trail-info-cls {
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 }
