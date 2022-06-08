@@ -1,16 +1,17 @@
-import React from 'react'
+import React from 'react';
 import Typography from '@mui/material/Typography';
 import { Box, Chip, Container, Rating, Stack } from '@mui/material';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from 'src/store/hooks';
-import 'src/components/common/Presentational/TrailList/TrailList.scss'
+import 'src/components/common/Presentational/TrailList/TrailList.scss';
 
 const TrailList = () => {
-const navigate = useNavigate();
-const { trailList } = useAppSelector((state) => state.appData);
+  const navigate = useNavigate();
+  const { trailList } = useAppSelector((state) => state.appData);
   return (
-    <div>{trailList.map((trail) => {
+    <div>
+      {trailList.map((trail) => {
         return (
           <Container
             key={trail.id}
@@ -47,22 +48,22 @@ const { trailList } = useAppSelector((state) => state.appData);
                   </Typography>
                   <BookmarkBorderOutlinedIcon />
                 </Box>
-    
+
                 <Typography sx={{ opacity: 0.5 }} fontSize={14}>
                   {trail.info}
                 </Typography>
-    
+
                 <Box sx={{ display: 'flex', gap: 2 }}>
                   <Chip label={trail.difficulty} color='primary' size='small' />
                   <Rating value={trail.rating} />
                   <Typography>({trail.reviews})</Typography>
                 </Box>
-    
+
                 <Box sx={{ display: 'flex', gap: 5 }}>
                   <Typography>{trail.length} km</Typography>
                   <Typography>{trail.time}</Typography>
                 </Box>
-    
+
                 <Box>
                   <Typography fontSize={15}>{trail.description}</Typography>
                 </Box>
@@ -70,8 +71,9 @@ const { trailList } = useAppSelector((state) => state.appData);
             </Stack>
           </Container>
         );
-      })}</div>
-  )
-}
+      })}
+    </div>
+  );
+};
 
-export default TrailList
+export default TrailList;

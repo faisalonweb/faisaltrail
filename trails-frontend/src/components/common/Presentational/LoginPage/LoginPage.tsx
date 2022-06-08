@@ -48,27 +48,21 @@ const LoginPage = () => {
     }
   };
   const handleErrors = () => {
-    if(!email) {
-      setEmailError('Email is required.')
-    }
-    else if(!checkValidEmail(email)) {
-      setEmailError('Invalid Email.')
-    }
-    else {
+    if (!email) {
+      setEmailError('Email is required.');
+    } else if (!checkValidEmail(email)) {
+      setEmailError('Invalid Email.');
+    } else {
       setEmailError('');
     }
-    if(!password) {
-      setPasswordError('Password is required.')
+    if (!password) {
+      setPasswordError('Password is required.');
+    } else {
+      setPasswordError('');
     }
-    else {
-      setPasswordError('')
-    }
-    
   };
   const verifyErrors = () => {
-    return email?.length &&
-    checkValidEmail(email) &&
-    password?.length;
+    return email?.length && checkValidEmail(email) && password?.length;
   };
   return (
     <div>

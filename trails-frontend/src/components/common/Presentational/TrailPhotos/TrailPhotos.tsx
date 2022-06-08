@@ -22,9 +22,7 @@ const TrailPhotos = () => {
           <Typography variant='h6' fontWeight='bold'>
             {title}
           </Typography>
-          <Typography>
-            {subTitle}
-          </Typography>
+          <Typography>{subTitle}</Typography>
           <Box sx={{ minWidth: 20, marginY: '30px' }}>
             <FormControl>
               <InputLabel variant='standard' htmlFor='uncontrolled-native'>

@@ -73,9 +73,7 @@ const UserComment = () => {
       <Divider sx={{ marginY: '30px' }} />
       <Box className='user-review'>
         <Box className='user-review-section'>
-          <Box className='user-review-img'>
-            
-          </Box>
+          <Box className='user-review-img'></Box>
           <Box className='user-name-section'>
             <Typography fontWeight='bold'>Nilson Mandila</Typography>
             <Box className='user-date'>

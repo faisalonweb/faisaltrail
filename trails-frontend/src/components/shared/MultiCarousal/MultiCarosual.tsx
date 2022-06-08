@@ -1,7 +1,7 @@
 import React from 'react';
 import 'src/components/shared/MultiCarousal/MultiCarousal.scss';
 import Carousel from 'react-multi-carousel';
-import { images } from 'src/data/data'
+import { images } from 'src/data/data';
 import 'react-multi-carousel/lib/styles.css';
 
 interface Props {
@@ -25,7 +25,7 @@ const responsive = {
   },
 };
 
-const MultiCarosual = ({carostring }:Props) => {
+const MultiCarosual = ({ carostring }: Props) => {
   return (
     <div className='multi-carosual'>
       <Carousel

@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
-import { footerdata } from 'src/data/data'
+import { footerdata } from 'src/data/data';
 import googleLogo from 'src/assets/images/googlestore.png';
 import AppleLogo from 'src/assets/images/playstore.png';
 import fbLogo from 'src/assets/images/fb.png';
@@ -27,24 +27,23 @@ export default function Footer() {
                 {footerdata.exploredata.heading}
               </Box>
               {footerdata.exploredata.links.map((links) => (
-                 <Box key={links.name} className='list-items'>
-                <Link href={links.to} color='inherit'>
-                  {links.name}
-                </Link>
-              </Box>
+                <Box key={links.name} className='list-items'>
+                  <Link href={links.to} color='inherit'>
+                    {links.name}
+                  </Link>
+                </Box>
               ))}
-             
             </Grid>
             <Grid item xs={12} sm={3}>
               <Box className='list-head' borderBottom={1}>
                 {footerdata.mapsdata.heading}
               </Box>
               {footerdata.mapsdata.links.map((links) => (
-                 <Box key={links.name} className='list-items'>
-                <Link href={links.to} color='inherit'>
-                  {links.name}
-                </Link>
-              </Box>
+                <Box key={links.name} className='list-items'>
+                  <Link href={links.to} color='inherit'>
+                    {links.name}
+                  </Link>
+                </Box>
               ))}
             </Grid>
             <Grid item xs={12} sm={3}>
@@ -52,11 +51,11 @@ export default function Footer() {
                 {footerdata.companydata.heading}
               </Box>
               {footerdata.companydata.links.map((links) => (
-                 <Box key={links.name} className='list-items'>
-                <Link href={links.to} color='inherit'>
-                  {links.name}
-                </Link>
-              </Box>
+                <Box key={links.name} className='list-items'>
+                  <Link href={links.to} color='inherit'>
+                    {links.name}
+                  </Link>
+                </Box>
               ))}
             </Grid>
             <Grid item xs={12} sm={3}>
@@ -64,13 +63,12 @@ export default function Footer() {
                 {footerdata.communitydata.heading}
               </Box>
               {footerdata.communitydata.links.map((links) => (
-                 <Box key={links.name} className='list-items'>
-                <Link href={links.to} color='inherit'>
-                  {links.name}
-                </Link>
-              </Box>
+                <Box key={links.name} className='list-items'>
+                  <Link href={links.to} color='inherit'>
+                    {links.name}
+                  </Link>
+                </Box>
               ))}
-             
             </Grid>
           </Grid>
           <Box className='footer-connect-section'>

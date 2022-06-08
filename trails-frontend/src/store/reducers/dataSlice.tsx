@@ -4,7 +4,7 @@ import { trailsData, trailCardsData, trailsListData } from 'src/data/data';
 const initialState = {
   trails: trailsData,
   trailCards: trailCardsData,
-  trailList: trailsListData
+  trailList: trailsListData,
 };
 
 export const dataSlice = createSlice({

@@ -89,7 +89,7 @@ const Home = () => {
         </Link>
       </div>
       <div className='multi-carousal-cls'>
-        <MultiCarosual carostring='Trail'/>
+        <MultiCarosual carostring='Trail' />
       </div>
       <div className='adventure-panel'>
         <AdventureTabs />
