@@ -9,30 +9,23 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import IconButton from '@mui/material/IconButton';
-import Avatar from '@mui/material/Avatar';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import 'src/components/shared/Appbar/Appbar.scss';
 import { Divider } from '@mui/material';
 
-
-type Anchor = 'left'
+type Anchor = 'left';
 const pages = ['Products', 'Pricing', 'Blog'];
 
 const ResponsiveAppBar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const [state, setState] = React.useState({
     left: false,
   });
 
   const navigate = useNavigate();
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
 
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     if (anchorEl !== event.currentTarget) {
@@ -44,14 +37,6 @@ const ResponsiveAppBar = () => {
       setAnchorEl(event.currentTarget);
     }
   }
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
@@ -60,8 +45,7 @@ const ResponsiveAppBar = () => {
     setAnchorEl(null);
   }
   const toggleDrawer =
-    (anchor: Anchor, open: boolean) =>
-    (event: React.KeyboardEvent | React.MouseEvent) => {
+    (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
         event &&
         event.type === 'keydown' &&
@@ -116,17 +100,17 @@ const ResponsiveAppBar = () => {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
+              size='large'
+              aria-label='account of current user'
+              aria-controls='menu-appbar'
+              aria-haspopup='true'
               onClick={toggleDrawer('left', true)}
               style={{ color: 'black' }}
             >
               <MenuIcon />
             </IconButton>
             <Menu
-              id="menu-appbar"
+              id='menu-appbar'
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: 'bottom',
@@ -145,7 +129,7 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign='center'>{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -172,78 +156,108 @@ const ResponsiveAppBar = () => {
           </Box>
 
           <Box className='dropdown-class' sx={{ flexGrow: 1 }}>
-            <Button className='help-btn' sx={{ my: 2, color: 'black',display: { xs: 'none', md: 'flex' } }}>
+            <Button
+              className='help-btn'
+              sx={{ my: 2, color: 'black', display: { xs: 'none', md: 'flex' } }}
+            >
               Help
             </Button>
-            <Button onClick={() => navigate('/signup')} className='pro-btn'  sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <Button
+              onClick={() => navigate('/signup')}
+              className='pro-btn'
+              sx={{ display: { xs: 'none', md: 'flex' } }}
+            >
               Sign up
             </Button>
-            <Button onClick={() => navigate('/login')} className='pro-btn'  sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <Button
+              onClick={() => navigate('/login')}
+              className='pro-btn'
+              sx={{ display: { xs: 'none', md: 'flex' } }}
+            >
               Login
             </Button>
           </Box>
           <Box className='drw-class'>
-          <SwipeableDrawer
-            className='drw-cls-content'
-            anchor={'left'}
-            open={state['left']}
-            onClose={toggleDrawer('left', false)}
-            onOpen={toggleDrawer('left', true)}
-            PaperProps={{ style: { width: '200px' } }}
-          >
-            <Box className='sidedraw-class' 
-            style={{display:'flex',flexDirection:'column', alignItems:'start',height:'100vh', justifyContent:'center'}}>
-            <Button className='list-item'  style={{color:'black',fontSize:'30px',fontWeight:'bold'}} onClick={() => navigate('/explore')}>
-              Explore
-            </Button>
-            <Button
-              aria-owns={anchorEl ? 'simple-menu' : undefined}
-              className='list-item'
-              aria-haspopup='true'
-              onClick={handleClick}
-              style={{color:'black',fontSize:'30px',fontWeight:'bold'}}
+            <SwipeableDrawer
+              className='drw-cls-content'
+              anchor={'left'}
+              open={state['left']}
+              onClose={toggleDrawer('left', false)}
+              onOpen={toggleDrawer('left', true)}
+              PaperProps={{ style: { width: '200px' } }}
             >
-              Saved
-            </Button>
-            <Button
-              aria-owns={anchorEl ? 'simple-menu' : undefined}
-              aria-haspopup='true'
-              className='list-item'
-              style={{color:'black',fontSize:'30px',fontWeight:'bold'}}
-              onClick={handleShopClick}
-            >
-              Shop
-            </Button>
-            <Button 
-              style={{color:'black',fontSize:'30px',fontWeight:'bold'}}
-              className='list-item'>
-              Help
-            </Button>
-            <Divider />
-            <Button 
-            style={{ 
-               background: '#219ad8',
-               color:' white',
-               width: '56%',
-               marginLeft:'10px',
-               height: '40px'}}
-            className='signup-btn' onClick={() => navigate('/signup')}>
-              Sign up
-            </Button>
-            <Button 
-                style={{ 
-                background: '#219ad8',
-                color:' white',
-                width: '56%',
-                marginLeft:'10px',
-                marginTop: '10px',
-                height: '40px'}}
-              onClick={() => navigate('/login')} className='login-btn'>
-              Login
-            </Button>
+              <Box
+                className='sidedraw-class'
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'start',
+                  height: '100vh',
+                  justifyContent: 'center',
+                }}
+              >
+                <Button
+                  className='list-item'
+                  style={{ color: 'black', fontSize: '30px', fontWeight: 'bold' }}
+                  onClick={() => navigate('/explore')}
+                >
+                  Explore
+                </Button>
+                <Button
+                  aria-owns={anchorEl ? 'simple-menu' : undefined}
+                  className='list-item'
+                  aria-haspopup='true'
+                  onClick={handleClick}
+                  style={{ color: 'black', fontSize: '30px', fontWeight: 'bold' }}
+                >
+                  Saved
+                </Button>
+                <Button
+                  aria-owns={anchorEl ? 'simple-menu' : undefined}
+                  aria-haspopup='true'
+                  className='list-item'
+                  style={{ color: 'black', fontSize: '30px', fontWeight: 'bold' }}
+                  onClick={handleShopClick}
+                >
+                  Shop
+                </Button>
+                <Button
+                  style={{ color: 'black', fontSize: '30px', fontWeight: 'bold' }}
+                  className='list-item'
+                >
+                  Help
+                </Button>
+                <Divider />
+                <Button
+                  style={{
+                    background: '#219ad8',
+                    color: ' white',
+                    width: '56%',
+                    marginLeft: '10px',
+                    height: '40px',
+                  }}
+                  className='signup-btn'
+                  onClick={() => navigate('/signup')}
+                >
+                  Sign up
+                </Button>
+                <Button
+                  style={{
+                    background: '#219ad8',
+                    color: ' white',
+                    width: '56%',
+                    marginLeft: '10px',
+                    marginTop: '10px',
+                    height: '40px',
+                  }}
+                  onClick={() => navigate('/login')}
+                  className='login-btn'
+                >
+                  Login
+                </Button>
+              </Box>
+            </SwipeableDrawer>
           </Box>
-          </SwipeableDrawer>
-    </Box>
         </Toolbar>
       </Container>
     </AppBar>

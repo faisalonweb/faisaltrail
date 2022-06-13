@@ -23,7 +23,7 @@
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 20px;
     .appoutdoor-section {
-        img {
+      img {
         height: 40px;
         width: 40px;
         padding-left: 10px;
@@ -33,7 +33,6 @@
           display: flex;
           justify-content: flex-start;
         }
-       
       }
       .app-outdoor-sec {
         .app-outdoor-members {
@@ -45,8 +44,8 @@
         display: flex;
         justify-content: center;
         @include sm {
-        display: flex;
-        justify-content: flex-start;
+          display: flex;
+          justify-content: flex-start;
         }
         .app-outdoor {
           display: flex;
@@ -54,9 +53,7 @@
           justify-content: flex-end;
         }
       }
-    
     }
-    
   }
   .footer-signature {
     margin-top: 10px;

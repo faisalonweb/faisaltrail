@@ -54,7 +54,7 @@ export default function AdventureTabs() {
         <Tabs
           className='adventure-tabs'
           value={value}
-          variant="scrollable"
+          variant='scrollable'
           scrollButtons
           allowScrollButtonsMobile
           onChange={handleChange}

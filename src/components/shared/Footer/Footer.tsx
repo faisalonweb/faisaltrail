@@ -72,42 +72,41 @@ export default function Footer() {
             </Grid>
           </Grid>
           <Box className='footer-connect-section'>
-            <Grid className='appoutdoor-section' container >
+            <Grid className='appoutdoor-section' container>
               <Grid item xs={6} md={3}>
-              <div className='app-outdoor-store'>
-                <p>An app for the outdoors</p>
-                <div className='app-store-icons'>
-                  <div>
-                    <img src={googleLogo} alt='img' />
-                  </div>
-                  <div>
-                    <img src={AppleLogo} alt='img' />
+                <div className='app-outdoor-store'>
+                  <p>An app for the outdoors</p>
+                  <div className='app-store-icons'>
+                    <div>
+                      <img src={googleLogo} alt='img' />
+                    </div>
+                    <div>
+                      <img src={AppleLogo} alt='img' />
+                    </div>
                   </div>
                 </div>
-              </div>
               </Grid>
               <Grid item xs={6} md={3}>
-              <div className='app-outdoor-sec'>
-                <p>Members for the planet</p>
-                <div className='app-outdoor-members'>
-                  <img src={recLogo} alt='img' />
-                  <img src={playLogo} alt='img' />
-                  <img src={bidirectLogo} alt='img' />
+                <div className='app-outdoor-sec'>
+                  <p>Members for the planet</p>
+                  <div className='app-outdoor-members'>
+                    <img src={recLogo} alt='img' />
+                    <img src={playLogo} alt='img' />
+                    <img src={bidirectLogo} alt='img' />
+                  </div>
                 </div>
-              </div>
               </Grid>
-              <Grid item xs={6} md={6} className="connect-grid">
-              <div className='app-outdoor'>
-              <p>Connect with us</p>
-              <div className='app-outdoor-connect'>
-                <img src={twitterLogo} alt='img' />
-                <img src={youtubeLogo} alt='img' />
-                <img src={instaLogo} alt='img' />
-                <img src={fbLogo} alt='img' />
-              </div>
-            </div>
+              <Grid item xs={6} md={6} className='connect-grid'>
+                <div className='app-outdoor'>
+                  <p>Connect with us</p>
+                  <div className='app-outdoor-connect'>
+                    <img src={twitterLogo} alt='img' />
+                    <img src={youtubeLogo} alt='img' />
+                    <img src={instaLogo} alt='img' />
+                    <img src={fbLogo} alt='img' />
+                  </div>
+                </div>
               </Grid>
-
             </Grid>
           </Box>
           <Divider />
