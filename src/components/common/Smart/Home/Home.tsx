@@ -73,7 +73,6 @@ const Home = () => {
             disablePortal
             id='combo-box-demo'
             options={top100Films}
-            sx={{ width: 650 }}
             popupIcon={<SearchIcon />}
             renderInput={(params) => (
               <CustomTextField

@@ -1,3 +1,5 @@
+@import 'src/styles/main.scss';
+
 .home-page {
   height: 100%;
   display: flex;
@@ -26,6 +28,16 @@
     .paper-cls {
       border-radius: 28px;
       .autocomplete-cls {
+        width: 650px;
+        @include lg {
+          width: 650px;
+        }
+        @include md {
+          width: 550px;
+        }
+        @include sm {
+          width: 450px;
+        }
         .input-field {
           background-color: 'FAF9F6';
           border-radius: 28px;
@@ -37,9 +49,21 @@
     margin-top: 50px;
     background-color: white;
     width: 70%;
+    @include sm {
+      width: 100%;
+    }
+    @include md {
+      width: 100%;
+    }
   }
   .adventure-panel {
     width: 70%;
+    @include sm {
+      width: 100%;
+    }
+    @include md {
+      width: 100%;
+    }
     margin-top: 50px;
   }
 }

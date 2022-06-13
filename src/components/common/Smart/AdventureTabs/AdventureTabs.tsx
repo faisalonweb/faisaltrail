@@ -54,6 +54,9 @@ export default function AdventureTabs() {
         <Tabs
           className='adventure-tabs'
           value={value}
+          variant='scrollable'
+          scrollButtons
+          allowScrollButtonsMobile
           onChange={handleChange}
           aria-label='basic tabs example'
         >

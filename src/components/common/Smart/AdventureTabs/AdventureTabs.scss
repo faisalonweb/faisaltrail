@@ -1,3 +1,4 @@
+@import 'src/styles/main.scss';
 .adventure-cls {
   .adventure-tabs-cls {
     .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
@@ -16,6 +17,12 @@
   }
   .trail-info-cls {
     height: 520px;
+    @include md {
+      height: 1000px;
+    }
+    @include sm {
+      height: 1000px;
+    }
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
