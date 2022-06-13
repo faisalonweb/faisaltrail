@@ -39,6 +39,16 @@
           }
         }
       }
+      .drw-class {
+        background-color: #219ad8;
+        .drw-cls-content {
+          .sidedraw-class {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+      
     }
     .list-buttons {
       .list-items {

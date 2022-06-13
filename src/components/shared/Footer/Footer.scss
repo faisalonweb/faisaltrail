@@ -1,7 +1,8 @@
+@import 'src/styles/main.scss';
 .footer-cls {
-  height: 450px;
+  height: 100%;
   background-color: #fff;
-  margin-top: 100px;
+  margin-top: 50px;
   .container-cls {
     .list-head {
       margin-bottom: 30px;
@@ -17,47 +18,45 @@
     }
   }
   .footer-connect-section {
-    display: flex;
     font-size: 18px;
     font-weight: 600;
-    justify-content: space-between;
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 20px;
     .appoutdoor-section {
-      display: flex;
+        img {
+        height: 40px;
+        width: 40px;
+        padding-left: 10px;
+      }
       .app-outdoor-store {
         .app-store-icons {
           display: flex;
-          justify-content: space-around;
+          justify-content: flex-start;
         }
+       
       }
       .app-outdoor-sec {
-        margin-left: 25px;
         .app-outdoor-members {
           display: flex;
-          justify-content: space-between;
+          justify-content: flex-start;
         }
       }
-      img {
-        height: 40px;
-        width: 40px;
-      }
-    }
-    .app-outdoor {
-      width: 30%;
-      p {
-        font-size: 18px;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-      img {
-        height: 40px;
-        width: 40px;
-      }
-      .app-outdoor-connect {
+      .connect-grid {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
+        @include sm {
+        display: flex;
+        justify-content: flex-start;
+        }
+        .app-outdoor {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+        }
       }
+    
     }
+    
   }
   .footer-signature {
     margin-top: 10px;

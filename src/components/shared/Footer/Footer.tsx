@@ -22,7 +22,7 @@ export default function Footer() {
       <Box className='footer-cls' bgcolor='black'>
         <Container className='container-cls' maxWidth='lg'>
           <Grid container spacing={5}>
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={6} sm={3}>
               <Box className='list-head' borderBottom={1}>
                 {footerdata.exploredata.heading}
               </Box>
@@ -34,7 +34,7 @@ export default function Footer() {
                 </Box>
               ))}
             </Grid>
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={6} sm={3}>
               <Box className='list-head' borderBottom={1}>
                 {footerdata.mapsdata.heading}
               </Box>
@@ -46,7 +46,7 @@ export default function Footer() {
                 </Box>
               ))}
             </Grid>
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={6} sm={3}>
               <Box className='list-head' borderBottom={1}>
                 {footerdata.companydata.heading}
               </Box>
@@ -58,7 +58,7 @@ export default function Footer() {
                 </Box>
               ))}
             </Grid>
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={6} sm={3}>
               <Box className='list-head' borderBottom={1}>
                 {footerdata.communitydata.heading}
               </Box>
@@ -72,7 +72,8 @@ export default function Footer() {
             </Grid>
           </Grid>
           <Box className='footer-connect-section'>
-            <div className='appoutdoor-section'>
+            <Grid className='appoutdoor-section' container >
+              <Grid item xs={6} md={3}>
               <div className='app-outdoor-store'>
                 <p>An app for the outdoors</p>
                 <div className='app-store-icons'>
@@ -84,6 +85,8 @@ export default function Footer() {
                   </div>
                 </div>
               </div>
+              </Grid>
+              <Grid item xs={6} md={3}>
               <div className='app-outdoor-sec'>
                 <p>Members for the planet</p>
                 <div className='app-outdoor-members'>
@@ -92,9 +95,9 @@ export default function Footer() {
                   <img src={bidirectLogo} alt='img' />
                 </div>
               </div>
-            </div>
-
-            <div className='app-outdoor'>
+              </Grid>
+              <Grid item xs={6} md={6} className="connect-grid">
+              <div className='app-outdoor'>
               <p>Connect with us</p>
               <div className='app-outdoor-connect'>
                 <img src={twitterLogo} alt='img' />
@@ -103,6 +106,9 @@ export default function Footer() {
                 <img src={fbLogo} alt='img' />
               </div>
             </div>
+              </Grid>
+
+            </Grid>
           </Box>
           <Divider />
           <Box
