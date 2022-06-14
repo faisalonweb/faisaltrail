@@ -1,6 +1,6 @@
 import { createServer, Model } from 'miragejs';
 
-export function makeServer({ environment = 'test'  }) {
+export function makeServer({ environment = 'test' }) {
   return createServer({
     environment,
     models: {
@@ -15,7 +15,7 @@ export function makeServer({ environment = 'test'  }) {
             { id: 2, name: 'trail2', year: 2014 },
             { id: 3, name: 'trail3', year: 2017 },
           ],
-        }
+        };
       });
       this.passthrough();
     },

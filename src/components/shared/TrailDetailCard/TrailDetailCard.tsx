@@ -9,7 +9,7 @@ import {
   CardMedia,
   CardActionArea,
 } from '@mui/material';
-import 'src/components/shared/TrailDetailCard/TrailDetailCard.scss'
+import 'src/components/shared/TrailDetailCard/TrailDetailCard.scss';
 interface Props {
   title: string;
   time: string;

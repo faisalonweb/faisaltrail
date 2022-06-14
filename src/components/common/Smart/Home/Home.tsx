@@ -51,7 +51,7 @@ const top100Films = [
 
 const Home = () => {
   const constantData: LocalizationInterface = localizedData();
-  const [movies, setMovies] = useState(null)
+  const [movies, setMovies] = useState(null);
   const { findNext, exploreNear } = constantData.home;
   const CustomTextField = withStyles({
     root: {
@@ -68,8 +68,8 @@ const Home = () => {
     fetch('/api/movies')
       .then((res) => res.json())
       .then((json) => setMovies(json.movies))
-      .catch((err) => console.log(err))
-  }, [])
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div className='home-page'>
       <HeroBanner />
