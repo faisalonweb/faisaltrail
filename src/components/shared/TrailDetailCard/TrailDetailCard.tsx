@@ -9,6 +9,7 @@ import {
   CardMedia,
   CardActionArea,
 } from '@mui/material';
+import 'src/components/shared/TrailDetailCard/TrailDetailCard.scss'
 interface Props {
   title: string;
   time: string;
@@ -30,7 +31,7 @@ export default function TrailDetailCard({
   length,
 }: Props) {
   return (
-    <Card sx={{ maxWidth: 345, mt: '10px' }}>
+    <Card className='card-cls'>
       <CardActionArea>
         <CardMedia component='img' height='140' image={img} alt='green iguana' />
         <CardContent>

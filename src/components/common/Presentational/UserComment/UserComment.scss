@@ -1,3 +1,5 @@
+@import 'src/styles/main.scss';
+
 .review-section-cls {
   .rating-cls {
     .rating {
@@ -15,6 +17,9 @@
       .review-btn {
         button {
           min-width: 180px;
+          @include sm {
+            min-width: 100px;
+          }
           text-transform: capitalize;
         }
       }

@@ -55,7 +55,7 @@ const TrailInfo = () => {
       </Box>
       <Box className='grid-cls'>
         <Grid className='grid-cls-container' container>
-          <Grid className='left-grid' item xs={8} md={8} lg={8}>
+          <Grid className='left-grid' item xs={12} md={8} lg={8}>
             <Box className='left-clm'>
               <Box className='des-box'>
                 <Typography component={'span'} variant='body1'>
@@ -108,7 +108,7 @@ const TrailInfo = () => {
               </Box>
             </Box>
           </Grid>
-          <Grid className='right-grid' item xs={4} md={4} lg={4}>
+          <Grid className='right-grid' item xs={12} md={4} lg={4}>
             <Box>
               <Typography variant='h6' fontWeight='bold'>
                 Nearby trails
