@@ -7,24 +7,21 @@ import ExplorePage from './components/common/Smart/Explore/Explore';
 import TrailInfo from 'src/components/common/Smart/TrailInfo/TrailInfo';
 import { Routes, Route } from 'react-router-dom';
 import { useAppSelector } from 'src/store/hooks';
-import 'src/styles/theme/light.scss'
-import 'src/styles/theme/dark.scss'
+import 'src/styles/theme/light.scss';
+import 'src/styles/theme/dark.scss';
 import './App.css';
 import Trails from './components/common/Smart/Trails/Trails';
 import TrailDetail from './components/common/Presentational/TrailDetail/TrailDetail';
 
 function App() {
-  const { theme } = useAppSelector(
-    (state) => state.myTheme
-  );
+  const { theme } = useAppSelector((state) => state.myTheme);
   useEffect(() => {
     if (theme === 'light-theme') {
       document.body.classList.add('light-theme');
-    }
-    else {
+    } else {
       document.body.classList.add('dark-theme');
     }
-  },[theme]);
+  }, [theme]);
   return (
     <div className='App'>
       <Layout>
