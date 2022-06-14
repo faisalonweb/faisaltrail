@@ -1,0 +1,10 @@
+@import 'src/styles/main.scss';
+.card-cls {
+  margin-top: 10px;
+  @include md {
+    width: 700px;
+  }
+  @include sm {
+    width: 400px;
+  }
+}

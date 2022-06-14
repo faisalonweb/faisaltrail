@@ -47,6 +47,10 @@
           display: flex;
           justify-content: flex-start;
         }
+        @include md {
+          display: flex;
+          justify-content: flex-start;
+        }
         .app-outdoor {
           display: flex;
           flex-direction: column;

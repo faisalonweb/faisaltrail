@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HeroBanner from 'src/components/common/Presentational/HeroBanner/HeroBanner';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
@@ -51,6 +51,7 @@ const top100Films = [
 
 const Home = () => {
   const constantData: LocalizationInterface = localizedData();
+  const [movies, setMovies] = useState(null);
   const { findNext, exploreNear } = constantData.home;
   const CustomTextField = withStyles({
     root: {
@@ -62,6 +63,13 @@ const Home = () => {
       },
     },
   })(TextField);
+
+  useEffect(() => {
+    fetch('/api/movies')
+      .then((res) => res.json())
+      .then((json) => setMovies(json.movies))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div className='home-page'>
       <HeroBanner />
