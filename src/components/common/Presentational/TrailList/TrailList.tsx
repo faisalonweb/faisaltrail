@@ -18,10 +18,10 @@ const TrailList = () => {
 
   const retrieveTrails = async () => {
     try {
-     const res = await TrailsDataService.getAll()
-     setTrails(res.data);
+      const res = await TrailsDataService.getAll();
+      setTrails(res.data);
     } catch (error) {
-      console.log('error',error);
+      console.log('error', error);
     }
   };
   return (

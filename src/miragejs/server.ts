@@ -1,5 +1,5 @@
 import { createServer } from 'miragejs';
-import { trailsListData  } from 'src/data/data';
+import { trailsListData } from 'src/data/data';
 
 export function makeServer({ environment = 'test' }) {
   return createServer({
