@@ -9,4 +9,4 @@ export default interface ITrailData {
   length: number;
   time: string;
   description: string;
-  }
+}

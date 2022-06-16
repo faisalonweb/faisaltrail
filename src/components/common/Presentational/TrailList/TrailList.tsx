@@ -15,12 +15,12 @@ const TrailList = () => {
   useEffect(() => {
     retrieveTrails();
   }, []);
-  
+
   const retrieveTrails = () => {
     TrailsDataService.getAll()
       .then((response: any) => {
         setTrails(response.data);
-        console.log('data from structure',response.data);
+        console.log('data from structure', response.data);
       })
       .catch((e: Error) => {
         console.log(e);

@@ -1,4 +1,4 @@
-import { createServer  } from 'miragejs';
+import { createServer } from 'miragejs';
 
 import one from 'src/assets/images/one.jpg';
 import two from 'src/assets/images/two.jpg';
@@ -118,7 +118,7 @@ export function makeServer({ environment = 'test' }) {
     routes() {
       this.namespace = '/';
       this.get('/api/trails', () => {
-        return trailsListData
+        return trailsListData;
       });
       this.passthrough();
     },

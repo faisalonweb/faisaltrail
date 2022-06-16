@@ -51,7 +51,7 @@ const top100Films = [
 
 const Home = () => {
   const constantData: LocalizationInterface = localizedData();
-  
+
   const { findNext, exploreNear } = constantData.home;
   const CustomTextField = withStyles({
     root: {
@@ -64,7 +64,6 @@ const Home = () => {
     },
   })(TextField);
 
- 
   return (
     <div className='home-page'>
       <HeroBanner />
