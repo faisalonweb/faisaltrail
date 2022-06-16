@@ -14,10 +14,7 @@ import Trails from './components/common/Smart/Trails/Trails';
 import TrailDetail from './components/common/Presentational/TrailDetail/TrailDetail';
 
 function App() {
-  const { theme } = useAppSelector((state) => state.myTheme);
-  useEffect(() => {
-    document.body.classList.add(theme);
-  }, [theme]);
+  
   return (
     <div className='App'>
       <Layout>
