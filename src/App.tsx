@@ -16,11 +16,7 @@ import TrailDetail from './components/common/Presentational/TrailDetail/TrailDet
 function App() {
   const { theme } = useAppSelector((state) => state.myTheme);
   useEffect(() => {
-    if (theme === 'light-theme') {
-      document.body.classList.add('light-theme');
-    } else {
-      document.body.classList.add('dark-theme');
-    }
+    document.body.classList.add(theme);
   }, [theme]);
   return (
     <div className='App'>

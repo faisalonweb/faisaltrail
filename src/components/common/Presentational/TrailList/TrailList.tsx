@@ -16,15 +16,13 @@ const TrailList = () => {
     retrieveTrails();
   }, []);
 
-  const retrieveTrails = () => {
-    TrailsDataService.getAll()
-      .then((response: any) => {
-        setTrails(response.data);
-        console.log('data from structure', response.data);
-      })
-      .catch((e: Error) => {
-        console.log(e);
-      });
+  const retrieveTrails = async () => {
+    try {
+     const res = await TrailsDataService.getAll()
+     setTrails(res.data);
+    } catch (error) {
+      console.log('error',error);
+    }
   };
   return (
     <div>
