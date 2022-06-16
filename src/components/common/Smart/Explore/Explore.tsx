@@ -13,7 +13,7 @@ const Explore = () => {
   const { trailCards } = useAppSelector((state) => state.appData);
   return (
     <Grid className='explore-cls' container style={{ width: '100%' }}>
-      <Grid className='explore-cards-section' item xs={12} md={3}>
+      <Grid className='explore-cards-section' item xs={12} md={2}>
         <Box className='cards-section'>
           <Box sx={{ mt: '10px' }}>
             <Paper
@@ -55,7 +55,7 @@ const Explore = () => {
           </>
         </Box>
       </Grid>
-      <Grid item xs={12} md={9}>
+      <Grid item xs={12} md={10}>
         <img
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           src={mapimg1}

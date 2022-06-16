@@ -1,17 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import { Box, Chip, Container, Rating, Stack } from '@mui/material';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from 'src/store/hooks';
+import TrailsDataService from 'src/services/TrailsService';
+import ITrailData from 'src/utils/interfaces/Trail';
 import 'src/components/common/Presentational/TrailList/TrailList.scss';
 
 const TrailList = () => {
   const navigate = useNavigate();
+  const [trails, setTrails] = useState<Array<ITrailData>>([]);
   const { trailList } = useAppSelector((state) => state.appData);
+  useEffect(() => {
+    retrieveTrails();
+  }, []);
+  
+  const retrieveTrails = () => {
+    TrailsDataService.getAll()
+      .then((response: any) => {
+        setTrails(response.data);
+        console.log('data from structure',response.data);
+      })
+      .catch((e: Error) => {
+        console.log(e);
+      });
+  };
   return (
     <div>
-      {trailList.map((trail) => {
+      {trails.map((trail) => {
         return (
           <Container
             key={trail.id}
