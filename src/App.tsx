@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Layout from 'src/components/shared/Layout/Layout';
 import HomeView from 'src/views/HomeView/HomeView';
 import SignUpPage from 'src/components/common/Presentational/SignUpPage/SignUpPage';
@@ -6,15 +6,11 @@ import LoginPage from 'src/components/common/Presentational/LoginPage/LoginPage'
 import ExplorePage from './components/common/Smart/Explore/Explore';
 import TrailInfo from 'src/components/common/Smart/TrailInfo/TrailInfo';
 import { Routes, Route } from 'react-router-dom';
-import { useAppSelector } from 'src/store/hooks';
-import 'src/styles/theme/light.scss';
-import 'src/styles/theme/dark.scss';
 import './App.css';
 import Trails from './components/common/Smart/Trails/Trails';
 import TrailDetail from './components/common/Presentational/TrailDetail/TrailDetail';
 
 function App() {
-  
   return (
     <div className='App'>
       <Layout>
