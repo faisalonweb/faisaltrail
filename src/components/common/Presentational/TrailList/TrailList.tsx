@@ -1,29 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React  from 'react';
 import Typography from '@mui/material/Typography';
 import { Box, Chip, Container, Rating, Stack } from '@mui/material';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from 'src/store/hooks';
-import TrailsDataService from 'src/services/TrailsService';
-import ITrailData from 'src/utils/interfaces/Trail';
+import { useGetAllTrailsQuery } from 'src/store/reducers/api';
 import 'src/components/common/Presentational/TrailList/TrailList.scss';
 
 const TrailList = () => {
   const navigate = useNavigate();
-  const [trails, setTrails] = useState<Array<ITrailData>>([]);
-  const { trailList } = useAppSelector((state) => state.appData);
-  useEffect(() => {
-    retrieveTrails();
-  }, []);
+  const {data : trails = []} = useGetAllTrailsQuery({})
+  console.log('traildata', trails)
 
-  const retrieveTrails = async () => {
-    try {
-      const res = await TrailsDataService.getAll();
-      setTrails(res.data);
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
   return (
     <div>
       {trails.map((trail) => {
