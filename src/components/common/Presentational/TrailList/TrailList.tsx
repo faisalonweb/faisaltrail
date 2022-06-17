@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import Typography from '@mui/material/Typography';
 import { Box, Chip, Container, Rating, Stack } from '@mui/material';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
@@ -8,8 +8,8 @@ import 'src/components/common/Presentational/TrailList/TrailList.scss';
 
 const TrailList = () => {
   const navigate = useNavigate();
-  const {data : trails = []} = useGetAllTrailsQuery({})
-  console.log('traildata', trails)
+  const { data: trails = [] } = useGetAllTrailsQuery({});
+  console.log('traildata', trails);
 
   return (
     <div>
