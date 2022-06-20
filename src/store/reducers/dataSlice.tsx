@@ -12,7 +12,7 @@ export const dataSlice = createSlice({
   initialState,
   reducers: {
     appData: (state, action) => {
-      state.trails = action.payload;
+      state.trailList = action.payload;
     },
   },
 });

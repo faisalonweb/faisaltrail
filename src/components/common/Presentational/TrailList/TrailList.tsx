@@ -3,15 +3,16 @@ import Typography from '@mui/material/Typography';
 import { Box, Chip, Container, Rating, Stack } from '@mui/material';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from 'src/store/hooks';
+import { useGetAllTrailsQuery } from 'src/store/reducers/api';
 import 'src/components/common/Presentational/TrailList/TrailList.scss';
 
 const TrailList = () => {
   const navigate = useNavigate();
-  const { trailList } = useAppSelector((state) => state.appData);
+  const { data: trails = [] } = useGetAllTrailsQuery({});
+
   return (
     <div>
-      {trailList.map((trail) => {
+      {trails.map((trail) => {
         return (
           <Container
             key={trail.id}
