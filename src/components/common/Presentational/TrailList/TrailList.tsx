@@ -9,7 +9,6 @@ import 'src/components/common/Presentational/TrailList/TrailList.scss';
 const TrailList = () => {
   const navigate = useNavigate();
   const { data: trails = [] } = useGetAllTrailsQuery({});
-  console.log('traildata', trails);
 
   return (
     <div>
