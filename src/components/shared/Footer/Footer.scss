@@ -1,11 +1,11 @@
 @import 'src/styles/main.scss';
 .footer-cls {
+  text-decoration: none;
   height: 100%;
-  background-color: #fff;
-  margin-top: 50px;
   .container-cls {
     .list-head {
       margin-bottom: 30px;
+      border-bottom: none;
       font-size: 18px;
       font-weight: 600;
       font-family: Arial, Helvetica, sans-serif;
@@ -15,6 +15,9 @@
       font-size: 15px;
       font-family: Arial, Helvetica, sans-serif;
       color: grey;
+      .link-cls {
+        text-decoration: none;
+      }
     }
   }
   .footer-connect-section {

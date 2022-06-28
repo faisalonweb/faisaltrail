@@ -1,10 +1,18 @@
-.Signup-Page {
-  .inputs {
-    .inputs-section {
-      .errorText {
-        color: #ff1744;
-        font-size: 0.8rem;
-        margin-top: 5px;
+.Parent-Signup {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url('https://images.unsplash.com/photo-1549396535-c11d5c55b9df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60');
+  .Signup-Page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .inputs {
+      .inputs-section {
+        .errorText {
+          color: #ff1744;
+          font-size: 0.8rem;
+          margin-top: 5px;
+        }
       }
     }
   }
