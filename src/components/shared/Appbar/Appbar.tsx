@@ -13,7 +13,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import 'src/components/shared/Appbar/Appbar.scss';
+import { useTheme } from '@mui/material/styles';
 import { Divider } from '@mui/material';
+import { ColorModeContext } from 'src/store/colormodecontext'
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 type Anchor = 'left';
 const pages = ['Products', 'Pricing', 'Blog'];
@@ -21,10 +25,11 @@ const pages = ['Products', 'Pricing', 'Blog'];
 const ResponsiveAppBar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const {toggleMode} = React.useContext(ColorModeContext)
   const [state, setState] = React.useState({
     left: false,
   });
-
+const theme = useTheme();
   const navigate = useNavigate();
 
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
@@ -59,7 +64,7 @@ const ResponsiveAppBar = () => {
     };
 
   return (
-    <AppBar className='app-bar' position='static' elevation={1}>
+    <AppBar sx={{bgcolor:'background.default'}} className='app-bar' position='static' elevation={1}>
       <Container className='container-class' maxWidth='xl'>
         <Toolbar className='toolbar-class' disableGutters>
           <Box className='list-buttons' sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -176,6 +181,10 @@ const ResponsiveAppBar = () => {
             >
               Login
             </Button>
+            
+            <IconButton onClick={toggleMode}>
+              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+      </IconButton>
           </Box>
           <Box className='drw-class'>
             <SwipeableDrawer

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
@@ -13,6 +12,7 @@ import { localizedData } from 'src/utils/helpers/language';
 import { useNavigate } from 'react-router-dom';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
 import 'src/components/common/Presentational/SignUpPage/SignUpPage.scss';
+import { GoogleLogin } from '@react-oauth/google';
 
 export default function SignUpPage() {
   const constantData: LocalizationInterface = localizedData();
@@ -107,16 +107,19 @@ export default function SignUpPage() {
   };
 
   return (
-    <>
-      <Container component='main' maxWidth='xs'>
-        <CssBaseline />
+    <Box className='Parent-Signup'>
+      <Container component='main' maxWidth='sm' sx={{ height: '100vh',display:'flex', justifyContent:'center'}}>
         <Box
-          className='Signup-Page '
+          className='Signup-Page '  
           sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            my: 5,  
+            border: 0,
+            boxShadow:3,
+            padding: 3,
+            borderRadius: 5,
+            bgcolor:'background.default'
+
+
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
@@ -193,6 +196,17 @@ export default function SignUpPage() {
             <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
               {signupBtn}
             </Button>
+            <Box>
+            <GoogleLogin
+              text={'continue_with'}
+              onSuccess={credentialResponse => {
+                console.log(credentialResponse);
+              }}
+              onError={() => {
+                console.log('Login Failed');
+              }}
+                />
+            </Box>
             <Grid container justifyContent='flex-end'>
               <Grid item>
                 <Link href='/login' variant='body2'>
@@ -203,6 +217,6 @@ export default function SignUpPage() {
           </Box>
         </Box>
       </Container>
-    </>
+    </Box>
   );
 }

@@ -10,6 +10,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { checkValidEmail } from 'src/utils/helpers/helper';
 import { localizedData } from 'src/utils/helpers/language';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
+import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import 'src/components/common/Presentational/LoginPage/LoginPage.scss';
@@ -65,21 +66,18 @@ const LoginPage = () => {
     return email?.length && checkValidEmail(email) && password?.length;
   };
   return (
-    <div>
-      <Grid
-        container
-        component='main'
-        sx={{ height: '100vh' }}
-        style={{ display: 'flex', justifyContent: 'center' }}
-      >
+    <Box className='Parent-Login'>
+     <Container component='main' maxWidth='sm' sx={{ height: '100vh',display:'flex', justifyContent:'center'}}>
         <Box
           className='Login-Page'
           sx={{
-            my: 8,
-            mx: 4,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            my: 5,
+            border: 0,
+            boxShadow:3,
+            padding: 3,
+            borderRadius: 5,
+            bgcolor:'background.default'
+
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -93,7 +91,7 @@ const LoginPage = () => {
             onSubmit={handleSubmit}
             component='form'
             noValidate
-            sx={{ mt: 1 }}
+            sx={{ mt: 3 }}
           >
             <Grid className='inputs-section' container spacing={2}>
               <Grid item xs={12}>
@@ -167,8 +165,8 @@ const LoginPage = () => {
             </Grid>
           </Box>
         </Box>
-      </Grid>
-    </div>
+      </Container>
+    </Box>
   );
 };
 

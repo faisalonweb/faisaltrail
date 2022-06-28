@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container } from '@mui/material';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import Link from '@material-ui/core/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
 import { footerdata } from 'src/data/data';
 import googleLogo from 'src/assets/images/googlestore.png';
 import AppleLogo from 'src/assets/images/playstore.png';
@@ -18,8 +18,7 @@ import Divider from '@mui/material/Divider';
 
 export default function Footer() {
   return (
-    <footer>
-      <Box className='footer-cls' bgcolor='black'>
+      <Box sx={{bgcolor:'background.default'}} className='footer-cls'>
         <Container className='container-cls' maxWidth='lg'>
           <Grid container spacing={5}>
             <Grid item xs={6} sm={3}>
@@ -28,7 +27,7 @@ export default function Footer() {
               </Box>
               {footerdata.exploredata.links.map((links) => (
                 <Box key={links.name} className='list-items'>
-                  <Link href={links.to} color='inherit'>
+                  <Link className='link-cls' href={links.to} color='inherit'>
                     {links.name}
                   </Link>
                 </Box>
@@ -40,7 +39,7 @@ export default function Footer() {
               </Box>
               {footerdata.mapsdata.links.map((links) => (
                 <Box key={links.name} className='list-items'>
-                  <Link href={links.to} color='inherit'>
+                  <Link className='link-cls' href={links.to} color='inherit'>
                     {links.name}
                   </Link>
                 </Box>
@@ -52,7 +51,7 @@ export default function Footer() {
               </Box>
               {footerdata.companydata.links.map((links) => (
                 <Box key={links.name} className='list-items'>
-                  <Link href={links.to} color='inherit'>
+                  <Link className='link-cls' href={links.to} color='inherit'>
                     {links.name}
                   </Link>
                 </Box>
@@ -64,7 +63,7 @@ export default function Footer() {
               </Box>
               {footerdata.communitydata.links.map((links) => (
                 <Box key={links.name} className='list-items'>
-                  <Link href={links.to} color='inherit'>
+                  <Link className='link-cls' href={links.to} color='inherit'>
                     {links.name}
                   </Link>
                 </Box>
@@ -121,6 +120,5 @@ export default function Footer() {
           </Box>
         </Container>
       </Box>
-    </footer>
   );
 }

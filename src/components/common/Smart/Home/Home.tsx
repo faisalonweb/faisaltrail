@@ -1,5 +1,6 @@
 import React from 'react';
 import HeroBanner from 'src/components/common/Presentational/HeroBanner/HeroBanner';
+import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -65,7 +66,7 @@ const Home = () => {
   })(TextField);
 
   return (
-    <div className='home-page'>
+    <Box sx={{bgcolor:'background.default'}} className='home-page'>
       <HeroBanner />
       <div className='text-field'>
         <p className='heading'>{findNext}</p>
@@ -89,13 +90,13 @@ const Home = () => {
           {exploreNear}
         </Link>
       </div>
-      <div className='multi-carousal-cls'>
+      <Box sx={{bgcolor:'background.default'}} className='multi-carousal-cls'>
         <MultiCarosual carostring='Trail' />
-      </div>
+      </Box>
       <div className='adventure-panel'>
         <AdventureTabs />
       </div>
-    </div>
+    </Box>
   );
 };
 
