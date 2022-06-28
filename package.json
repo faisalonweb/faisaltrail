@@ -52,9 +52,9 @@
       "git add"
     ]
   },
-  "engines" : { 
-    "npm" : ">=8",
-    "node" : ">=16"
+  "engines": {
+    "npm": ">=8",
+    "node": ">=16"
   },
   "browserslist": {
     "production": [

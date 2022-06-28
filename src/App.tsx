@@ -13,15 +13,15 @@ import TrailDetail from './components/common/Presentational/TrailDetail/TrailDet
 
 function App() {
   useEffect(() => {
-    const initialState = localStorage.getItem('theme')
-    if(!initialState) {
-      localStorage.setItem('theme', ('light'))
+    const initialState = localStorage.getItem('theme');
+    if (!initialState) {
+      localStorage.setItem('theme', 'light');
     }
-  },[]);
+  }, []);
 
   return (
     <div className='App'>
-       <CssBaseline />
+      <CssBaseline />
       <Layout>
         <Routes>
           <Route path='/' element={<HomeView />} />

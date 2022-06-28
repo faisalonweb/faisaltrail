@@ -108,18 +108,20 @@ export default function SignUpPage() {
 
   return (
     <Box className='Parent-Signup'>
-      <Container component='main' maxWidth='sm' sx={{ height: '100vh',display:'flex', justifyContent:'center'}}>
+      <Container
+        component='main'
+        maxWidth='sm'
+        sx={{ height: '100vh', display: 'flex', justifyContent: 'center' }}
+      >
         <Box
-          className='Signup-Page '  
+          className='Signup-Page '
           sx={{
-            my: 5,  
+            my: 5,
             border: 0,
-            boxShadow:3,
+            boxShadow: 3,
             padding: 3,
             borderRadius: 5,
-            bgcolor:'background.default'
-
-
+            bgcolor: 'background.default',
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
@@ -197,15 +199,15 @@ export default function SignUpPage() {
               {signupBtn}
             </Button>
             <Box>
-            <GoogleLogin
-              text={'continue_with'}
-              onSuccess={credentialResponse => {
-                console.log(credentialResponse);
-              }}
-              onError={() => {
-                console.log('Login Failed');
-              }}
-                />
+              <GoogleLogin
+                text={'continue_with'}
+                onSuccess={(credentialResponse) => {
+                  console.log(credentialResponse);
+                }}
+                onError={() => {
+                  console.log('Login Failed');
+                }}
+              />
             </Box>
             <Grid container justifyContent='flex-end'>
               <Grid item>

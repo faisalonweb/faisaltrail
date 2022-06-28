@@ -66,7 +66,7 @@ const Home = () => {
   })(TextField);
 
   return (
-    <Box sx={{bgcolor:'background.default'}} className='home-page'>
+    <Box sx={{ bgcolor: 'background.default' }} className='home-page'>
       <HeroBanner />
       <div className='text-field'>
         <p className='heading'>{findNext}</p>
@@ -90,7 +90,7 @@ const Home = () => {
           {exploreNear}
         </Link>
       </div>
-      <Box sx={{bgcolor:'background.default'}} className='multi-carousal-cls'>
+      <Box sx={{ bgcolor: 'background.default' }} className='multi-carousal-cls'>
         <MultiCarosual carostring='Trail' />
       </Box>
       <div className='adventure-panel'>

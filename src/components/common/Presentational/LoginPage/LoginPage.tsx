@@ -67,17 +67,20 @@ const LoginPage = () => {
   };
   return (
     <Box className='Parent-Login'>
-     <Container component='main' maxWidth='sm' sx={{ height: '100vh',display:'flex', justifyContent:'center'}}>
+      <Container
+        component='main'
+        maxWidth='sm'
+        sx={{ height: '100vh', display: 'flex', justifyContent: 'center' }}
+      >
         <Box
           className='Login-Page'
           sx={{
             my: 5,
             border: 0,
-            boxShadow:3,
+            boxShadow: 3,
             padding: 3,
             borderRadius: 5,
-            bgcolor:'background.default'
-
+            bgcolor: 'background.default',
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
