@@ -15,21 +15,21 @@ export const ColorModeContext = createContext<IColorModeContext>({});
 const themeObj = {
   dark: {
     background: {
-      default: '#40445a'
+      default: '#40445a',
     },
     buttontext: {
-      default:'white'
-    }
+      default: 'white',
+    },
   },
   light: {
     background: {
-      default: 'white'
+      default: 'white',
     },
     buttontext: {
-      default:'black'
-    }
-  }
-}
+      default: 'black',
+    },
+  },
+};
 export const ColorContextProvider: React.FC<ColorContextProps> = ({ children }) => {
   const [mode, setMode] = useState<'light' | 'dark'>(initialState);
 
@@ -55,7 +55,7 @@ export const ColorContextProvider: React.FC<ColorContextProps> = ({ children }) 
       createTheme({
         palette: {
           mode: mode,
-          ...themeObj[mode]
+          ...themeObj[mode],
         },
       }),
     [mode],

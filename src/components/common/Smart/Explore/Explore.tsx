@@ -18,7 +18,13 @@ const Explore = () => {
           <Box sx={{ mt: '10px' }}>
             <Paper
               component='form'
-              sx={{ bgcolor:'background.default', p: '2px 4px', display: 'flex', alignItems: 'center', width: 300 }}
+              sx={{
+                bgcolor: 'background.default',
+                p: '2px 4px',
+                display: 'flex',
+                alignItems: 'center',
+                width: 300,
+              }}
             >
               <InputBase
                 sx={{ ml: 1, flex: 1 }}

@@ -81,85 +81,79 @@ export default function Footer() {
             ))}
           </Grid>
         </Grid>
-        {
-          theme.palette.mode === 'dark' ? (
-            <Box className='footer-connect-section'>
-          <Grid className='appoutdoor-section' container>
-            <Grid item xs={6} md={3}>
-              <div className='app-outdoor-store'>
-                <p>An app for the outdoors</p>
-                <div className='app-store-icons'>
+        {theme.palette.mode === 'dark' ? (
+          <Box className='footer-connect-section'>
+            <Grid className='appoutdoor-section' container>
+              <Grid item xs={6} md={3}>
+                <div className='app-outdoor-store'>
+                  <p>An app for the outdoors</p>
+                  <div className='app-store-icons'>
                     <img src={googleLogo1} alt='img' />
                     <img src={AppleLogo1} alt='img' />
+                  </div>
                 </div>
-              </div>
-            </Grid>
-            <Grid item xs={6} md={3}>
-              <div className='app-outdoor-sec'>
-                <p>Members for the planet</p>
-                <div className='app-outdoor-members'>
-                  <img src={recLogo1} alt='img' style={{color:'white'}}/>
-                  <img src={playLogo1} alt='img' />
-                  <img src={bidirectLogo1} alt='img' />
+              </Grid>
+              <Grid item xs={6} md={3}>
+                <div className='app-outdoor-sec'>
+                  <p>Members for the planet</p>
+                  <div className='app-outdoor-members'>
+                    <img src={recLogo1} alt='img' style={{ color: 'white' }} />
+                    <img src={playLogo1} alt='img' />
+                    <img src={bidirectLogo1} alt='img' />
+                  </div>
                 </div>
-              </div>
-            </Grid>
-            <Grid item xs={6} md={6} className='connect-grid'>
-              <div className='app-outdoor'>
-                <p>Connect with us</p>
-                <div className='app-outdoor-connect'>
-                  <img src={twitterLogo1} alt='img' />
-                  <img src={youtubeLogo1} alt='img' />
-                  <img src={instaLogo1} alt='img' />
-                  <img src={fbLogo1} alt='img' />
+              </Grid>
+              <Grid item xs={6} md={6} className='connect-grid'>
+                <div className='app-outdoor'>
+                  <p>Connect with us</p>
+                  <div className='app-outdoor-connect'>
+                    <img src={twitterLogo1} alt='img' />
+                    <img src={youtubeLogo1} alt='img' />
+                    <img src={instaLogo1} alt='img' />
+                    <img src={fbLogo1} alt='img' />
+                  </div>
                 </div>
-              </div>
+              </Grid>
             </Grid>
-          </Grid>
-        </Box>
-          ): (
-            <Box className='footer-connect-section'>
-          <Grid className='appoutdoor-section' container>
-            <Grid item xs={6} md={3}>
-              <div className='app-outdoor-store'>
-                <p>An app for the outdoors</p>
-                <div className='app-store-icons'>
+          </Box>
+        ) : (
+          <Box className='footer-connect-section'>
+            <Grid className='appoutdoor-section' container>
+              <Grid item xs={6} md={3}>
+                <div className='app-outdoor-store'>
+                  <p>An app for the outdoors</p>
+                  <div className='app-store-icons'>
                     <img src={googleLogo} alt='img' />
                     <img src={AppleLogo} alt='img' />
+                  </div>
                 </div>
-              </div>
-            </Grid>
-            <Grid item xs={6} md={3}>
-              <div className='app-outdoor-sec'>
-                <p>Members for the planet</p>
-                <div className='app-outdoor-members'>
-                  <img src={recLogo} alt='img' style={{color:'white'}}/>
-                  <img src={playLogo} alt='img' />
-                  <img src={bidirectLogo} alt='img' />
+              </Grid>
+              <Grid item xs={6} md={3}>
+                <div className='app-outdoor-sec'>
+                  <p>Members for the planet</p>
+                  <div className='app-outdoor-members'>
+                    <img src={recLogo} alt='img' style={{ color: 'white' }} />
+                    <img src={playLogo} alt='img' />
+                    <img src={bidirectLogo} alt='img' />
+                  </div>
                 </div>
-              </div>
-            </Grid>
-            <Grid item xs={6} md={6} className='connect-grid'>
-              <div className='app-outdoor'>
-                <p>Connect with us</p>
-                <div className='app-outdoor-connect'>
-                  <img src={twitterLogo} alt='img' />
-                  <img src={youtubeLogo} alt='img' />
-                  <img src={instaLogo} alt='img' />
-                  <img src={fbLogo} alt='img' />
+              </Grid>
+              <Grid item xs={6} md={6} className='connect-grid'>
+                <div className='app-outdoor'>
+                  <p>Connect with us</p>
+                  <div className='app-outdoor-connect'>
+                    <img src={twitterLogo} alt='img' />
+                    <img src={youtubeLogo} alt='img' />
+                    <img src={instaLogo} alt='img' />
+                    <img src={fbLogo} alt='img' />
+                  </div>
                 </div>
-              </div>
+              </Grid>
             </Grid>
-          </Grid>
-        </Box>
-          )
-        }
+          </Box>
+        )}
         <Divider />
-        <Box
-          className='footer-signature'
-          textAlign='center'
-          pb={{ xs: 5, sm: 0 }}
-        >
+        <Box className='footer-signature' textAlign='center' pb={{ xs: 5, sm: 0 }}>
           Pak Trails and Tracks &reg;
           {new Date().getFullYear()}
         </Box>
