@@ -70,7 +70,7 @@ const Home = () => {
       <HeroBanner />
       <div className='text-field'>
         <p className='heading'>{findNext}</p>
-        <Paper className='paper-cls' elevation={6}>
+        <Paper sx={{ bgcolor: 'background.default' }} className='paper-cls' elevation={6}>
           <Autocomplete
             className='autocomplete-cls'
             disablePortal

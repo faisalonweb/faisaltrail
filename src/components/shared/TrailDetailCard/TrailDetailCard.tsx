@@ -31,7 +31,7 @@ export default function TrailDetailCard({
   length,
 }: Props) {
   return (
-    <Card className='card-cls'>
+    <Card sx={{bgcolor:'background.default'}} className='card-cls'>
       <CardActionArea>
         <CardMedia component='img' height='140' image={img} alt='green iguana' />
         <CardContent>

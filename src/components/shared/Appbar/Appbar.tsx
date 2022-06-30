@@ -73,12 +73,13 @@ const ResponsiveAppBar = () => {
       <Container className='container-class' maxWidth='xl'>
         <Toolbar className='toolbar-class' disableGutters>
           <Box className='list-buttons' sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Button className='list-items' onClick={() => navigate('/explore')}>
+            <Button sx={{color:'buttontext.default'}} className='list-items' onClick={() => navigate('/explore')}>
               Explore
             </Button>
             <Button
               aria-owns={anchorEl ? 'simple-menu' : undefined}
               className='list-items'
+              sx={{color:'buttontext.default'}}
               aria-haspopup='true'
               onClick={handleClick}
               onMouseOver={handleClick}
@@ -102,6 +103,7 @@ const ResponsiveAppBar = () => {
               aria-owns={anchorEl ? 'simple-menu' : undefined}
               aria-haspopup='true'
               className='list-items'
+              sx={{color:'buttontext.default'}}
               onClick={handleClick}
               onMouseOver={handleClick}
             >
@@ -145,7 +147,7 @@ const ResponsiveAppBar = () => {
             </Menu>
           </Box>
           <Box className='logo-class' sx={{ flexGrow: 1 }}>
-            <AdbIcon sx={{ display: { xs: 'flex', md: 'flex' }, mr: 1, color: 'black' }} />
+            <AdbIcon sx={{ display: { xs: 'flex', md: 'flex' }, mr: 1, color: 'buttontext.default' }} />
             <Typography
               variant='h6'
               noWrap
@@ -157,7 +159,7 @@ const ResponsiveAppBar = () => {
                 fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
-                color: 'black',
+                color: 'buttontext.default',
                 textDecoration: 'none',
               }}
             >
@@ -168,7 +170,7 @@ const ResponsiveAppBar = () => {
           <Box className='dropdown-class' sx={{ flexGrow: 1 }}>
             <Button
               className='help-btn'
-              sx={{ my: 2, color: 'black', display: { xs: 'none', md: 'flex' } }}
+              sx={{ color:'buttontext.default', my: 2, display: { xs: 'none', md: 'flex' } }}
             >
               Help
             </Button>
