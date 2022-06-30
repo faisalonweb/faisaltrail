@@ -30,7 +30,13 @@ const TrailInfo = () => {
       <Box sx={{ mt: '10px' }} display='flex' justifyContent='flex-end'>
         <Paper
           component='form'
-          sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+          sx={{
+            bgcolor: 'background.default',
+            p: '2px 4px',
+            display: 'flex',
+            alignItems: 'center',
+            width: 400,
+          }}
         >
           <InputBase
             sx={{ ml: 1, flex: 1 }}

@@ -3,6 +3,7 @@
   text-decoration: none;
   height: 100%;
   .container-cls {
+    margin-top: 50px;
     .list-head {
       margin-bottom: 30px;
       border-bottom: none;
@@ -35,17 +36,26 @@
         .app-store-icons {
           display: flex;
           justify-content: flex-start;
+          img {
+            object-fit: contain;
+          }
         }
       }
       .app-outdoor-sec {
         .app-outdoor-members {
           display: flex;
           justify-content: flex-start;
+          img {
+            object-fit: contain;
+          }
         }
       }
       .connect-grid {
         display: flex;
         justify-content: center;
+        img {
+          object-fit: contain;
+        }
         @include sm {
           display: flex;
           justify-content: flex-start;

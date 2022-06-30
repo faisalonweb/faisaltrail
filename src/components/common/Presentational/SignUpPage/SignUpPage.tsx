@@ -198,9 +198,10 @@ export default function SignUpPage() {
             <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
               {signupBtn}
             </Button>
-            <Box>
+            <Box className='continue-box'>
               <GoogleLogin
                 text={'continue_with'}
+                width={'1200px'}
                 onSuccess={(credentialResponse) => {
                   console.log(credentialResponse);
                 }}

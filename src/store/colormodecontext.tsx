@@ -11,8 +11,27 @@ interface ColorContextProps {
 
 const initialState = (localStorage.getItem('theme') as 'light' | 'dark') || undefined;
 export const ColorModeContext = createContext<IColorModeContext>({});
+
+const themeObj = {
+  dark: {
+    background: {
+      default: '#40445a',
+    },
+    buttontext: {
+      default: 'white',
+    },
+  },
+  light: {
+    background: {
+      default: 'white',
+    },
+    buttontext: {
+      default: 'black',
+    },
+  },
+};
 export const ColorContextProvider: React.FC<ColorContextProps> = ({ children }) => {
-  const [mode, setMode] = useState<'light' | 'dark' | undefined>(initialState);
+  const [mode, setMode] = useState<'light' | 'dark'>(initialState);
 
   const colorMode = useMemo(
     () => ({
@@ -36,9 +55,7 @@ export const ColorContextProvider: React.FC<ColorContextProps> = ({ children }) 
       createTheme({
         palette: {
           mode: mode,
-          primary: {
-            main: '#1976d2',
-          },
+          ...themeObj[mode],
         },
       }),
     [mode],
