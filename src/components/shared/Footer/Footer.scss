@@ -2,8 +2,13 @@
 .footer-cls {
   text-decoration: none;
   height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .container-cls {
     margin-top: 50px;
+    width: 55%;
     .list-head {
       margin-bottom: 30px;
       border-bottom: none;
