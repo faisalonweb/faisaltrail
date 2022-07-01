@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
@@ -30,7 +29,7 @@ export default function Footer() {
   const theme = useTheme();
   return (
     <Box sx={{ bgcolor: 'background.default' }} className='footer-cls'>
-      <Container className='container-cls' maxWidth='lg'>
+      <Box className='container-cls' maxWidth='lg'>
         <Grid container spacing={5}>
           <Grid item xs={6} sm={3}>
             <Box className='list-head' borderBottom={1}>
@@ -157,7 +156,7 @@ export default function Footer() {
           Pak Trails and Tracks &reg;
           {new Date().getFullYear()}
         </Box>
-      </Container>
+      </Box>
     </Box>
   );
 }
