@@ -24,6 +24,7 @@ const pages = ['Products', 'Pricing', 'Blog'];
 
 const ResponsiveAppBar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorElOne, setAnchorElOne] = React.useState<null | HTMLElement>(null);
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const { toggleMode } = React.useContext(ColorModeContext);
   const [state, setState] = React.useState({
@@ -38,8 +39,8 @@ const ResponsiveAppBar = () => {
     }
   }
   function handleShopClick(event: React.MouseEvent<HTMLButtonElement>) {
-    if (anchorEl !== event.currentTarget) {
-      setAnchorEl(event.currentTarget);
+    if (anchorElOne !== event.currentTarget) {
+      setAnchorElOne(event.currentTarget);
     }
   }
   const handleCloseNavMenu = () => {
@@ -48,6 +49,9 @@ const ResponsiveAppBar = () => {
 
   function handleClose() {
     setAnchorEl(null);
+  }
+  function handleCloseShop() {
+    setAnchorElOne(null);
   }
   const toggleDrawer =
     (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -98,21 +102,34 @@ const ResponsiveAppBar = () => {
               onClose={handleClose}
               MenuListProps={{ onMouseLeave: handleClose }}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
+              <MenuItem onClick={handleClose}>My favorites</MenuItem>
+              <MenuItem onClick={handleClose}>My maps</MenuItem>
+              <MenuItem onClick={handleClose}>Activites</MenuItem>
+              <MenuItem onClick={handleClose}>Lists</MenuItem>
+              <MenuItem onClick={handleClose}>Completed</MenuItem>
             </Menu>
 
             <Button
-              aria-owns={anchorEl ? 'simple-menu' : undefined}
+              aria-owns={anchorEl ? 'simple-menuone' : undefined}
               aria-haspopup='true'
               className='list-items'
               sx={{ color: 'buttontext.default' }}
-              onClick={handleClick}
-              onMouseOver={handleClick}
+              onClick={handleShopClick}
+              onMouseOver={handleShopClick}
             >
               Shop
             </Button>
+            <Menu
+              id='simple-menuone'
+              className='list-items'
+              anchorEl={anchorElOne}
+              open={Boolean(anchorElOne)}
+              onClose={handleCloseShop}
+              MenuListProps={{ onMouseLeave: handleCloseShop }}
+            >
+              <MenuItem onClick={handleCloseShop}>AllTrails Gear</MenuItem>
+              <MenuItem onClick={handleCloseShop}>Give Pro</MenuItem>
+            </Menu>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -176,6 +193,7 @@ const ResponsiveAppBar = () => {
           <Box className='dropdown-class' sx={{ flexGrow: 1 }}>
             <Button
               className='help-btn'
+              onClick={() => navigate('/help')}
               sx={{ color: 'buttontext.default', my: 2, display: { xs: 'none', md: 'flex' } }}
             >
               Help
