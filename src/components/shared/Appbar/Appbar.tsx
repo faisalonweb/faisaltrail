@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
+import Link from '@mui/material/Link';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import IconButton from '@mui/material/IconButton';
@@ -77,13 +78,13 @@ const ResponsiveAppBar = () => {
       <Container className='container-class' maxWidth='xl'>
         <Toolbar className='toolbar-class' disableGutters>
           <Box className='list-buttons' sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Button
+            <Link
               sx={{ color: 'buttontext.default' }}
-              className='list-items'
-              onClick={() => navigate('/explore')}
+              className='explore-btn'
+              href='/explore'
             >
               Explore
-            </Button>
+            </Link>
             <Button
               aria-owns={anchorEl ? 'simple-menu' : undefined}
               className='list-items'
@@ -174,7 +175,7 @@ const ResponsiveAppBar = () => {
             <Typography
               variant='h6'
               noWrap
-              component='a'
+              component={Link}
               href='/'
               sx={{
                 mr: 0,
@@ -191,13 +192,10 @@ const ResponsiveAppBar = () => {
           </Box>
 
           <Box className='dropdown-class' sx={{ flexGrow: 1 }}>
-            <Button
-              className='help-btn'
-              onClick={() => navigate('/help')}
-              sx={{ color: 'buttontext.default', my: 2, display: { xs: 'none', md: 'flex' } }}
-            >
+            <Link className='help-btn'
+              sx={{ color: 'buttontext.default', my: 2, display: { xs: 'none', md: 'flex' } }} href='/help'>
               Help
-            </Button>
+            </Link>
             <Button
               onClick={() => navigate('/signup')}
               className='pro-btn'
