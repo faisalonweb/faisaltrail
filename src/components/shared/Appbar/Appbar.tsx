@@ -78,11 +78,7 @@ const ResponsiveAppBar = () => {
       <Container className='container-class' maxWidth='xl'>
         <Toolbar className='toolbar-class' disableGutters>
           <Box className='list-buttons' sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Link
-              sx={{ color: 'buttontext.default' }}
-              className='explore-btn'
-              href='/explore'
-            >
+            <Link sx={{ color: 'buttontext.default' }} className='explore-btn' href='/explore'>
               Explore
             </Link>
             <Button
@@ -192,8 +188,11 @@ const ResponsiveAppBar = () => {
           </Box>
 
           <Box className='dropdown-class' sx={{ flexGrow: 1 }}>
-            <Link className='help-btn'
-              sx={{ color: 'buttontext.default', my: 2, display: { xs: 'none', md: 'flex' } }} href='/help'>
+            <Link
+              className='help-btn'
+              sx={{ color: 'buttontext.default', my: 2, display: { xs: 'none', md: 'flex' } }}
+              href='/help'
+            >
               Help
             </Link>
             <Button
