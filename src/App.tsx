@@ -14,13 +14,12 @@ import Trails from './components/common/Smart/Trails/Trails';
 import TrailDetail from './components/common/Presentational/TrailDetail/TrailDetail';
 import './App.css';
 
-
 function App() {
   useEffect(() => {
     const storeMe = {
-      myBool: true
-    }
-    localStorage.setItem('test', JSON.stringify(storeMe))
+      myBool: true,
+    };
+    localStorage.setItem('test', JSON.stringify(storeMe));
     const initialState = localStorage.getItem('theme');
     if (!initialState) {
       localStorage.setItem('theme', 'light');
@@ -39,8 +38,8 @@ function App() {
           <Route path='/trails' element={<Trails />} />
           <Route path='/trails/trail-info/:id' element={<TrailInfo />} />
           <Route path='/trails/trail-details/:id' element={<TrailDetail />} />
-          <Route path="*"  element={<TokenRestrictedRouter component={PrivateRoute}/>}/>
-          <Route path="/notpagefound" element={<NotFoundPage />} />
+          <Route path='*' element={<TokenRestrictedRouter component={PrivateRoute} />} />
+          <Route path='/notpagefound' element={<NotFoundPage />} />
         </Routes>
       </Layout>
     </div>
