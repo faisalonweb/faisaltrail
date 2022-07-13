@@ -11,7 +11,7 @@ export default function Layout({ children }: Props) {
   const { pathname } = useLocation();
   return (
     <>
-      {pathname !== '/login' && pathname !== '/signup' ? (
+      {pathname !== '/login' && pathname !== '/signup' && pathname !== '/notpagefound' ? (
         <>
           <Header />
           {children}

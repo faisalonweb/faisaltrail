@@ -17,7 +17,7 @@ import './App.css';
 function App() {
   useEffect(() => {
     const storeMe = {
-      myBool: true,
+      myBool: false,
     };
     localStorage.setItem('test', JSON.stringify(storeMe));
     const initialState = localStorage.getItem('theme');
