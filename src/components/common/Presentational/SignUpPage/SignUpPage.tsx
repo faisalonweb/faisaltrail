@@ -11,10 +11,12 @@ import { checkValidEmail, checkValidPassword } from 'src/utils/helpers/helper';
 import { localizedData } from 'src/utils/helpers/language';
 import { useNavigate } from 'react-router-dom';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
+import { useSignupUserMutation } from 'src/store/reducers/authapi';
 import 'src/components/common/Presentational/SignUpPage/SignUpPage.scss';
 import { GoogleLogin } from '@react-oauth/google';
 
 export default function SignUpPage() {
+  const [signupUser, {data,error}] = useSignupUserMutation();
   const constantData: LocalizationInterface = localizedData();
   const [email, setEmail] = React.useState('');
   const [emailError, setEmailError] = React.useState('');
@@ -26,7 +28,7 @@ export default function SignUpPage() {
   const [lastnameError, setLastNameError] = React.useState('');
   const { signupTitle, signupBtn, signinLink } = constantData.signUpPage;
   const navigate = useNavigate();
-
+ console.log('data coming from server',data)
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     if (checkValidEmail(email)) {
@@ -52,16 +54,14 @@ export default function SignUpPage() {
     }
     setLastName(e.target?.value);
   };
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     handleErrors();
     if (verifyErrors()) {
-      const data = new FormData(event.currentTarget);
-      console.log({
-        email: data.get('email'),
-        password: data.get('password'),
-      });
-      navigate('/onboarding');
+      await signupUser({firstname,lastname,email,password})
+      if(!error) {
+        navigate('/explore')
+      }
     } else {
       console.log('inverifyerro');
     }

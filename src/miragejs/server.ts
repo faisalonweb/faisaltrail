@@ -9,6 +9,7 @@ export function makeServer({ environment = 'test' }) {
       this.get('/api/trails', () => {
         return trailsListData;
       });
+      this.passthrough('http://194.195.118.247/signup/');
       this.passthrough();
     },
   });
