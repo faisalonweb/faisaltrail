@@ -16,7 +16,7 @@ import 'src/components/common/Presentational/SignUpPage/SignUpPage.scss';
 import { GoogleLogin } from '@react-oauth/google';
 
 export default function SignUpPage() {
-  const [signupUser, {data,error}] = useSignupUserMutation();
+  const [signupUser, { data, error }] = useSignupUserMutation();
   const constantData: LocalizationInterface = localizedData();
   const [email, setEmail] = React.useState('');
   const [emailError, setEmailError] = React.useState('');
@@ -28,7 +28,7 @@ export default function SignUpPage() {
   const [lastnameError, setLastNameError] = React.useState('');
   const { signupTitle, signupBtn, signinLink } = constantData.signUpPage;
   const navigate = useNavigate();
- console.log('data coming from server',data)
+  console.log('data coming from server', data);
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     if (checkValidEmail(email)) {
@@ -58,9 +58,9 @@ export default function SignUpPage() {
     event.preventDefault();
     handleErrors();
     if (verifyErrors()) {
-      await signupUser({firstname,lastname,email,password})
-      if(!error) {
-        navigate('/explore')
+      await signupUser({ firstname, lastname, email, password });
+      if (!error) {
+        navigate('/explore');
       }
     } else {
       console.log('inverifyerro');
