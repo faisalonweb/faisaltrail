@@ -60,16 +60,15 @@ export default function SignUpPage() {
     handleErrors();
     if (verifyErrors()) {
       await signupUser({ first_name, last_name, email, password })
-      .unwrap()
-      .then((resp) => {
-        console.log('responese from server',resp)
-        toast.success('User Successfully Added');
-      })
-      .catch((error) => {
-        console.log('error',error)
-        toast.success('Something wrong');
-      });
-     
+        .unwrap()
+        .then((resp) => {
+          console.log('responese from server', resp);
+          toast.success('User Successfully Added');
+        })
+        .catch((error) => {
+          console.log('error', error);
+          toast.success('Something wrong');
+        });
     } else {
       console.log('inverifyerro');
     }
