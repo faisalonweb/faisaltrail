@@ -13,6 +13,8 @@ import { useNavigate } from 'react-router-dom';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
 import { useSignupUserMutation } from 'src/store/reducers/authapi';
 import 'src/components/common/Presentational/SignUpPage/SignUpPage.scss';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { GoogleLogin } from '@react-oauth/google';
 
 export default function SignUpPage() {
@@ -22,13 +24,12 @@ export default function SignUpPage() {
   const [emailError, setEmailError] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [passwordError, setPasswordError] = React.useState('');
-  const [firstname, setFirstName] = React.useState('');
+  const [first_name, setFirstName] = React.useState('');
   const [firstnameError, setFirstNameError] = React.useState('');
-  const [lastname, setLastName] = React.useState('');
+  const [last_name, setLastName] = React.useState('');
   const [lastnameError, setLastNameError] = React.useState('');
   const { signupTitle, signupBtn, signinLink } = constantData.signUpPage;
   const navigate = useNavigate();
-  console.log('data coming from server', data);
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     if (checkValidEmail(email)) {
@@ -58,10 +59,17 @@ export default function SignUpPage() {
     event.preventDefault();
     handleErrors();
     if (verifyErrors()) {
-      await signupUser({ firstname, lastname, email, password });
-      if (!error) {
-        navigate('/explore');
-      }
+      await signupUser({ first_name, last_name, email, password })
+      .unwrap()
+      .then((resp) => {
+        console.log('responese from server',resp)
+        toast.success('User Successfully Added');
+      })
+      .catch((error) => {
+        console.log('error',error)
+        toast.success('Something wrong');
+      });
+     
     } else {
       console.log('inverifyerro');
     }
@@ -81,12 +89,12 @@ export default function SignUpPage() {
     } else {
       setPasswordError('');
     }
-    if (!firstname) {
+    if (!first_name) {
       setFirstNameError('First Name is required.');
     } else {
       setFirstNameError('');
     }
-    if (!lastname) {
+    if (!last_name) {
       setLastNameError('Last Name is required.');
     } else {
       setLastNameError('');
@@ -94,8 +102,8 @@ export default function SignUpPage() {
   };
   const verifyErrors = () => {
     if (
-      firstname &&
-      lastname &&
+      first_name &&
+      last_name &&
       email?.length &&
       checkValidEmail(email) === true &&
       password?.length &&
@@ -145,7 +153,7 @@ export default function SignUpPage() {
                   id='firstName'
                   label='First Name'
                   autoFocus
-                  value={firstname}
+                  value={first_name}
                   onChange={handleFirstName}
                 />
                 <p className='errorText' style={{ marginTop: '5px' }}>
@@ -160,7 +168,7 @@ export default function SignUpPage() {
                   label='Last Name'
                   name='lastName'
                   autoComplete='family-name'
-                  value={lastname}
+                  value={last_name}
                   onChange={handleLastName}
                 />
                 <p className='errorText' style={{ marginTop: '5px' }}>

@@ -13,20 +13,20 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     signupUser: builder.mutation({
       query: ({
-        firstname,
-        lastname,
+        first_name,
+        last_name,
         email,
         password,
       }: {
-        firstname: string;
-        lastname: string;
+        first_name: string;
+        last_name: string;
         email: string;
         password: string;
       }) => {
         return {
           url: '/signup/',
           method: 'post',
-          body: { firstname, lastname, email, password },
+          body: { first_name, last_name, email, password },
         };
       },
     }),
