@@ -55,13 +55,12 @@ const Home = () => {
 
   const { findNext, exploreNear } = constantData.home;
 
-
   return (
     <Box sx={{ bgcolor: 'background.default' }} className='home-page'>
       <HeroBanner />
       <div className='text-field'>
         <p className='heading'>{findNext}</p>
-        <Paper  sx={{ bgcolor: 'background.default' }}  className='paper-cls' elevation={6}>
+        <Paper sx={{ bgcolor: 'background.default' }} className='paper-cls' elevation={6}>
           <Autocomplete
             className='autocomplete-cls'
             disablePortal
@@ -70,7 +69,7 @@ const Home = () => {
             popupIcon={<SearchIcon />}
             renderInput={(params) => (
               <TextField
-              style={{border:'none'}}
+                style={{ border: 'none' }}
                 className='input-field'
                 placeholder='Search by name trail'
                 {...params}
