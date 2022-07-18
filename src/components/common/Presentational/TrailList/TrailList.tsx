@@ -10,16 +10,18 @@ const TrailList = () => {
   const navigate = useNavigate();
   const { data: trails = [] } = useGetAllTrailsQuery({});
   return (
-    <div>
+    <div className='trail-list'>
       {trails.map((trail) => {
         return (
           <Container
+            className='container-cls'
             key={trail.id}
             onClick={() => navigate(`/trails/trail-info/${trail.id}`, { state: trail })}
           >
             <Stack
               direction={{ xs: 'column', md: 'row' }}
               spacing={5}
+              className='stack-cls'
               my={5}
               p={2}
               sx={{
@@ -28,7 +30,7 @@ const TrailList = () => {
                 borderRadius: 4,
               }}
             >
-              <Box>
+              <Box className='image-cls'>
                 <img
                   src={trail.image}
                   style={{ height: 240, borderRadius: 10, objectFit: 'cover' }}

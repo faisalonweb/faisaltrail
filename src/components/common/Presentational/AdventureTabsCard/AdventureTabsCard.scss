@@ -2,12 +2,27 @@
 .trail-info {
   display: flex;
   margin-top: 10px;
+  .trail-img {
+    img {
+      height: 100px;
+      width: 100px;
+      border-radius: 10px;
+      object-fit: cover;
+      @include sm {
+        height: 60px;
+        width: 60px;
+      }
+    }
+  }
   .trail-name {
     margin-left: 10px;
     .trail-title {
       margin: 0px;
       font-size: 15px;
       font-family: Arial, Helvetica, sans-serif;
+      @include sm {
+        font-size: 12px;
+      }
     }
     .trail-info {
       .trail-distance {
@@ -15,6 +30,9 @@
         font-size: 14px;
         color: grey;
         font-family: Arial, Helvetica, sans-serif;
+        @include sm {
+          font-size: 12px;
+        }
       }
       .trail-time {
         margin: 0px;
@@ -22,6 +40,9 @@
         font-size: 14px;
         color: grey;
         font-family: Arial, Helvetica, sans-serif;
+        @include sm {
+          font-size: 12px;
+        }
       }
     }
   }

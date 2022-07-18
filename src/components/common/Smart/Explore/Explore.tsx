@@ -63,7 +63,7 @@ const Explore = () => {
       </Grid>
       <Grid item xs={12} md={10}>
         <img
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover'}}
           src={mapimg1}
           alt='img'
         />
