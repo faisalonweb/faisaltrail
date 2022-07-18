@@ -183,7 +183,7 @@ const ResponsiveAppBar = () => {
                 textDecoration: 'none',
               }}
             >
-              LOGO
+              PakTrails
             </Typography>
           </Box>
 

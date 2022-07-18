@@ -11,11 +11,7 @@ const AdventureTabsCard = ({ trailImg, trailTitle, trailDistance, trailTime }: P
   return (
     <div className='trail-info'>
       <div className='trail-img'>
-        <img
-          style={{ width: '100px', height: '100px', borderRadius: '10px', objectFit: 'cover' }}
-          src={trailImg}
-          alt='img'
-        />
+        <img src={trailImg} alt='img' />
       </div>
       <div className='trail-name'>
         <p className='trail-title'>{trailTitle}</p>

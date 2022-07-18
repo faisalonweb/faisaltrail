@@ -1,0 +1,14 @@
+@import 'src/styles/main.scss';
+.trail-list {
+  .container-cls {
+    .stack-cls {
+      .image-cls {
+        img {
+          @include sm {
+            width: 300px;
+          }
+        }
+      }
+    }
+  }
+}
