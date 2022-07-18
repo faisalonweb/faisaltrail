@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import Autocomplete from '@mui/material/Autocomplete';
-import { withStyles, Link } from '@material-ui/core';
+import Link from '@mui/material/Link';
 import MultiCarosual from 'src/components/shared/MultiCarousal/MultiCarosual';
 import AdventureTabs from 'src/components/common/Smart/AdventureTabs/AdventureTabs';
 import { localizedData } from 'src/utils/helpers/language';
@@ -54,23 +54,14 @@ const Home = () => {
   const constantData: LocalizationInterface = localizedData();
 
   const { findNext, exploreNear } = constantData.home;
-  const CustomTextField = withStyles({
-    root: {
-      '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-          borderRadius: '50px',
-          border: 'none',
-        },
-      },
-    },
-  })(TextField);
+
 
   return (
     <Box sx={{ bgcolor: 'background.default' }} className='home-page'>
       <HeroBanner />
       <div className='text-field'>
         <p className='heading'>{findNext}</p>
-        <Paper sx={{ bgcolor: 'background.default' }} className='paper-cls' elevation={6}>
+        <Paper  sx={{ bgcolor: 'background.default' }}  className='paper-cls' elevation={6}>
           <Autocomplete
             className='autocomplete-cls'
             disablePortal
@@ -78,7 +69,8 @@ const Home = () => {
             options={top100Films}
             popupIcon={<SearchIcon />}
             renderInput={(params) => (
-              <CustomTextField
+              <TextField
+              style={{border:'none'}}
                 className='input-field'
                 placeholder='Search by name trail'
                 {...params}
