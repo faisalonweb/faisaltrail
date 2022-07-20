@@ -3,12 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env.REACT_APP_SERVER_URL}`,
-    prepareHeaders: (headers) => {
-      headers.append('Content-Type', 'application/json');
-      headers.set('Authorization', `Token ${process.env.REACT_APP_MASTER_KEY}`);
-      return headers;
-    },
+    baseUrl: `${process.env.REACT_APP_LOCAL_URL}`,
   }),
   endpoints: (builder) => ({
     signupUser: builder.mutation({
@@ -17,16 +12,18 @@ export const authApi = createApi({
         last_name,
         email,
         password,
+        password2
       }: {
         first_name: string;
         last_name: string;
         email: string;
         password: string;
+        password2: string;
       }) => {
         return {
-          url: '/signup/',
+          url:'',
           method: 'post',
-          body: { first_name, last_name, email, password },
+          body: { first_name, last_name, email, password,password2 },
         };
       },
     }),

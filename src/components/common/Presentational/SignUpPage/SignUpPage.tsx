@@ -23,6 +23,7 @@ export default function SignUpPage() {
   const [email, setEmail] = React.useState('');
   const [emailError, setEmailError] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [password2, setPassword2] = React.useState('');
   const [passwordError, setPasswordError] = React.useState('');
   const [first_name, setFirstName] = React.useState('');
   const [firstnameError, setFirstNameError] = React.useState('');
@@ -39,6 +40,12 @@ export default function SignUpPage() {
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
     if (checkValidPassword(password)) {
+      setPasswordError('');
+    }
+  };
+  const handleConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword2(e.target.value);
+    if (checkValidPassword(password2)) {
       setPasswordError('');
     }
   };
@@ -59,7 +66,7 @@ export default function SignUpPage() {
     event.preventDefault();
     handleErrors();
     if (verifyErrors()) {
-      await signupUser({ first_name, last_name, email, password })
+      await signupUser({ first_name, last_name, email, password, password2 })
         .unwrap()
         .then((resp) => {
           console.log('responese from server', resp);
@@ -81,7 +88,7 @@ export default function SignUpPage() {
     } else {
       setEmailError('');
     }
-    if (!password) {
+    if (!password || !password2) {
       setPasswordError('Password is required.');
     } else if (!checkValidPassword(password)) {
       setPasswordError('Password must be eight characters, at least one letter and one number');
@@ -201,12 +208,26 @@ export default function SignUpPage() {
                 />
                 <p className='errorText'>{passwordError}</p>
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name='confirmpassword'
+                  label='ConfirmPassword'
+                  type='password'
+                  id='confirmpassword'
+                  onChange={handleConfirmPassword}
+                  value={password2}
+                  autoComplete='new-password'
+                />
+                <p className='errorText'>{passwordError}</p>
+              </Grid>
             </Grid>
             <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
               {signupBtn}
             </Button>
             <Box className='continue-box'>
-              <GoogleLogin
+              {/* <GoogleLogin
                 text={'continue_with'}
                 width={'1200px'}
                 onSuccess={(credentialResponse) => {
@@ -215,7 +236,7 @@ export default function SignUpPage() {
                 onError={() => {
                   console.log('Login Failed');
                 }}
-              />
+              /> */}
             </Box>
             <Grid container justifyContent='flex-end'>
               <Grid item>
