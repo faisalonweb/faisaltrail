@@ -235,7 +235,7 @@ const ResponsiveAppBar = () => {
               >
                 <Button
                   className='list-item'
-                  style={{ color: 'black', fontSize: '30px', fontWeight: 'bold' }}
+                  sx={{ color: 'buttontext.default', fontSize: '20px', fontWeight: 'bold' }}
                   onClick={() => navigate('/explore')}
                 >
                   Explore
@@ -245,7 +245,7 @@ const ResponsiveAppBar = () => {
                   className='list-item'
                   aria-haspopup='true'
                   onClick={handleClick}
-                  style={{ color: 'black', fontSize: '30px', fontWeight: 'bold' }}
+                  sx={{ color: 'buttontext.default', fontSize: '20px', fontWeight: 'bold' }}
                 >
                   Saved
                 </Button>
@@ -253,25 +253,27 @@ const ResponsiveAppBar = () => {
                   aria-owns={anchorEl ? 'simple-menu' : undefined}
                   aria-haspopup='true'
                   className='list-item'
-                  style={{ color: 'black', fontSize: '30px', fontWeight: 'bold' }}
+                  sx={{ color: 'buttontext.default', fontSize: '20px', fontWeight: 'bold' }}
                   onClick={handleShopClick}
                 >
                   Shop
                 </Button>
                 <Button
-                  style={{ color: 'black', fontSize: '30px', fontWeight: 'bold' }}
+                  sx={{ color: 'buttontext.default', fontSize: '20px', fontWeight: 'bold' }}
                   className='list-item'
                 >
                   Help
                 </Button>
                 <Divider />
                 <Button
-                  style={{
+                  sx={{
+                    color: 'white',
                     background: '#219ad8',
-                    color: ' white',
-                    width: '56%',
+                    width: '40%',
                     marginLeft: '10px',
-                    height: '40px',
+                    marginTop: '10px',
+                    height: '30px',
+                    fontSize: '13px',
                   }}
                   className='signup-btn'
                   onClick={() => navigate('/signup')}
@@ -279,13 +281,14 @@ const ResponsiveAppBar = () => {
                   Sign up
                 </Button>
                 <Button
-                  style={{
+                  sx={{
+                    color: 'white',
                     background: '#219ad8',
-                    color: ' white',
-                    width: '56%',
+                    width: '40%',
                     marginLeft: '10px',
                     marginTop: '10px',
-                    height: '40px',
+                    height: '30px',
+                    fontSize: '13px',
                   }}
                   onClick={() => navigate('/login')}
                   className='login-btn'
