@@ -267,7 +267,7 @@ const ResponsiveAppBar = () => {
                 <Divider />
                 <Button
                   sx={{
-                    color: 'buttontext.default',
+                    color: 'white',
                     background: '#219ad8',
                     width: '40%',
                     marginLeft: '10px',
@@ -282,7 +282,7 @@ const ResponsiveAppBar = () => {
                 </Button>
                 <Button
                   sx={{
-                    color: 'buttontext.default',
+                    color: 'white',
                     background: '#219ad8',
                     width: '40%',
                     marginLeft: '10px',
