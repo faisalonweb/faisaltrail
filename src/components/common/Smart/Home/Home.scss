@@ -27,6 +27,7 @@
     }
     .paper-cls {
       border-radius: 28px;
+      border-color: white !important;
       .autocomplete-cls {
         width: 650px;
         @include lg {
@@ -36,11 +37,18 @@
           width: 550px;
         }
         @include sm {
-          width: 450px;
+          width: 300px;
         }
         .input-field {
-          background-color: 'FAF9F6';
-          border-radius: 28px;
+          .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+            border: none;
+          }
+          .css-9425fu-MuiOutlinedInput-notchedOutline {
+            border: none;
+          }
+          @include sm {
+            border: none;
+          }
         }
       }
     }
