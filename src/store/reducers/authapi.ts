@@ -12,7 +12,7 @@ export const authApi = createApi({
         last_name,
         email,
         password,
-        password2
+        password2,
       }: {
         first_name: string;
         last_name: string;
@@ -21,9 +21,9 @@ export const authApi = createApi({
         password2: string;
       }) => {
         return {
-          url:'',
+          url: '',
           method: 'post',
-          body: { first_name, last_name, email, password,password2 },
+          body: { first_name, last_name, email, password, password2 },
         };
       },
     }),
