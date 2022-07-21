@@ -115,7 +115,14 @@ export default function SignUpPage() {
     }
   };
   const verifyErrors = () => {
-    return first_name && last_name && email?.length && checkValidEmail(email) && password?.length &&  checkValidPassword(password);
+    return (
+      first_name &&
+      last_name &&
+      email?.length &&
+      checkValidEmail(email) &&
+      password?.length &&
+      checkValidPassword(password)
+    );
   };
 
   return (
