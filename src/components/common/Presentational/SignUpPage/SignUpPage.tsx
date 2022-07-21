@@ -115,17 +115,7 @@ export default function SignUpPage() {
     }
   };
   const verifyErrors = () => {
-    if (
-      first_name &&
-      last_name &&
-      email?.length &&
-      checkValidEmail(email) === true &&
-      password?.length &&
-      checkValidPassword(password)
-    ) {
-      return true;
-    }
-    return false;
+    return first_name && last_name && email?.length && checkValidEmail(email) && password?.length &&  checkValidPassword(password);
   };
 
   return (
