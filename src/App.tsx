@@ -12,6 +12,7 @@ import PrivateRoute from 'src/routes/PrivateRoute';
 import CssBaseline from '@mui/material/CssBaseline';
 import Trails from './components/common/Smart/Trails/Trails';
 import TrailDetail from './components/common/Presentational/TrailDetail/TrailDetail';
+import { ToastContainer } from 'react-toastify';
 import './App.css';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <div className='App'>
+      <ToastContainer />
       <CssBaseline />
       <Layout>
         <Routes>

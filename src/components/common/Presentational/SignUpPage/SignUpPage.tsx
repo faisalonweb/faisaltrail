@@ -15,10 +15,12 @@ import { useSignupUserMutation } from 'src/store/reducers/authapi';
 import 'src/components/common/Presentational/SignUpPage/SignUpPage.scss';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { GoogleLogin } from '@react-oauth/google';
+import { userSignupSuccess } from 'src/store/reducers/dataSlice'
+// import { GoogleLogin } from '@react-oauth/google';
+import { useAppDispatch } from 'src/store/hooks';
 
 export default function SignUpPage() {
-  const [signupUser, { data, error }] = useSignupUserMutation();
+  const [signupUser] = useSignupUserMutation();
   const constantData: LocalizationInterface = localizedData();
   const [email, setEmail] = React.useState('');
   const [emailError, setEmailError] = React.useState('');
@@ -30,6 +32,7 @@ export default function SignUpPage() {
   const [last_name, setLastName] = React.useState('');
   const [lastnameError, setLastNameError] = React.useState('');
   const { signupTitle, signupBtn, signinLink } = constantData.signUpPage;
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -69,15 +72,21 @@ export default function SignUpPage() {
       await signupUser({ first_name, last_name, email, password, password2 })
         .unwrap()
         .then((resp) => {
-          console.log('responese from server', resp);
           toast.success('User Successfully Added');
+          localStorage.setItem('token', resp.token);
+          dispatch(userSignupSuccess(resp.user))
+          navigate('/')
         })
         .catch((error) => {
-          console.log('error', error);
-          toast.success('Something wrong');
+          if('email'in error.data) {
+          toast.error(error.data.email[0]);
+          }
+          else {
+            toast.error(error.data.password[0]);
+          }
         });
     } else {
-      console.log('inverifyerro');
+      console.log('verifyerro');
     }
   };
   const handleErrors = () => {

@@ -27,6 +27,21 @@ export const authApi = createApi({
         };
       },
     }),
+    signinUser: builder.mutation({
+      query: ({
+        username,
+        password,
+      }: {
+        username: string;
+        password: string;
+      }) => {
+        return {
+          url: '/api/token/',
+          method: 'post',
+          body: { username, password},
+        };
+      },
+    }),
   }),
 });
-export const { useSignupUserMutation } = authApi;
+export const { useSignupUserMutation, useSigninUserMutation } = authApi;

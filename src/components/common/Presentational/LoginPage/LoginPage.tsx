@@ -10,6 +10,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { checkValidEmail } from 'src/utils/helpers/helper';
 import { localizedData } from 'src/utils/helpers/language';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
+import { useSigninUserMutation } from 'src/store/reducers/authapi';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -17,15 +21,17 @@ import 'src/components/common/Presentational/LoginPage/LoginPage.scss';
 
 const LoginPage = () => {
   const constantData: LocalizationInterface = localizedData();
-  const [email, setEmail] = useState('');
+  const [signinUser] = useSigninUserMutation();
+  const [username, setUserName] = useState('');
   const [emailError, setEmailError] = useState('');
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const navigate = useNavigate();
   const { loginTitle, rememberMe, signinBtn, signupLink, forgotPassword } = constantData.loginPage;
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-    if (checkValidEmail(email)) {
+    setUserName(e.target.value);
+    if (checkValidEmail(username)) {
       setEmailError('');
     }
   };
@@ -35,23 +41,29 @@ const LoginPage = () => {
     }
     setPassword(e.target.value);
   };
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     handleErrors();
     if (verifyErrors()) {
-      const data = new FormData(event.currentTarget);
-      console.log({
-        email: data.get('email'),
-        password: data.get('password'),
+      await signinUser({ username, password })
+      .unwrap()
+      .then((resp) => {
+        console.log('login respones',resp)
+        toast.success('User Successfully Signin');
+        localStorage.setItem('token', resp.token);
+        navigate('/')
+      })
+      .catch((error) => {
+        toast.error(error.data.non_field_errors[0]);
       });
     } else {
       console.log('invalid data');
     }
   };
   const handleErrors = () => {
-    if (!email) {
+    if (!username) {
       setEmailError('Email is required.');
-    } else if (!checkValidEmail(email)) {
+    } else if (!checkValidEmail(username)) {
       setEmailError('Invalid Email.');
     } else {
       setEmailError('');
@@ -63,7 +75,7 @@ const LoginPage = () => {
     }
   };
   const verifyErrors = () => {
-    return email?.length && checkValidEmail(email) && password?.length;
+    return username?.length && checkValidEmail(username) && password?.length;
   };
   return (
     <Box className='Parent-Login'>
@@ -107,7 +119,7 @@ const LoginPage = () => {
                   name='email'
                   autoComplete='email'
                   autoFocus
-                  value={email}
+                  value={username}
                   onChange={handleEmail}
                 />
                 <p className='errorText'>{emailError}</p>

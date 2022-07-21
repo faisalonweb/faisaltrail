@@ -52,9 +52,7 @@ const top100Films = [
 
 const Home = () => {
   const constantData: LocalizationInterface = localizedData();
-
   const { findNext, exploreNear } = constantData.home;
-
   return (
     <Box sx={{ bgcolor: 'background.default' }} className='home-page'>
       <HeroBanner />
