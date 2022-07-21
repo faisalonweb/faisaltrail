@@ -61,7 +61,7 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const handleOpenUserMenu = (ev:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleOpenUserMenu = (ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setAnchorElUser(ev.currentTarget);
   };
   const toggleDrawer =
@@ -77,10 +77,10 @@ const ResponsiveAppBar = () => {
 
       setState({ ...state, [anchor]: open });
     };
-    const handleLogout = () => {
-      setAnchorElUser(null);
-      localStorage.removeItem('token')
-    };
+  const handleLogout = () => {
+    setAnchorElUser(null);
+    localStorage.removeItem('token');
+  };
   return (
     <AppBar
       sx={{ bgcolor: 'background.default' }}
@@ -199,78 +199,75 @@ const ResponsiveAppBar = () => {
               PakTrails
             </Typography>
           </Box>
-              {
-                authToken ? (
-              <Box className='signin-avatar' sx={{ flexGrow: 2 }}>
-                  <>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+          {authToken ? (
+            <Box className='signin-avatar' sx={{ flexGrow: 2 }}>
+              <>
+                <Tooltip title='Open settings'>
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id='menu-appbar'
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <MenuItem>
+                    <Typography textAlign='center'>Profile</Typography>
+                  </MenuItem>
+                  <MenuItem>
+                    <Typography textAlign='center'>Account</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleLogout}>
+                    <Typography textAlign='center'>Logout</Typography>
+                  </MenuItem>
+                </Menu>
+                <IconButton onClick={toggleMode}>
+                  {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
                 </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                <MenuItem>
-                    <Typography textAlign="center">Profile</Typography>
-                </MenuItem>
-                <MenuItem>
-                    <Typography textAlign="center">Account</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleLogout}>
-                    <Typography textAlign="center">Logout</Typography>
-                </MenuItem>
-              </Menu>
-              <IconButton onClick={toggleMode}>
-                    {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-                  </IconButton>
-                  </>
-              
+              </>
             </Box>
-                ):(
-                  <Box className='dropdown-class' sx={{ flexGrow: 1 }}>
-                  <Link
-                    className='help-btn'
-                    sx={{ color: 'buttontext.default', my: 2, display: { xs: 'none', md: 'flex' } }}
-                    href='/help'
-                  >
-                    Help
-                  </Link>
-                  <Button
-                    onClick={() => navigate('/signup')}
-                    className='pro-btn'
-                    sx={{ display: { xs: 'none', md: 'flex' } }}
-                  >
-                    Sign up
-                  </Button>
-                  <Button
-                    onClick={() => navigate('/login')}
-                    className='pro-btn'
-                    sx={{ display: { xs: 'none', md: 'flex' } }}
-                  >
-                    Login
-                  </Button>
-      
-                  <IconButton onClick={toggleMode}>
-                    {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-                  </IconButton>
-                </Box>
-                )
-              }
-        
+          ) : (
+            <Box className='dropdown-class' sx={{ flexGrow: 1 }}>
+              <Link
+                className='help-btn'
+                sx={{ color: 'buttontext.default', my: 2, display: { xs: 'none', md: 'flex' } }}
+                href='/help'
+              >
+                Help
+              </Link>
+              <Button
+                onClick={() => navigate('/signup')}
+                className='pro-btn'
+                sx={{ display: { xs: 'none', md: 'flex' } }}
+              >
+                Sign up
+              </Button>
+              <Button
+                onClick={() => navigate('/login')}
+                className='pro-btn'
+                sx={{ display: { xs: 'none', md: 'flex' } }}
+              >
+                Login
+              </Button>
+
+              <IconButton onClick={toggleMode}>
+                {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+              </IconButton>
+            </Box>
+          )}
+
           <Box className='drw-class'>
             <SwipeableDrawer
               className='drw-cls-content'

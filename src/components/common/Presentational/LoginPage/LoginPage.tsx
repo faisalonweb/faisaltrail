@@ -46,16 +46,16 @@ const LoginPage = () => {
     handleErrors();
     if (verifyErrors()) {
       await signinUser({ username, password })
-      .unwrap()
-      .then((resp) => {
-        console.log('login respones',resp)
-        toast.success('User Successfully Signin');
-        localStorage.setItem('token', resp.token);
-        navigate('/')
-      })
-      .catch((error) => {
-        toast.error(error.data.non_field_errors[0]);
-      });
+        .unwrap()
+        .then((resp) => {
+          console.log('login respones', resp);
+          toast.success('User Successfully Signin');
+          localStorage.setItem('token', resp.token);
+          navigate('/');
+        })
+        .catch((error) => {
+          toast.error(error.data.non_field_errors[0]);
+        });
     } else {
       console.log('invalid data');
     }

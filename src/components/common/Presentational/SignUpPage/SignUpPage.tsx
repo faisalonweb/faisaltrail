@@ -15,7 +15,7 @@ import { useSignupUserMutation } from 'src/store/reducers/authapi';
 import 'src/components/common/Presentational/SignUpPage/SignUpPage.scss';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { userSignupSuccess } from 'src/store/reducers/dataSlice'
+import { userSignupSuccess } from 'src/store/reducers/dataSlice';
 // import { GoogleLogin } from '@react-oauth/google';
 import { useAppDispatch } from 'src/store/hooks';
 
@@ -74,14 +74,13 @@ export default function SignUpPage() {
         .then((resp) => {
           toast.success('User Successfully Added');
           localStorage.setItem('token', resp.token);
-          dispatch(userSignupSuccess(resp.user))
-          navigate('/')
+          dispatch(userSignupSuccess(resp.user));
+          navigate('/');
         })
         .catch((error) => {
-          if('email'in error.data) {
-          toast.error(error.data.email[0]);
-          }
-          else {
+          if ('email' in error.data) {
+            toast.error(error.data.email[0]);
+          } else {
             toast.error(error.data.password[0]);
           }
         });
