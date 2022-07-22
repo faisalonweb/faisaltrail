@@ -68,69 +68,68 @@ export default function SignUpPage() {
     event.preventDefault();
     const user = {
       'first_name': firstName,
-      'last_name' : lastName,
+      'last_name': lastName,
       'email': email,
       'password': password,
-      'password2': password2
-    }
+      'password2': password2,
+    };
     if (handleErrors()) {
       await signupUser(user)
-      .unwrap()
-      .then((resp) => {
-        toast.success('User Successfully Added');
-        localStorage.setItem('token', resp.token);
-        dispatch(userSignupSuccess(resp.user));
-        navigate('/');
-      })
-      .catch((error) => {
-        if ('email' in error.data) {
-          toast.error(error.data.email[0]);
-        } else {
-          toast.error(error.data.password[0]);
-        }
-      });
+        .unwrap()
+        .then((resp) => {
+          toast.success('User Successfully Added');
+          localStorage.setItem('token', resp.token);
+          dispatch(userSignupSuccess(resp.user));
+          navigate('/');
+        })
+        .catch((error) => {
+          if ('email' in error.data) {
+            toast.error(error.data.email[0]);
+          } else {
+            toast.error(error.data.password[0]);
+          }
+        });
     }
-    
   };
   const handleErrors = () => {
-    if( firstName &&
+    if (
+      firstName &&
       lastName &&
       email?.length &&
       checkValidEmail(email) &&
       password?.length &&
-      checkValidPassword(password)) {
-        return true;
+      checkValidPassword(password)
+    ) {
+      return true;
+    } else {
+      if (!email) {
+        setEmailError('Email is required.');
+      } else if (!checkValidEmail(email)) {
+        setEmailError('Invalid Email.');
+      } else {
+        setEmailError('');
       }
-      else {
-        if (!email) {
-          setEmailError('Email is required.');
-        } else if (!checkValidEmail(email)) {
-          setEmailError('Invalid Email.');
-        } else {
-          setEmailError('');
-        }
-        if (!password || !password2) {
-          setPasswordError('Password is required.');
-        } else if (!checkValidPassword(password)) {
-          setPasswordError('Password must be eight characters, at least one letter and one number');
-        } else {
-          setPasswordError('');
-        }
-        if (!firstName) {
-          setFirstNameError('First Name is required.');
-        } else {
-          setFirstNameError('');
-        }
-        if (!lastName) {
-          setLastNameError('Last Name is required.');
-        } else {
-          setLastNameError('');
-        }
+      if (!password || !password2) {
+        setPasswordError('Password is required.');
+      } else if (!checkValidPassword(password)) {
+        setPasswordError('Password must be eight characters, at least one letter and one number');
+      } else {
+        setPasswordError('');
       }
-      return false;
-    
+      if (!firstName) {
+        setFirstNameError('First Name is required.');
+      } else {
+        setFirstNameError('');
+      }
+      if (!lastName) {
+        setLastNameError('Last Name is required.');
+      } else {
+        setLastNameError('');
+      }
+    }
+    return false;
   };
- 
+
   return (
     <Box className='Parent-Signup'>
       <Container
