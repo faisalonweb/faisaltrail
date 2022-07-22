@@ -16,7 +16,6 @@ import 'src/components/common/Presentational/SignUpPage/SignUpPage.scss';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { userSignupSuccess } from 'src/store/reducers/dataSlice';
-// import { GoogleLogin } from '@react-oauth/google';
 import { useAppDispatch } from 'src/store/hooks';
 
 export default function SignUpPage() {
@@ -27,9 +26,9 @@ export default function SignUpPage() {
   const [password, setPassword] = React.useState('');
   const [password2, setPassword2] = React.useState('');
   const [passwordError, setPasswordError] = React.useState('');
-  const [first_name, setFirstName] = React.useState('');
+  const [firstName, setFirstName] = React.useState('');
   const [firstnameError, setFirstNameError] = React.useState('');
-  const [last_name, setLastName] = React.useState('');
+  const [lastName, setLastName] = React.useState('');
   const [lastnameError, setLastNameError] = React.useState('');
   const { signupTitle, signupBtn, signinLink } = constantData.signUpPage;
   const dispatch = useAppDispatch();
@@ -67,64 +66,71 @@ export default function SignUpPage() {
   };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    handleErrors();
-    if (verifyErrors()) {
-      await signupUser({ first_name, last_name, email, password, password2 })
-        .unwrap()
-        .then((resp) => {
-          toast.success('User Successfully Added');
-          localStorage.setItem('token', resp.token);
-          dispatch(userSignupSuccess(resp.user));
-          navigate('/');
-        })
-        .catch((error) => {
-          if ('email' in error.data) {
-            toast.error(error.data.email[0]);
-          } else {
-            toast.error(error.data.password[0]);
-          }
-        });
-    } else {
-      console.log('verifyerro');
+    const user = {
+      'first_name': firstName,
+      'last_name' : lastName,
+      'email': email,
+      'password': password,
+      'password2': password2
     }
+    if (handleErrors()) {
+      await signupUser(user)
+      .unwrap()
+      .then((resp) => {
+        toast.success('User Successfully Added');
+        localStorage.setItem('token', resp.token);
+        dispatch(userSignupSuccess(resp.user));
+        navigate('/');
+      })
+      .catch((error) => {
+        if ('email' in error.data) {
+          toast.error(error.data.email[0]);
+        } else {
+          toast.error(error.data.password[0]);
+        }
+      });
+    }
+    
   };
   const handleErrors = () => {
-    if (!email) {
-      setEmailError('Email is required.');
-    } else if (!checkValidEmail(email)) {
-      setEmailError('Invalid Email.');
-    } else {
-      setEmailError('');
-    }
-    if (!password || !password2) {
-      setPasswordError('Password is required.');
-    } else if (!checkValidPassword(password)) {
-      setPasswordError('Password must be eight characters, at least one letter and one number');
-    } else {
-      setPasswordError('');
-    }
-    if (!first_name) {
-      setFirstNameError('First Name is required.');
-    } else {
-      setFirstNameError('');
-    }
-    if (!last_name) {
-      setLastNameError('Last Name is required.');
-    } else {
-      setLastNameError('');
-    }
-  };
-  const verifyErrors = () => {
-    return (
-      first_name &&
-      last_name &&
+    if( firstName &&
+      lastName &&
       email?.length &&
       checkValidEmail(email) &&
       password?.length &&
-      checkValidPassword(password)
-    );
+      checkValidPassword(password)) {
+        return true;
+      }
+      else {
+        if (!email) {
+          setEmailError('Email is required.');
+        } else if (!checkValidEmail(email)) {
+          setEmailError('Invalid Email.');
+        } else {
+          setEmailError('');
+        }
+        if (!password || !password2) {
+          setPasswordError('Password is required.');
+        } else if (!checkValidPassword(password)) {
+          setPasswordError('Password must be eight characters, at least one letter and one number');
+        } else {
+          setPasswordError('');
+        }
+        if (!firstName) {
+          setFirstNameError('First Name is required.');
+        } else {
+          setFirstNameError('');
+        }
+        if (!lastName) {
+          setLastNameError('Last Name is required.');
+        } else {
+          setLastNameError('');
+        }
+      }
+      return false;
+    
   };
-
+ 
   return (
     <Box className='Parent-Signup'>
       <Container
@@ -164,7 +170,7 @@ export default function SignUpPage() {
                   id='firstName'
                   label='First Name'
                   autoFocus
-                  value={first_name}
+                  value={firstName}
                   onChange={handleFirstName}
                 />
                 <p className='errorText' style={{ marginTop: '5px' }}>
@@ -179,7 +185,7 @@ export default function SignUpPage() {
                   label='Last Name'
                   name='lastName'
                   autoComplete='family-name'
-                  value={last_name}
+                  value={lastName}
                   onChange={handleLastName}
                 />
                 <p className='errorText' style={{ marginTop: '5px' }}>
@@ -231,18 +237,6 @@ export default function SignUpPage() {
             <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
               {signupBtn}
             </Button>
-            <Box className='continue-box'>
-              {/* <GoogleLogin
-                text={'continue_with'}
-                width={'1200px'}
-                onSuccess={(credentialResponse) => {
-                  console.log(credentialResponse);
-                }}
-                onError={() => {
-                  console.log('Login Failed');
-                }}
-              /> */}
-            </Box>
             <Grid container justifyContent='flex-end'>
               <Grid item>
                 <Link href='/login' variant='body2'>

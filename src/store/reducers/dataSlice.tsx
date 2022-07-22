@@ -5,7 +5,7 @@ const initialState = {
   trails: trailsData,
   trailCards: trailCardsData,
   trailList: trailsListData,
-  user_info: {},
+  userInfo: {},
 };
 
 export const dataSlice = createSlice({
@@ -16,7 +16,7 @@ export const dataSlice = createSlice({
       state.trailList = action.payload;
     },
     userSignupSuccess: (state, action) => {
-      state.user_info = action.payload;
+      state.userInfo = action.payload;
     },
   },
 });
