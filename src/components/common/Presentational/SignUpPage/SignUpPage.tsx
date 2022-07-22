@@ -66,6 +66,7 @@ export default function SignUpPage() {
   };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    // @ts-ignore 
     const user = {
       'first_name': firstName,
       'last_name': lastName,
