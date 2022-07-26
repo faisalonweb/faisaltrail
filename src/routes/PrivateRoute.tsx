@@ -5,8 +5,6 @@ import Help from 'src/components/common/Smart/Help/Help';
 import TrailInfo from 'src/components/common/Smart/TrailInfo/TrailInfo';
 import Trails from 'src/components/common/Smart/Trails/Trails';
 
-
-
 const PrivateRoute = () => {
   return (
     <>

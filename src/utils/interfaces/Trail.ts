@@ -30,7 +30,7 @@ export interface PropertiesData {
   min_elevation: number;
   technical_difficulty: string;
   trail: number;
-  trail_type:string;
+  trail_type: string;
 }
 export interface ITrailData1 {
   id: number;

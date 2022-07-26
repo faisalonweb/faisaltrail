@@ -66,7 +66,7 @@ export default function SignUpPage() {
   };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-   /* eslint-disable */
+    /* eslint-disable */
     const user = {
       first_name: firstName,
       last_name: lastName,

@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
-import { Box, Chip, Container,  Stack } from '@mui/material';
+import { Box, Chip, Container, Stack } from '@mui/material';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import { useNavigate } from 'react-router-dom';
 import { useGetAllTrailsQuery } from 'src/store/reducers/api';
@@ -13,8 +13,7 @@ const TrailList = () => {
   const { data: trails = [] } = useGetAllTrailsQuery({});
   return (
     <div className='trail-list'>
-      {
-      trails?.results?.map((trail:ITrailData1) => {
+      {trails?.results?.map((trail: ITrailData1) => {
         return (
           <Container
             className='container-cls'
@@ -59,7 +58,11 @@ const TrailList = () => {
                 </Typography>
 
                 <Box sx={{ display: 'flex', gap: 2 }}>
-                  <Chip label={trail.properties[0].technical_difficulty} color='primary' size='small' />
+                  <Chip
+                    label={trail.properties[0].technical_difficulty}
+                    color='primary'
+                    size='small'
+                  />
                 </Box>
 
                 <Box sx={{ display: 'flex', gap: 5 }}>
