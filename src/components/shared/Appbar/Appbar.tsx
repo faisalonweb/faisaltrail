@@ -11,6 +11,8 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import Avatar from '@mui/material/Avatar';
+import Tooltip from '@mui/material/Tooltip';
 import { useNavigate } from 'react-router-dom';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import 'src/components/shared/Appbar/Appbar.scss';
@@ -25,8 +27,10 @@ const pages = ['Products', 'Pricing', 'Blog'];
 
 const ResponsiveAppBar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = React.useState<Element | undefined | null>(null);
   const [anchorElOne, setAnchorElOne] = React.useState<null | HTMLElement>(null);
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const authToken = localStorage.getItem('token');
   const { toggleMode } = React.useContext(ColorModeContext);
   const [state, setState] = React.useState({
     left: false,
@@ -54,6 +58,12 @@ const ResponsiveAppBar = () => {
   function handleCloseShop() {
     setAnchorElOne(null);
   }
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+  const handleOpenUserMenu = (ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    setAnchorElUser(ev.currentTarget);
+  };
   const toggleDrawer =
     (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -67,7 +77,10 @@ const ResponsiveAppBar = () => {
 
       setState({ ...state, [anchor]: open });
     };
-
+  const handleLogout = () => {
+    setAnchorElUser(null);
+    localStorage.removeItem('token');
+  };
   return (
     <AppBar
       sx={{ bgcolor: 'background.default' }}
@@ -164,7 +177,7 @@ const ResponsiveAppBar = () => {
               ))}
             </Menu>
           </Box>
-          <Box className='logo-class' sx={{ flexGrow: 1 }}>
+          <Box className='logo-class' sx={{ flexGrow: 5 }}>
             <AdbIcon
               sx={{ display: { xs: 'flex', md: 'flex' }, mr: 1, color: 'buttontext.default' }}
             />
@@ -186,34 +199,75 @@ const ResponsiveAppBar = () => {
               PakTrails
             </Typography>
           </Box>
+          {authToken ? (
+            <Box className='signin-avatar' sx={{ flexGrow: 2 }}>
+              <>
+                <Tooltip title='Open settings'>
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id='menu-appbar'
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <MenuItem>
+                    <Typography textAlign='center'>Profile</Typography>
+                  </MenuItem>
+                  <MenuItem>
+                    <Typography textAlign='center'>Account</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleLogout}>
+                    <Typography textAlign='center'>Logout</Typography>
+                  </MenuItem>
+                </Menu>
+                <IconButton onClick={toggleMode}>
+                  {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                </IconButton>
+              </>
+            </Box>
+          ) : (
+            <Box className='dropdown-class' sx={{ flexGrow: 1 }}>
+              <Link
+                className='help-btn'
+                sx={{ color: 'buttontext.default', my: 2, display: { xs: 'none', md: 'flex' } }}
+                href='/help'
+              >
+                Help
+              </Link>
+              <Button
+                onClick={() => navigate('/signup')}
+                className='pro-btn'
+                sx={{ display: { xs: 'none', md: 'flex' } }}
+              >
+                Sign up
+              </Button>
+              <Button
+                onClick={() => navigate('/login')}
+                className='pro-btn'
+                sx={{ display: { xs: 'none', md: 'flex' } }}
+              >
+                Login
+              </Button>
 
-          <Box className='dropdown-class' sx={{ flexGrow: 1 }}>
-            <Link
-              className='help-btn'
-              sx={{ color: 'buttontext.default', my: 2, display: { xs: 'none', md: 'flex' } }}
-              href='/help'
-            >
-              Help
-            </Link>
-            <Button
-              onClick={() => navigate('/signup')}
-              className='pro-btn'
-              sx={{ display: { xs: 'none', md: 'flex' } }}
-            >
-              Sign up
-            </Button>
-            <Button
-              onClick={() => navigate('/login')}
-              className='pro-btn'
-              sx={{ display: { xs: 'none', md: 'flex' } }}
-            >
-              Login
-            </Button>
+              <IconButton onClick={toggleMode}>
+                {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+              </IconButton>
+            </Box>
+          )}
 
-            <IconButton onClick={toggleMode}>
-              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-            </IconButton>
-          </Box>
           <Box className='drw-class'>
             <SwipeableDrawer
               className='drw-cls-content'

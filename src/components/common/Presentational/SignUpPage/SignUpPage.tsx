@@ -11,22 +11,28 @@ import { checkValidEmail, checkValidPassword } from 'src/utils/helpers/helper';
 import { localizedData } from 'src/utils/helpers/language';
 import { useNavigate } from 'react-router-dom';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
+import { useSignupUserMutation } from 'src/store/reducers/authapi';
 import 'src/components/common/Presentational/SignUpPage/SignUpPage.scss';
-import { GoogleLogin } from '@react-oauth/google';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { userSignupSuccess } from 'src/store/reducers/dataSlice';
+import { useAppDispatch } from 'src/store/hooks';
 
 export default function SignUpPage() {
+  const [signupUser] = useSignupUserMutation();
   const constantData: LocalizationInterface = localizedData();
   const [email, setEmail] = React.useState('');
   const [emailError, setEmailError] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [password2, setPassword2] = React.useState('');
   const [passwordError, setPasswordError] = React.useState('');
-  const [firstname, setFirstName] = React.useState('');
+  const [firstName, setFirstName] = React.useState('');
   const [firstnameError, setFirstNameError] = React.useState('');
-  const [lastname, setLastName] = React.useState('');
+  const [lastName, setLastName] = React.useState('');
   const [lastnameError, setLastNameError] = React.useState('');
   const { signupTitle, signupBtn, signinLink } = constantData.signUpPage;
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     if (checkValidEmail(email)) {
@@ -36,6 +42,12 @@ export default function SignUpPage() {
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
     if (checkValidPassword(password)) {
+      setPasswordError('');
+    }
+  };
+  const handleConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword2(e.target.value);
+    if (checkValidPassword(password2)) {
       setPasswordError('');
     }
   };
@@ -52,56 +64,70 @@ export default function SignUpPage() {
     }
     setLastName(e.target?.value);
   };
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    handleErrors();
-    if (verifyErrors()) {
-      const data = new FormData(event.currentTarget);
-      console.log({
-        email: data.get('email'),
-        password: data.get('password'),
-      });
-      navigate('/onboarding');
-    } else {
-      console.log('inverifyerro');
+    /* eslint-disable */
+    const user = {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password,
+      password2: password2,
+    };
+    /* eslint-enable */
+    if (handleErrors()) {
+      await signupUser(user)
+        .unwrap()
+        .then((resp) => {
+          toast.success('User Successfully Added');
+          localStorage.setItem('token', resp.token);
+          dispatch(userSignupSuccess(resp.user));
+          navigate('/');
+        })
+        .catch((error) => {
+          if ('email' in error.data) {
+            toast.error(error.data.email[0]);
+          } else {
+            toast.error(error.data.password[0]);
+          }
+        });
     }
   };
   const handleErrors = () => {
-    if (!email) {
-      setEmailError('Email is required.');
-    } else if (!checkValidEmail(email)) {
-      setEmailError('Invalid Email.');
-    } else {
-      setEmailError('');
-    }
-    if (!password) {
-      setPasswordError('Password is required.');
-    } else if (!checkValidPassword(password)) {
-      setPasswordError('Password must be eight characters, at least one letter and one number');
-    } else {
-      setPasswordError('');
-    }
-    if (!firstname) {
-      setFirstNameError('First Name is required.');
-    } else {
-      setFirstNameError('');
-    }
-    if (!lastname) {
-      setLastNameError('Last Name is required.');
-    } else {
-      setLastNameError('');
-    }
-  };
-  const verifyErrors = () => {
     if (
-      firstname &&
-      lastname &&
+      firstName &&
+      lastName &&
       email?.length &&
-      checkValidEmail(email) === true &&
+      checkValidEmail(email) &&
       password?.length &&
       checkValidPassword(password)
     ) {
       return true;
+    } else {
+      if (!email) {
+        setEmailError('Email is required.');
+      } else if (!checkValidEmail(email)) {
+        setEmailError('Invalid Email.');
+      } else {
+        setEmailError('');
+      }
+      if (!password || !password2) {
+        setPasswordError('Password is required.');
+      } else if (!checkValidPassword(password)) {
+        setPasswordError('Password must be eight characters, at least one letter and one number');
+      } else {
+        setPasswordError('');
+      }
+      if (!firstName) {
+        setFirstNameError('First Name is required.');
+      } else {
+        setFirstNameError('');
+      }
+      if (!lastName) {
+        setLastNameError('Last Name is required.');
+      } else {
+        setLastNameError('');
+      }
     }
     return false;
   };
@@ -145,7 +171,7 @@ export default function SignUpPage() {
                   id='firstName'
                   label='First Name'
                   autoFocus
-                  value={firstname}
+                  value={firstName}
                   onChange={handleFirstName}
                 />
                 <p className='errorText' style={{ marginTop: '5px' }}>
@@ -160,7 +186,7 @@ export default function SignUpPage() {
                   label='Last Name'
                   name='lastName'
                   autoComplete='family-name'
-                  value={lastname}
+                  value={lastName}
                   onChange={handleLastName}
                 />
                 <p className='errorText' style={{ marginTop: '5px' }}>
@@ -194,22 +220,24 @@ export default function SignUpPage() {
                 />
                 <p className='errorText'>{passwordError}</p>
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name='confirmpassword'
+                  label='ConfirmPassword'
+                  type='password'
+                  id='confirmpassword'
+                  onChange={handleConfirmPassword}
+                  value={password2}
+                  autoComplete='new-password'
+                />
+                <p className='errorText'>{passwordError}</p>
+              </Grid>
             </Grid>
             <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
               {signupBtn}
             </Button>
-            <Box className='continue-box'>
-              <GoogleLogin
-                text={'continue_with'}
-                width={'1200px'}
-                onSuccess={(credentialResponse) => {
-                  console.log(credentialResponse);
-                }}
-                onError={() => {
-                  console.log('Login Failed');
-                }}
-              />
-            </Box>
             <Grid container justifyContent='flex-end'>
               <Grid item>
                 <Link href='/login' variant='body2'>

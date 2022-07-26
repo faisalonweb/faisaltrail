@@ -1,12 +1,21 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import ITrailData from 'src/utils/interfaces/Trail';
+
+const authToken = localStorage.getItem('token');
 
 export const appApi = createApi({
   reducerPath: 'appApi',
-  baseQuery: fetchBaseQuery({ baseUrl: `${process.env.REACT_APP_BASE_URL}` }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: `${process.env.REACT_APP_LOCAL_URL}`,
+    prepareHeaders: (headers) => {
+      headers.append('Content-Type', 'application/json');
+      headers.set('Authorization', `Token ${authToken}`);
+      return headers;
+    },
+  }),
+
   endpoints: (builder) => ({
-    getAllTrails: builder.query<ITrailData[], Record<string, never>>({
-      query: () => ({ url: '/trails' }),
+    getAllTrails: builder.query({
+      query: () => ({ url: '/api/trails/' }),
     }),
   }),
 });
