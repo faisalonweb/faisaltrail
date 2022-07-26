@@ -7,8 +7,8 @@ type PrivateRouteProps = {
 const TokenRestrictedRouter: React.FunctionComponent<PrivateRouteProps> = ({
   component: Component,
 }) => {
-  const result = JSON.parse(localStorage.getItem('test') || '{}');
-  return result.myBool ? <Component /> : <Navigate to='/notpagefound' />;
+  const result = localStorage.getItem('token');
+  return result ? <Component /> : <Navigate to='/Signup' />;
 };
 
 export default TokenRestrictedRouter;

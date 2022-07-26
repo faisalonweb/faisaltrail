@@ -1,17 +1,20 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
-import { Box, Chip, Container, Rating, Stack } from '@mui/material';
+import { Box, Chip, Container,  Stack } from '@mui/material';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import { useNavigate } from 'react-router-dom';
 import { useGetAllTrailsQuery } from 'src/store/reducers/api';
 import 'src/components/common/Presentational/TrailList/TrailList.scss';
+import two from 'src/assets/images/two.jpg';
+import { ITrailData1 } from 'src/utils/interfaces/Trail';
 
 const TrailList = () => {
   const navigate = useNavigate();
   const { data: trails = [] } = useGetAllTrailsQuery({});
   return (
     <div className='trail-list'>
-      {trails.map((trail) => {
+      {
+      trails?.results?.map((trail:ITrailData1) => {
         return (
           <Container
             className='container-cls'
@@ -32,7 +35,7 @@ const TrailList = () => {
             >
               <Box className='image-cls'>
                 <img
-                  src={trail.image}
+                  src={two}
                   style={{ height: 240, borderRadius: 10, objectFit: 'cover' }}
                   alt='img'
                 ></img>
@@ -52,18 +55,15 @@ const TrailList = () => {
                 </Box>
 
                 <Typography sx={{ opacity: 0.5 }} fontSize={14}>
-                  {trail.info}
+                  {trail.locations[0].area_name}
                 </Typography>
 
                 <Box sx={{ display: 'flex', gap: 2 }}>
-                  <Chip label={trail.difficulty} color='primary' size='small' />
-                  <Rating value={trail.rating} />
-                  <Typography>({trail.reviews})</Typography>
+                  <Chip label={trail.properties[0].technical_difficulty} color='primary' size='small' />
                 </Box>
 
                 <Box sx={{ display: 'flex', gap: 5 }}>
-                  <Typography>{trail.length} km</Typography>
-                  <Typography>{trail.time}</Typography>
+                  <Typography>{trail.properties[0].distance} km</Typography>
                 </Box>
 
                 <Box>

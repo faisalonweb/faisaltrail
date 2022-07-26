@@ -66,14 +66,15 @@ export default function SignUpPage() {
   };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // @ts-ignore 
+   /* eslint-disable */
     const user = {
-      'first_name': firstName,
-      'last_name': lastName,
-      'email': email,
-      'password': password,
-      'password2': password2,
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password,
+      password2: password2,
     };
+    /* eslint-enable */
     if (handleErrors()) {
       await signupUser(user)
         .unwrap()

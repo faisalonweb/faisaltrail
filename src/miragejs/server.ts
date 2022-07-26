@@ -13,6 +13,7 @@ export function makeServer({ environment = 'test' }) {
       this.passthrough('http://127.0.0.1:8000');
       this.passthrough('http://localhost:8000');
       this.passthrough('http://localhost:8000/api/token/');
+      this.passthrough('http://localhost:8000/api/trails/');
       this.passthrough();
     },
   });

@@ -48,7 +48,6 @@ const LoginPage = () => {
       await signinUser({ username, password })
         .unwrap()
         .then((resp) => {
-          toast.success('User Successfully Signin');
           localStorage.setItem('token', resp.token);
           navigate('/');
         })
