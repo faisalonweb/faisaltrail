@@ -39,3 +39,9 @@ export interface ITrailData1 {
   properties: PropertiesData[];
   description: string;
 }
+export interface TrailsCount {
+  count: number;
+  next: number;
+  previous: number;
+  results: ITrailData1[];
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import HeroBanner from 'src/components/common/Presentational/HeroBanner/HeroBanner';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -9,50 +9,73 @@ import MultiCarosual from 'src/components/shared/MultiCarousal/MultiCarosual';
 import AdventureTabs from 'src/components/common/Smart/AdventureTabs/AdventureTabs';
 import { localizedData } from 'src/utils/helpers/language';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
+import { useSearchTrailQuery } from 'src/store/reducers/api';
 import 'src/components/common/Smart/Home/Home.scss';
+import { ITrailData1, TrailsCount } from 'src/utils/interfaces/Trail';
 import Paper from '@mui/material/Paper';
-
-const top100Films = [
-  { label: 'The Shawshank Redemption', year: 1994 },
-  { label: 'The Godfather', year: 1972 },
-  { label: 'The Godfather: Part II', year: 1974 },
-  { label: 'The Dark Knight', year: 2008 },
-  { label: '12 Angry Men', year: 1957 },
-  { label: 'Schindler List', year: 1993 },
-  { label: 'Pulp Fiction', year: 1994 },
+let topTrails = [
+  { label: 'The Shawshank Redemption'},
+  { label: 'The Godfather'},
+  { label: 'The Godfather: Part II'},
+  { label: 'The Dark Knight'},
+  { label: '12 Angry Men'},
+  { label: 'Schindler List'},
+  { label: 'Pulp Fiction'},
   {
     label: 'The Lord of the Rings: The Return of the King',
     year: 2003,
   },
-  { label: 'The Good, the Bad and the Ugly', year: 1966 },
-  { label: 'Fight Club', year: 1999 },
+  { label: 'The Good, the Bad and the Ugly'},
+  { label: 'Fight Club'},
   {
-    label: 'The Lord of the Rings: The Fellowship of the Ring',
-    year: 2001,
+    label: 'The Lord of the Rings: The Fellowship of the Ring'
   },
   {
-    label: 'Star Wars: Episode V - The Empire Strikes Back',
-    year: 1980,
+    label: 'Star Wars: Episode V - The Empire Strikes Back'
   },
-  { label: 'Forrest Gump', year: 1994 },
-  { label: 'Inception', year: 2010 },
+  { label: 'Forrest Gump'},
+  { label: 'Inception'},
   {
-    label: 'The Lord of the Rings: The Two Towers',
-    year: 2002,
+    label: 'The Lord of the Rings: The Two Towers'
   },
-  { label: 'One Flew Over the Cuckoo Nest', year: 1975 },
-  { label: 'Goodfellas', year: 1990 },
-  { label: 'The Matrix', year: 1999 },
-  { label: 'Seven Samurai', year: 1954 },
+  { label: 'One Flew Over the Cuckoo Nest' },
+  { label: 'Goodfellas'},
+  { label: 'The Matrix'},
+  { label: 'Seven Samurai' },
   {
-    label: 'Star Wars: Episode IV - A New Hope',
-    year: 1977,
+    label: 'Star Wars: Episode IV - A New Hope'
   },
 ];
+function useDebounce(value: string, delay: number): string {
+  const [debouncedValue, setDebouncedValue] = useState(value);
 
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
 const Home = () => {
   const constantData: LocalizationInterface = localizedData();
   const { findNext, exploreNear } = constantData.home;
+  const [input, setInput] = useState('');
+  const debouncedSearchTerm = useDebounce(input, 500);
+  const { data: searchTrails = [] } = useSearchTrailQuery(debouncedSearchTerm);
+  const datatrails = (searchData:TrailsCount) => {
+    if(!searchData || !searchData?.results?.length){
+      return []
+    }
+    topTrails = searchData?.results?.map((values: ITrailData1)=>{
+       return {label: values.title || ''}
+     })
+  }
+  datatrails(searchTrails)
   return (
     <Box sx={{ bgcolor: 'background.default' }} className='home-page'>
       <HeroBanner />
@@ -63,7 +86,7 @@ const Home = () => {
             className='autocomplete-cls'
             disablePortal
             id='combo-box-demo'
-            options={top100Films}
+            options={topTrails}
             popupIcon={<SearchIcon />}
             renderInput={(params) => (
               <TextField
@@ -71,6 +94,8 @@ const Home = () => {
                 className='input-field'
                 placeholder='Search by name trail'
                 {...params}
+                onChange={({ target }) => setInput(target.value)} 
+
               />
             )}
           />

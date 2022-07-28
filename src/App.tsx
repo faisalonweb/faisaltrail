@@ -10,6 +10,8 @@ import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from 'src/routes/PrivateRoute';
 import CssBaseline from '@mui/material/CssBaseline';
 import TrailDetail from './components/common/Presentational/TrailDetail/TrailDetail';
+import TrailInfo from 'src/components/common/Smart/TrailInfo/TrailInfo';
+import Trails from 'src/components/common/Smart/Trails/Trails';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
 
@@ -36,6 +38,8 @@ function App() {
           <Route path='/login' element={<LoginPage />} />
           <Route path='/explore' element={<ExplorePage />} />
           <Route path='/trails/trail-details/:id' element={<TrailDetail />} />
+          <Route path='/trails' element={<Trails />} />
+          <Route path='/trails/trail-info/:id' element={<TrailInfo />} />
           <Route path='*' element={<TokenRestrictedRouter component={PrivateRoute} />} />
           <Route path='/notpagefound' element={<NotFoundPage />} />
         </Routes>
