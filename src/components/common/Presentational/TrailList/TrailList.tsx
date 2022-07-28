@@ -59,14 +59,14 @@ const TrailList = () => {
 
                 <Box sx={{ display: 'flex', gap: 2 }}>
                   <Chip
-                    label={trail.properties[0].technical_difficulty}
+                    label={trail.properties[0]?.technical_difficulty}
                     color='primary'
                     size='small'
                   />
                 </Box>
 
                 <Box sx={{ display: 'flex', gap: 5 }}>
-                  <Typography>{trail.properties[0].distance} km</Typography>
+                  <Typography>{trail.properties[0]?.distance} km</Typography>
                 </Box>
 
                 <Box>
