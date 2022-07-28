@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import HeroBanner from 'src/components/common/Presentational/HeroBanner/HeroBanner';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -14,36 +14,36 @@ import 'src/components/common/Smart/Home/Home.scss';
 import { ITrailData1, TrailsCount } from 'src/utils/interfaces/Trail';
 import Paper from '@mui/material/Paper';
 let topTrails = [
-  { label: 'The Shawshank Redemption'},
-  { label: 'The Godfather'},
-  { label: 'The Godfather: Part II'},
-  { label: 'The Dark Knight'},
-  { label: '12 Angry Men'},
-  { label: 'Schindler List'},
-  { label: 'Pulp Fiction'},
+  { label: 'The Shawshank Redemption' },
+  { label: 'The Godfather' },
+  { label: 'The Godfather: Part II' },
+  { label: 'The Dark Knight' },
+  { label: '12 Angry Men' },
+  { label: 'Schindler List' },
+  { label: 'Pulp Fiction' },
   {
     label: 'The Lord of the Rings: The Return of the King',
     year: 2003,
   },
-  { label: 'The Good, the Bad and the Ugly'},
-  { label: 'Fight Club'},
+  { label: 'The Good, the Bad and the Ugly' },
+  { label: 'Fight Club' },
   {
-    label: 'The Lord of the Rings: The Fellowship of the Ring'
+    label: 'The Lord of the Rings: The Fellowship of the Ring',
   },
   {
-    label: 'Star Wars: Episode V - The Empire Strikes Back'
+    label: 'Star Wars: Episode V - The Empire Strikes Back',
   },
-  { label: 'Forrest Gump'},
-  { label: 'Inception'},
+  { label: 'Forrest Gump' },
+  { label: 'Inception' },
   {
-    label: 'The Lord of the Rings: The Two Towers'
+    label: 'The Lord of the Rings: The Two Towers',
   },
   { label: 'One Flew Over the Cuckoo Nest' },
-  { label: 'Goodfellas'},
-  { label: 'The Matrix'},
+  { label: 'Goodfellas' },
+  { label: 'The Matrix' },
   { label: 'Seven Samurai' },
   {
-    label: 'Star Wars: Episode IV - A New Hope'
+    label: 'Star Wars: Episode IV - A New Hope',
   },
 ];
 function useDebounce(value: string, delay: number): string {
@@ -67,15 +67,15 @@ const Home = () => {
   const [input, setInput] = useState('');
   const debouncedSearchTerm = useDebounce(input, 500);
   const { data: searchTrails = [] } = useSearchTrailQuery(debouncedSearchTerm);
-  const datatrails = (searchData:TrailsCount) => {
-    if(!searchData || !searchData?.results?.length){
-      return []
+  const datatrails = (searchData: TrailsCount) => {
+    if (!searchData || !searchData?.results?.length) {
+      return [];
     }
-    topTrails = searchData?.results?.map((values: ITrailData1)=>{
-       return {label: values.title || ''}
-     })
-  }
-  datatrails(searchTrails)
+    topTrails = searchData?.results?.map((values: ITrailData1) => {
+      return { label: values.title || '' };
+    });
+  };
+  datatrails(searchTrails);
   return (
     <Box sx={{ bgcolor: 'background.default' }} className='home-page'>
       <HeroBanner />
@@ -94,8 +94,7 @@ const Home = () => {
                 className='input-field'
                 placeholder='Search by name trail'
                 {...params}
-                onChange={({ target }) => setInput(target.value)} 
-
+                onChange={({ target }) => setInput(target.value)}
               />
             )}
           />
