@@ -43,7 +43,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function FullWidthTabs({trailDes}:Props) {
+export default function FullWidthTabs({ trailDes }: Props) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -70,9 +70,7 @@ export default function FullWidthTabs({trailDes}:Props) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} dir={theme.direction}>
-        <Typography>
-         {trailDes}
-        </Typography>
+        <Typography>{trailDes}</Typography>
       </TabPanel>
     </Box>
   );

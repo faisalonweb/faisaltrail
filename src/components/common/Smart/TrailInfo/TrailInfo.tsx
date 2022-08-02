@@ -81,7 +81,9 @@ const TrailInfo = () => {
 
                 <Box>
                   <Typography fontWeight='bold'>{elevation}</Typography>
-                  <Typography variant='subtitle2'>{trail.properties[0]?.evaluation_plan}</Typography>
+                  <Typography variant='subtitle2'>
+                    {trail.properties[0]?.evaluation_plan}
+                  </Typography>
                 </Box>
 
                 <Box>
