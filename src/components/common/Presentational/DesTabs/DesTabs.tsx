@@ -12,6 +12,9 @@ interface TabPanelProps {
   index: number;
   value: number;
 }
+interface Props {
+  trailDes: string;
+}
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
@@ -40,7 +43,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function FullWidthTabs() {
+export default function FullWidthTabs({trailDes}:Props) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -68,13 +71,7 @@ export default function FullWidthTabs() {
       </AppBar>
       <TabPanel value={value} index={0} dir={theme.direction}>
         <Typography>
-          The Lake Agnes Trail is an accessible and relatively short route up to the Lake Agnes Tea
-          House which was built by the Canadian Pacific Railway in 1901 as a refuge for hikers
-          travelling to higher locations. The trail has an elevation gain of 400 metres and offers
-          fantastic views of the Nokhu Crags and Lake Louise. up to the Lake Agnes Tea House which
-          was built by the Canadian Pacific Railway in 1901 as a refuge for hikers travelling to
-          higher locations. The trail has an elevation gain of 400 metres and offers fantastic views
-          of the Nokhu Crags and Lake Louise.
+         {trailDes}
         </Typography>
       </TabPanel>
     </Box>
