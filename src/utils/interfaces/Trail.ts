@@ -20,12 +20,17 @@ export interface LocData {
   trail: number;
   updated_at: string;
 }
+export interface ImagesData {
+  id: number;
+  image: string;
+  property: number;
+}
 export interface PropertiesData {
   id: number;
   distance: number;
   elevation_loss: number;
   evaluation_plan: number;
-  images: [];
+  images: ImagesData[];
   max_elevation: number;
   min_elevation: number;
   technical_difficulty: string;

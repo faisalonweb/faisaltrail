@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import TrailDetailCard from 'src/components/shared/TrailDetailCard/TrailDetailCard';
 import 'src/components/common/Smart/TrailInfo/TrailInfo.scss';
-import { TrailProps } from 'src/utils/interfaces/trailsInterface';
+import { ITrailData1 } from 'src/utils/interfaces/Trail';
 import DesTabs from 'src/components/common/Presentational/DesTabs/DesTabs';
 import WeatherTabs from 'src/components/common/Presentational/WeatherTabs/WeatherTabs';
 import ReviewsTabs from 'src/components/common/Smart/ReviewsTabs/ReviewsTabs';
@@ -23,8 +23,8 @@ const TrailInfo = () => {
   const { length, elevation, route } = constantData.trailInfo;
   const [expanded, setExpanded] = useState(false);
   const location = useLocation();
-  const trail = location.state as TrailProps;
-  const dataForDisplay = expanded ? trail.description : trail.description.slice(0, 240);
+  const trail = location.state as ITrailData1;
+  const dataForDisplay = expanded ? trail.title : trail.title.slice(0, 240);
   return (
     <Container className='container-cls'>
       <Box sx={{ mt: '10px' }} display='flex' justifyContent='flex-end'>
@@ -54,7 +54,7 @@ const TrailInfo = () => {
       </Box>
       <Box sx={{ mt: '10px' }}>
         <img
-          src={trail.image}
+          src={trail.properties[0]?.images[0]?.image}
           style={{ height: 350, width: '100%', objectFit: 'cover' }}
           alt='img'
         ></img>
@@ -76,17 +76,19 @@ const TrailInfo = () => {
               <Stack className='stack-cls' direction='row' spacing={{ xs: 10, md: 15, lg: 15 }}>
                 <Box>
                   <Typography fontWeight='bold'>{length}</Typography>
-                  <Typography variant='subtitle2'>7.4</Typography>
+                  <Typography variant='subtitle2'>{trail.properties[0]?.distance}</Typography>
                 </Box>
 
                 <Box>
                   <Typography fontWeight='bold'>{elevation}</Typography>
-                  <Typography variant='subtitle2'>1034km</Typography>
+                  <Typography variant='subtitle2'>
+                    {trail.properties[0]?.evaluation_plan}
+                  </Typography>
                 </Box>
 
                 <Box>
                   <Typography fontWeight='bold'>{route}</Typography>
-                  <Typography variant='subtitle2'>Out & back</Typography>
+                  <Typography variant='subtitle2'>{trail.properties[0]?.trail_type}</Typography>
                 </Box>
               </Stack>
               <Box className='chip-cls'>
@@ -104,7 +106,7 @@ const TrailInfo = () => {
               </Box>
 
               <Box sx={{ mt: '30px' }}>
-                <DesTabs />
+                <DesTabs trailDes={trail.description} />
               </Box>
               <Box sx={{ mt: '30px' }}>
                 <WeatherTabs />

@@ -5,7 +5,6 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import { useNavigate } from 'react-router-dom';
 import { useGetAllTrailsQuery } from 'src/store/reducers/api';
 import 'src/components/common/Presentational/TrailList/TrailList.scss';
-import two from 'src/assets/images/two.jpg';
 import { ITrailData1 } from 'src/utils/interfaces/Trail';
 
 const TrailList = () => {
@@ -34,7 +33,7 @@ const TrailList = () => {
             >
               <Box className='image-cls'>
                 <img
-                  src={two}
+                  src={trail.properties[0]?.images[0]?.image}
                   style={{ height: 240, borderRadius: 10, objectFit: 'cover' }}
                   alt='img'
                 ></img>
