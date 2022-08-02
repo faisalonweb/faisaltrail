@@ -43,8 +43,7 @@ const LoginPage = () => {
   };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    handleErrors();
-    if (verifyErrors()) {
+    if (handleErrors()) {
       await signinUser({ username, password })
         .unwrap()
         .then((resp) => {
@@ -57,21 +56,23 @@ const LoginPage = () => {
     }
   };
   const handleErrors = () => {
-    if (!username) {
-      setEmailError('Email is required.');
-    } else if (!checkValidEmail(username)) {
-      setEmailError('Invalid Email.');
+    if (username?.length && checkValidEmail(username) && password?.length) {
+      return true;
     } else {
-      setEmailError('');
+      if (!username) {
+        setEmailError('Email is required.');
+      } else if (!checkValidEmail(username)) {
+        setEmailError('Invalid Email.');
+      } else {
+        setEmailError('');
+      }
+      if (!password) {
+        setPasswordError('Password is required.');
+      } else {
+        setPasswordError('');
+      }
     }
-    if (!password) {
-      setPasswordError('Password is required.');
-    } else {
-      setPasswordError('');
-    }
-  };
-  const verifyErrors = () => {
-    return username?.length && checkValidEmail(username) && password?.length;
+    return false;
   };
   return (
     <Box className='Parent-Login'>
@@ -134,7 +135,6 @@ const LoginPage = () => {
                   autoComplete='current-password'
                 />
                 <p className='errorText'>{passwordError}</p>
-                {/* <p className="errorText">{loginError}</p>  */}
               </Grid>
             </Grid>
 
