@@ -99,7 +99,7 @@ const Home = () => {
             )}
           />
         </Paper>
-        <Link className='explore' href='/' color='inherit'>
+        <Link className='explore' href='/explore' color='inherit'>
           {exploreNear}
         </Link>
       </div>
