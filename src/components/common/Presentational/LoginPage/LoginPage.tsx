@@ -56,14 +56,9 @@ const LoginPage = () => {
     }
   };
   const handleErrors = () => {
-    if (
-      username?.length &&
-      checkValidEmail(username) &&
-      password?.length 
-    ) {
+    if (username?.length && checkValidEmail(username) && password?.length) {
       return true;
-    }
-    else {
+    } else {
       if (!username) {
         setEmailError('Email is required.');
       } else if (!checkValidEmail(username)) {
@@ -78,7 +73,6 @@ const LoginPage = () => {
       }
     }
     return false;
-  
   };
   return (
     <Box className='Parent-Login'>
