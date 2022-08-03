@@ -5,7 +5,6 @@ import 'react-multi-carousel/lib/styles.css';
 import { useGetAllCategoriesQuery } from 'src/store/reducers/api';
 import { ICategoryData } from 'src/utils/interfaces/Trail';
 
-
 const responsive = {
   desktop: {
     breakpoint: { max: 1500, min: 1200 },
@@ -25,7 +24,7 @@ const responsive = {
 };
 
 const MultiCarosual = () => {
-  const { data: categories = {results:[]} } = useGetAllCategoriesQuery({});
+  const { data: categories = { results: [] } } = useGetAllCategoriesQuery({});
   return (
     <div className='multi-carosual'>
       <Carousel
@@ -42,14 +41,11 @@ const MultiCarosual = () => {
         itemClass='image-item'
         shouldResetAutoplay={false}
       >
-        {categories?.results?.map((category:ICategoryData) => {
+        {categories?.results?.map((category: ICategoryData) => {
           return (
             <div className='head-container' key={category?.id}>
-                <img
-                  src={category?.image}
-                  alt='img'
-                />
-                <h3>{category?.title}</h3>
+              <img src={category?.image} alt='img' />
+              <h3>{category?.title}</h3>
             </div>
           );
         })}

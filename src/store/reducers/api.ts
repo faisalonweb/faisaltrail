@@ -22,7 +22,5 @@ export const appApi = createApi({
       },
     }),
   }),
-  
-  
 });
 export const { useGetAllTrailsQuery, useSearchTrailQuery, useGetAllCategoriesQuery } = appApi;

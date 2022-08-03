@@ -104,7 +104,7 @@ const Home = () => {
         </Link>
       </div>
       <Box sx={{ bgcolor: 'background.default' }} className='multi-carousal-cls'>
-        <MultiCarosual/>
+        <MultiCarosual />
       </Box>
       <div className='adventure-panel'>
         <AdventureTabs />
