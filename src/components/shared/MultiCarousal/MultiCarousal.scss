@@ -2,17 +2,21 @@
 .multi-carosual {
   .image-item {
     padding-left: 20px;
-    .head-text {
+    .head-container {
       position: relative;
-    }
-    .text-on-image {
-      position: absolute;
-      right: 40%;
-      left: 40%;
-      bottom: 35%;
-      font-size: 18px;
-      color: white;
-      font-family: Arial, Helvetica, sans-serif;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+      }
+      h3 {
+        position: absolute;
+        margin: 0px;
+        top:80px;
+        left:0px;
+        right: 0px;
+        text-align: center;
+      }
     }
   }
 }
