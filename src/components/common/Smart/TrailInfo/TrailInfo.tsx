@@ -13,18 +13,21 @@ import WeatherTabs from 'src/components/common/Presentational/WeatherTabs/Weathe
 import ReviewsTabs from 'src/components/common/Smart/ReviewsTabs/ReviewsTabs';
 import { localizedData } from 'src/utils/helpers/language';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
+import { useGetTrailByIdQuery } from 'src/store/reducers/api';
 import { useAppSelector } from 'src/store/hooks';
 import { chipList } from 'src/utils/constants/constants';
-import { useLocation } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
+
 
 const TrailInfo = () => {
   const { trailCards } = useAppSelector((state) => state.appData);
+  const {id} = useParams();
+  const { data: getTrail} = useGetTrailByIdQuery(id);
   const constantData: LocalizationInterface = localizedData();
   const { length, elevation, route } = constantData.trailInfo;
   const [expanded, setExpanded] = useState(false);
-  const location = useLocation();
-  const trail = location.state as ITrailData1;
-  const dataForDisplay = expanded ? trail.title : trail.title.slice(0, 240);
+  const trail = getTrail as ITrailData1;
+  const dataForDisplay = expanded ? trail?.title : trail?.title.slice(0, 240);
   return (
     <Container className='container-cls'>
       <Box sx={{ mt: '10px' }} display='flex' justifyContent='flex-end'>
@@ -54,7 +57,7 @@ const TrailInfo = () => {
       </Box>
       <Box sx={{ mt: '10px' }}>
         <img
-          src={trail.properties[0]?.images[0]?.image}
+          src={trail?.properties[0]?.images[0]?.image}
           style={{ height: 350, width: '100%', objectFit: 'cover' }}
           alt='img'
         ></img>
@@ -76,19 +79,19 @@ const TrailInfo = () => {
               <Stack className='stack-cls' direction='row' spacing={{ xs: 10, md: 15, lg: 15 }}>
                 <Box>
                   <Typography fontWeight='bold'>{length}</Typography>
-                  <Typography variant='subtitle2'>{trail.properties[0]?.distance}</Typography>
+                  <Typography variant='subtitle2'>{trail?.properties[0]?.distance}</Typography>
                 </Box>
 
                 <Box>
                   <Typography fontWeight='bold'>{elevation}</Typography>
                   <Typography variant='subtitle2'>
-                    {trail.properties[0]?.evaluation_plan}
+                    {trail?.properties[0]?.evaluation_plan}
                   </Typography>
                 </Box>
 
                 <Box>
                   <Typography fontWeight='bold'>{route}</Typography>
-                  <Typography variant='subtitle2'>{trail.properties[0]?.trail_type}</Typography>
+                  <Typography variant='subtitle2'>{trail?.properties[0]?.trail_type}</Typography>
                 </Box>
               </Stack>
               <Box className='chip-cls'>
@@ -106,7 +109,7 @@ const TrailInfo = () => {
               </Box>
 
               <Box sx={{ mt: '30px' }}>
-                <DesTabs trailDes={trail.description} />
+                <DesTabs trailDes={trail?.description} />
               </Box>
               <Box sx={{ mt: '30px' }}>
                 <WeatherTabs />

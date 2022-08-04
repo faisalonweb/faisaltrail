@@ -12,70 +12,57 @@ import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfac
 import { useSearchTrailQuery } from 'src/store/reducers/api';
 import 'src/components/common/Smart/Home/Home.scss';
 import { ITrailData1, TrailsCount } from 'src/utils/interfaces/Trail';
+import { useNavigate } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 let topTrails = [
-  { label: 'The Shawshank Redemption' },
-  { label: 'The Godfather' },
-  { label: 'The Godfather: Part II' },
-  { label: 'The Dark Knight' },
-  { label: '12 Angry Men' },
-  { label: 'Schindler List' },
-  { label: 'Pulp Fiction' },
-  {
-    label: 'The Lord of the Rings: The Return of the King',
-    year: 2003,
-  },
-  { label: 'The Good, the Bad and the Ugly' },
-  { label: 'Fight Club' },
-  {
-    label: 'The Lord of the Rings: The Fellowship of the Ring',
-  },
-  {
-    label: 'Star Wars: Episode V - The Empire Strikes Back',
-  },
-  { label: 'Forrest Gump' },
-  { label: 'Inception' },
-  {
-    label: 'The Lord of the Rings: The Two Towers',
-  },
-  { label: 'One Flew Over the Cuckoo Nest' },
-  { label: 'Goodfellas' },
-  { label: 'The Matrix' },
-  { label: 'Seven Samurai' },
-  {
-    label: 'Star Wars: Episode IV - A New Hope',
-  },
+  { id:1,label: 'The Shawshank Redemption' },
+  { id:2,label: 'The Godfather' },
+  { id:3,label: 'The Godfather: Part II' },
+  { id:4,label: 'The Dark Knight' },
+  { id:5,label: '12 Angry Men' },
+  { id:6,label: 'Schindler List' },
+
 ];
-function useDebounce(value: string, delay: number): string {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]);
-
-  return debouncedValue;
+interface ChangeValues {
+  id: number;
+  label: string;
 }
+
 const Home = () => {
   const constantData: LocalizationInterface = localizedData();
+  const navigate = useNavigate();
   const { findNext, exploreNear } = constantData.home;
   const [input, setInput] = useState('');
   const debouncedSearchTerm = useDebounce(input, 500);
   const { data: searchTrails = [] } = useSearchTrailQuery(debouncedSearchTerm);
+
+  function useDebounce(value: string, delay: number): string {
+    const [debouncedValue, setDebouncedValue] = useState(value);
+    useEffect(() => {
+      const handler = setTimeout(() => {
+        setDebouncedValue(value);
+      }, delay);
+      return () => {
+        clearTimeout(handler);
+      };
+    }, [value, delay]);
+  
+    return debouncedValue;
+  }
   const datatrails = (searchData: TrailsCount) => {
     if (!searchData || !searchData?.results?.length) {
       return [];
     }
     topTrails = searchData?.results?.map((values: ITrailData1) => {
-      return { label: values.title || '' };
+      return { id:values.id,label: values.title || '' };
     });
   };
   datatrails(searchTrails);
+  
+ 
+  const handleChange = (e:React.SyntheticEvent<Element, Event>,v:ChangeValues | null) => {
+    navigate(`/trails/trail-info/${v?.id}`)
+  }
   return (
     <Box sx={{ bgcolor: 'background.default' }} className='home-page'>
       <HeroBanner />
@@ -88,6 +75,8 @@ const Home = () => {
             id='combo-box-demo'
             options={topTrails}
             popupIcon={<SearchIcon />}
+            onChange={handleChange}
+            isOptionEqualToValue={(option, value) => option.id === value.id}
             renderInput={(params) => (
               <TextField
                 style={{ border: 'none' }}
