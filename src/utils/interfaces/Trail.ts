@@ -50,3 +50,10 @@ export interface TrailsCount {
   previous: number;
   results: ITrailData1[];
 }
+export interface ICategoryData {
+  id: number;
+  image: string;
+  title: string;
+  updated_at: string;
+  created_at: string;
+}

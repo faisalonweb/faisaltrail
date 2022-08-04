@@ -9,6 +9,9 @@ export const appApi = createApi({
     getAllTrails: builder.query({
       query: () => ({ url: '/api/trails/' }),
     }),
+    getAllCategories: builder.query({
+      query: () => ({ url: '/api/categories/' }),
+    }),
     searchTrail: builder.query({
       query: (title) => {
         return {
@@ -20,4 +23,4 @@ export const appApi = createApi({
     }),
   }),
 });
-export const { useGetAllTrailsQuery, useSearchTrailQuery } = appApi;
+export const { useGetAllTrailsQuery, useSearchTrailQuery, useGetAllCategoriesQuery } = appApi;

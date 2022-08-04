@@ -1,31 +1,30 @@
 import React from 'react';
 import 'src/components/shared/MultiCarousal/MultiCarousal.scss';
 import Carousel from 'react-multi-carousel';
-import { images } from 'src/data/data';
 import 'react-multi-carousel/lib/styles.css';
+import { useGetAllCategoriesQuery } from 'src/store/reducers/api';
+import { ICategoryData } from 'src/utils/interfaces/Trail';
 
-interface Props {
-  carostring?: string;
-}
 const responsive = {
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 5,
+    breakpoint: { max: 1500, min: 1200 },
+    items: 3,
     paritialVisibilityGutter: 60,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 1200, min: 900 },
     items: 2,
     paritialVisibilityGutter: 50,
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 900, min: 0 },
     items: 2,
     paritialVisibilityGutter: 30,
   },
 };
 
-const MultiCarosual = ({ carostring }: Props) => {
+const MultiCarosual = () => {
+  const { data: categories = { results: [] } } = useGetAllCategoriesQuery({});
   return (
     <div className='multi-carosual'>
       <Carousel
@@ -42,19 +41,11 @@ const MultiCarosual = ({ carostring }: Props) => {
         itemClass='image-item'
         shouldResetAutoplay={false}
       >
-        {images.map((image) => {
+        {categories?.results?.map((category: ICategoryData) => {
           return (
-            <div className='head-text' key={image}>
-              <div className='head-image'>
-                <img
-                  style={{ width: '100%', height: '100%', borderRadius: '10px' }}
-                  src={image}
-                  alt='img'
-                />
-              </div>
-              <div className='text-on-image'>
-                <h3>{carostring}</h3>
-              </div>
+            <div className='head-container' key={category?.id}>
+              <img src={category?.image} alt='img' />
+              <h3>{category?.title}</h3>
             </div>
           );
         })}
