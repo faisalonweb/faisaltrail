@@ -31,4 +31,9 @@ export const appApi = createApi({
     }),
   }),
 });
-export const { useGetAllTrailsQuery, useSearchTrailQuery, useGetAllCategoriesQuery, useGetTrailByIdQuery } = appApi;
+export const {
+  useGetAllTrailsQuery,
+  useSearchTrailQuery,
+  useGetAllCategoriesQuery,
+  useGetTrailByIdQuery,
+} = appApi;

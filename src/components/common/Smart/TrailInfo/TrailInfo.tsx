@@ -16,13 +16,12 @@ import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfac
 import { useGetTrailByIdQuery } from 'src/store/reducers/api';
 import { useAppSelector } from 'src/store/hooks';
 import { chipList } from 'src/utils/constants/constants';
-import {useParams} from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
 
 const TrailInfo = () => {
   const { trailCards } = useAppSelector((state) => state.appData);
-  const {id} = useParams();
-  const { data: getTrail} = useGetTrailByIdQuery(id);
+  const { id } = useParams();
+  const { data: getTrail } = useGetTrailByIdQuery(id);
   const constantData: LocalizationInterface = localizedData();
   const { length, elevation, route } = constantData.trailInfo;
   const [expanded, setExpanded] = useState(false);

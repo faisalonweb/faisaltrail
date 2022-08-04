@@ -15,13 +15,12 @@ import { ITrailData1, TrailsCount } from 'src/utils/interfaces/Trail';
 import { useNavigate } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 let topTrails = [
-  { id:1,label: 'The Shawshank Redemption' },
-  { id:2,label: 'The Godfather' },
-  { id:3,label: 'The Godfather: Part II' },
-  { id:4,label: 'The Dark Knight' },
-  { id:5,label: '12 Angry Men' },
-  { id:6,label: 'Schindler List' },
-
+  { id: 1, label: 'The Shawshank Redemption' },
+  { id: 2, label: 'The Godfather' },
+  { id: 3, label: 'The Godfather: Part II' },
+  { id: 4, label: 'The Dark Knight' },
+  { id: 5, label: '12 Angry Men' },
+  { id: 6, label: 'Schindler List' },
 ];
 interface ChangeValues {
   id: number;
@@ -46,7 +45,7 @@ const Home = () => {
         clearTimeout(handler);
       };
     }, [value, delay]);
-  
+
     return debouncedValue;
   }
   const datatrails = (searchData: TrailsCount) => {
@@ -54,15 +53,14 @@ const Home = () => {
       return [];
     }
     topTrails = searchData?.results?.map((values: ITrailData1) => {
-      return { id:values.id,label: values.title || '' };
+      return { id: values.id, label: values.title || '' };
     });
   };
   datatrails(searchTrails);
-  
- 
-  const handleChange = (e:React.SyntheticEvent<Element, Event>,v:ChangeValues | null) => {
-    navigate(`/trails/trail-info/${v?.id}`)
-  }
+
+  const handleChange = (e: React.SyntheticEvent<Element, Event>, v: ChangeValues | null) => {
+    navigate(`/trails/trail-info/${v?.id}`);
+  };
   return (
     <Box sx={{ bgcolor: 'background.default' }} className='home-page'>
       <HeroBanner />
