@@ -20,6 +20,15 @@ export const appApi = createApi({
         };
       },
     }),
+    getTrailsByCategoryId: builder.query({
+      query: (category_id) => {
+        return {
+          url: '/api/trails/',
+          method: 'get',
+          params: { category_id },
+        };
+      },
+    }),
     searchTrail: builder.query({
       query: (title) => {
         return {
@@ -36,4 +45,5 @@ export const {
   useSearchTrailQuery,
   useGetAllCategoriesQuery,
   useGetTrailByIdQuery,
+  useGetTrailsByCategoryIdQuery
 } = appApi;
