@@ -20,6 +20,7 @@ export const appApi = createApi({
         };
       },
     }),
+     /* eslint-disable */
     getTrailsByCategoryId: builder.query({
       query: (category_id) => {
         return {
@@ -29,6 +30,7 @@ export const appApi = createApi({
         };
       },
     }),
+     /* eslint-enable */
     searchTrail: builder.query({
       query: (title) => {
         return {
@@ -45,5 +47,5 @@ export const {
   useSearchTrailQuery,
   useGetAllCategoriesQuery,
   useGetTrailByIdQuery,
-  useGetTrailsByCategoryIdQuery
+  useGetTrailsByCategoryIdQuery,
 } = appApi;

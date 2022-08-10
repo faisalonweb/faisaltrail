@@ -41,7 +41,7 @@ export interface ITrailData1 {
   id: number;
   title: string;
   category: number;
-  category_title:string;
+  category_title: string;
   locations: LocData[];
   properties: PropertiesData[];
   description: string;
