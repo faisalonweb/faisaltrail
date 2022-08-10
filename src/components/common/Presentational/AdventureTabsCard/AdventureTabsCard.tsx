@@ -2,10 +2,11 @@ import React from 'react';
 import 'src/components/common/Presentational/AdventureTabsCard/AdventureTabsCard.scss';
 
 interface Props {
+  key?: number;
   trailImg?: string;
   trailTitle?: string;
-  trailDistance?: string;
-  trailTime?: string;
+  trailDistance?: number | string;
+  trailTime?: number | string;
 }
 const AdventureTabsCard = ({ trailImg, trailTitle, trailDistance, trailTime }: Props) => {
   return (
@@ -16,8 +17,8 @@ const AdventureTabsCard = ({ trailImg, trailTitle, trailDistance, trailTime }: P
       <div className='trail-name'>
         <p className='trail-title'>{trailTitle}</p>
         <div className='trail-info'>
-          <p className='trail-distance'>{trailDistance}</p>
-          <p className='trail-time'>{trailTime}</p>
+          <p className='trail-distance'>{trailDistance} km</p>
+          <p className='trail-time'>{trailTime} m</p>
         </div>
       </div>
     </div>

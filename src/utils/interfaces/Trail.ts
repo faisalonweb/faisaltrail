@@ -7,7 +7,7 @@ export default interface ITrailData {
   rating?: number;
   reviews?: number;
   length: number;
-  time: string;
+  time: number;
   description: string;
 }
 export interface LocData {
@@ -40,6 +40,8 @@ export interface PropertiesData {
 export interface ITrailData1 {
   id: number;
   title: string;
+  category: number;
+  category_title: string;
   locations: LocData[];
   properties: PropertiesData[];
   description: string;
