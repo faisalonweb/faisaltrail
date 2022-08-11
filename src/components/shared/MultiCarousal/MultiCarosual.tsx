@@ -5,7 +5,7 @@ import 'react-multi-carousel/lib/styles.css';
 import { useGetAllCategoriesQuery } from 'src/store/reducers/api';
 import { ICategoryData } from 'src/utils/interfaces/Trail';
 import { Typography, Box } from '@mui/material';
-import CircularProgress from '@mui/material/CircularProgress'
+import CircularProgress from '@mui/material/CircularProgress';
 
 const responsive = {
   desktop: {
@@ -26,7 +26,7 @@ const responsive = {
 };
 
 const MultiCarosual = () => {
-  const { data: categories = { results: []},isLoading } = useGetAllCategoriesQuery({});
+  const { data: categories = { results: [] }, isLoading } = useGetAllCategoriesQuery({});
   return (
     <div className='multi-carosual'>
       <Carousel
@@ -43,7 +43,7 @@ const MultiCarosual = () => {
         itemClass='image-item'
         shouldResetAutoplay={false}
       >
-         { !isLoading ? (
+        {!isLoading ? (
           categories?.results?.map((category: ICategoryData) => {
             return (
               <div className='head-container' key={category?.id}>
@@ -52,11 +52,11 @@ const MultiCarosual = () => {
               </div>
             );
           })
-         ):(
-           <Box className='progress-cls'>
+        ) : (
+          <Box className='progress-cls'>
             <CircularProgress />
-           </Box>
-         )}
+          </Box>
+        )}
         {}
       </Carousel>
     </div>

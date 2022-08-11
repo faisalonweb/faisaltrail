@@ -13,7 +13,7 @@ import WeatherTabs from 'src/components/common/Presentational/WeatherTabs/Weathe
 import ReviewsTabs from 'src/components/common/Smart/ReviewsTabs/ReviewsTabs';
 import { localizedData } from 'src/utils/helpers/language';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
-import CircularProgress from '@mui/material/CircularProgress'
+import CircularProgress from '@mui/material/CircularProgress';
 import { useGetTrailByIdQuery } from 'src/store/reducers/api';
 import { useAppSelector } from 'src/store/hooks';
 import { chipList } from 'src/utils/constants/constants';
@@ -29,133 +29,131 @@ const TrailInfo = () => {
   const trail = getTrail as ITrailData1;
   const dataForDisplay = expanded ? trail?.title : trail?.title.slice(0, 240);
   return (
-
     <Container className='container-cls'>
-       {
-            !isLoading ? (
-                  <>
-                    <Box sx={{ mt: '10px' }} display='flex' justifyContent='flex-end'>
-        <Paper
-          component='form'
-          sx={{
-            bgcolor: 'background.default',
-            p: '2px 4px',
-            display: 'flex',
-            alignItems: 'center',
-            width: 400,
-          }}
-        >
-          <InputBase
-            sx={{ ml: 1, flex: 1 }}
-            placeholder='Enter a city, park or trail name'
-            inputProps={{ 'aria-label': 'search google maps' }}
-          />
-          <IconButton type='submit' sx={{ p: '10px' }} aria-label='search'>
-            <SearchIcon />
-          </IconButton>
-          <Divider sx={{ height: 28, m: 0.5 }} orientation='vertical' />
-          <IconButton color='primary' sx={{ p: '10px' }} aria-label='directions'>
-            <DirectionsIcon />
-          </IconButton>
-        </Paper>
-      </Box>
-      <Box sx={{ mt: '10px' }}>
-        <img
-          src={trail?.properties[0]?.images[0]?.image}
-          style={{ height: 350, width: '100%', objectFit: 'cover' }}
-          alt='img'
-        ></img>
-      </Box>
-      <Box className='grid-cls'>
-        <Grid className='grid-cls-container' container>
-         
-          <Grid className='left-grid' item xs={12} md={8} lg={8}>
-            <Box className='left-clm'>
-              <Box className='des-box'>
-                <Typography component={'span'} variant='body1'>
-                  {dataForDisplay}
-                </Typography>
-                <Button onClick={() => setExpanded(!expanded)}>
-                  {expanded ? 'Show Less' : 'Show More'}
-                </Button>
-              </Box>
-
-              <Divider sx={{ marginY: '20px' }} />
-              <Stack className='stack-cls' direction='row' spacing={{ xs: 10, md: 15, lg: 15 }}>
-                <Box>
-                  <Typography fontWeight='bold'>{length}</Typography>
-                  <Typography variant='subtitle2'>{trail?.properties[0]?.distance}</Typography>
-                </Box>
-
-                <Box>
-                  <Typography fontWeight='bold'>{elevation}</Typography>
-                  <Typography variant='subtitle2'>
-                    {trail?.properties[0]?.evaluation_plan}
-                  </Typography>
-                </Box>
-
-                <Box>
-                  <Typography fontWeight='bold'>{route}</Typography>
-                  <Typography variant='subtitle2'>{trail?.properties[0]?.trail_type}</Typography>
-                </Box>
-              </Stack>
-              <Box className='chip-cls'>
-                {chipList?.map((label) => (
-                  <Box key={label}>
-                    <Chip
-                      label={label}
-                      color='success'
-                      size='medium'
-                      variant='outlined'
-                      sx={{ mr: 1, mt: 1 }}
-                    />
+      {!isLoading ? (
+        <>
+          <Box sx={{ mt: '10px' }} display='flex' justifyContent='flex-end'>
+            <Paper
+              component='form'
+              sx={{
+                bgcolor: 'background.default',
+                p: '2px 4px',
+                display: 'flex',
+                alignItems: 'center',
+                width: 400,
+              }}
+            >
+              <InputBase
+                sx={{ ml: 1, flex: 1 }}
+                placeholder='Enter a city, park or trail name'
+                inputProps={{ 'aria-label': 'search google maps' }}
+              />
+              <IconButton type='submit' sx={{ p: '10px' }} aria-label='search'>
+                <SearchIcon />
+              </IconButton>
+              <Divider sx={{ height: 28, m: 0.5 }} orientation='vertical' />
+              <IconButton color='primary' sx={{ p: '10px' }} aria-label='directions'>
+                <DirectionsIcon />
+              </IconButton>
+            </Paper>
+          </Box>
+          <Box sx={{ mt: '10px' }}>
+            <img
+              src={trail?.properties[0]?.images[0]?.image}
+              style={{ height: 350, width: '100%', objectFit: 'cover' }}
+              alt='img'
+            ></img>
+          </Box>
+          <Box className='grid-cls'>
+            <Grid className='grid-cls-container' container>
+              <Grid className='left-grid' item xs={12} md={8} lg={8}>
+                <Box className='left-clm'>
+                  <Box className='des-box'>
+                    <Typography component={'span'} variant='body1'>
+                      {dataForDisplay}
+                    </Typography>
+                    <Button onClick={() => setExpanded(!expanded)}>
+                      {expanded ? 'Show Less' : 'Show More'}
+                    </Button>
                   </Box>
-                ))}
-              </Box>
 
-              <Box sx={{ mt: '30px' }}>
-                <DesTabs trailDes={trail?.description} />
-              </Box>
-              <Box sx={{ mt: '30px' }}>
-                <WeatherTabs />
-              </Box>
-              <Box sx={{ mt: '30px' }}>
-                <ReviewsTabs />
-              </Box>
-            </Box>
-          </Grid>
-          <Grid className='right-grid' item xs={12} md={4} lg={4}>
-            <Box>
-              <Typography variant='h6' fontWeight='bold'>
-                Nearby trails
-              </Typography>
-              <>
-                {trailCards.map((trail) => (
-                  <div key={trail.id}>
-                    <TrailDetailCard
-                      title={trail.title}
-                      time={trail.time}
-                      rating={trail.rating}
-                      img={trail.image}
-                      info={trail.info}
-                      difficulty={trail.difficulty}
-                      reviews={trail.reviews}
-                      length={trail.length}
-                    />
-                  </div>
-                ))}
-              </>
-            </Box>
-          </Grid>
-        </Grid>
-      </Box>
+                  <Divider sx={{ marginY: '20px' }} />
+                  <Stack className='stack-cls' direction='row' spacing={{ xs: 10, md: 15, lg: 15 }}>
+                    <Box>
+                      <Typography fontWeight='bold'>{length}</Typography>
+                      <Typography variant='subtitle2'>{trail?.properties[0]?.distance}</Typography>
+                    </Box>
+
+                    <Box>
+                      <Typography fontWeight='bold'>{elevation}</Typography>
+                      <Typography variant='subtitle2'>
+                        {trail?.properties[0]?.evaluation_plan}
+                      </Typography>
+                    </Box>
+
+                    <Box>
+                      <Typography fontWeight='bold'>{route}</Typography>
+                      <Typography variant='subtitle2'>
+                        {trail?.properties[0]?.trail_type}
+                      </Typography>
+                    </Box>
+                  </Stack>
+                  <Box className='chip-cls'>
+                    {chipList?.map((label) => (
+                      <Box key={label}>
+                        <Chip
+                          label={label}
+                          color='success'
+                          size='medium'
+                          variant='outlined'
+                          sx={{ mr: 1, mt: 1 }}
+                        />
+                      </Box>
+                    ))}
+                  </Box>
+
+                  <Box sx={{ mt: '30px' }}>
+                    <DesTabs trailDes={trail?.description} />
+                  </Box>
+                  <Box sx={{ mt: '30px' }}>
+                    <WeatherTabs />
+                  </Box>
+                  <Box sx={{ mt: '30px' }}>
+                    <ReviewsTabs />
+                  </Box>
+                </Box>
+              </Grid>
+              <Grid className='right-grid' item xs={12} md={4} lg={4}>
+                <Box>
+                  <Typography variant='h6' fontWeight='bold'>
+                    Nearby trails
+                  </Typography>
+                  <>
+                    {trailCards.map((trail) => (
+                      <div key={trail.id}>
+                        <TrailDetailCard
+                          title={trail.title}
+                          time={trail.time}
+                          rating={trail.rating}
+                          img={trail.image}
+                          info={trail.info}
+                          difficulty={trail.difficulty}
+                          reviews={trail.reviews}
+                          length={trail.length}
+                        />
+                      </div>
+                    ))}
                   </>
-            ): (
-              <Box className='progress-cls'>
-              <CircularProgress />
-              </Box>
-            )
-          }
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
+        </>
+      ) : (
+        <Box className='progress-cls'>
+          <CircularProgress />
+        </Box>
+      )}
     </Container>
   );
 };

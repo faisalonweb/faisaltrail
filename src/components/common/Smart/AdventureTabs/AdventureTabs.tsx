@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import AdventureTabsCard from 'src/components/common/Presentational/AdventureTabsCard/AdventureTabsCard';
 import { useGetAllCategoriesQuery, useGetTrailsByCategoryIdQuery } from 'src/store/reducers/api';
 import { ITrailData1, ICategoryData } from 'src/utils/interfaces/Trail';
-import CircularProgress from '@mui/material/CircularProgress'
+import CircularProgress from '@mui/material/CircularProgress';
 import 'src/components/common/Smart/AdventureTabs/AdventureTabs.scss';
 
 interface TabPanelProps {
@@ -69,26 +69,23 @@ export default function AdventureTabs() {
       </Box>
       <TabPanel value={value} index={value}>
         <div className='trail-info-cls'>
-          {
-            !isLoading ? (
-              getTrails?.results?.map((trail: ITrailData1) => {
-                return (
-                  <AdventureTabsCard
-                    key={trail?.id}
-                    trailImg={trail.properties[0]?.images[0]?.image}
-                    trailDistance={trail.properties[0]?.distance}
-                    trailTime={trail.properties[0]?.distance}
-                    trailTitle={trail.title}
-                  />
-                );
-              })
-            ):(
-             <Box className='progress-cls'>
-                <CircularProgress />
-             </Box>
-            )
-          }
-        
+          {!isLoading ? (
+            getTrails?.results?.map((trail: ITrailData1) => {
+              return (
+                <AdventureTabsCard
+                  key={trail?.id}
+                  trailImg={trail.properties[0]?.images[0]?.image}
+                  trailDistance={trail.properties[0]?.distance}
+                  trailTime={trail.properties[0]?.distance}
+                  trailTitle={trail.title}
+                />
+              );
+            })
+          ) : (
+            <Box className='progress-cls'>
+              <CircularProgress />
+            </Box>
+          )}
         </div>
       </TabPanel>
     </Box>
