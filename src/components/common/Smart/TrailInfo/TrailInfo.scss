@@ -1,5 +1,10 @@
 @import 'src/styles/main.scss';
 .container-cls {
+  .progress-cls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .grid-cls {
     .grid-cls-container {
       border-left: 1px solid lightgray;
