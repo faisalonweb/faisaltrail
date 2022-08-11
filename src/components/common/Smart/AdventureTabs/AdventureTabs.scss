@@ -16,13 +16,18 @@
   .trail-info-cls {
     height: 520px;
     @include md {
-      height: 1000px;
+      height: 420px;
     }
     @include sm {
-      height: 1000px;
+      height: 420px;
     }
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    .progress-cls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }

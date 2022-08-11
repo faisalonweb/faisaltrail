@@ -13,6 +13,7 @@ import WeatherTabs from 'src/components/common/Presentational/WeatherTabs/Weathe
 import ReviewsTabs from 'src/components/common/Smart/ReviewsTabs/ReviewsTabs';
 import { localizedData } from 'src/utils/helpers/language';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
+import CircularProgress from '@mui/material/CircularProgress'
 import { useGetTrailByIdQuery } from 'src/store/reducers/api';
 import { useAppSelector } from 'src/store/hooks';
 import { chipList } from 'src/utils/constants/constants';
@@ -21,15 +22,19 @@ import { useParams } from 'react-router-dom';
 const TrailInfo = () => {
   const { trailCards } = useAppSelector((state) => state.appData);
   const { id } = useParams();
-  const { data: getTrail } = useGetTrailByIdQuery(id);
+  const { data: getTrail, isLoading } = useGetTrailByIdQuery(id);
   const constantData: LocalizationInterface = localizedData();
   const { length, elevation, route } = constantData.trailInfo;
   const [expanded, setExpanded] = useState(false);
   const trail = getTrail as ITrailData1;
   const dataForDisplay = expanded ? trail?.title : trail?.title.slice(0, 240);
   return (
+
     <Container className='container-cls'>
-      <Box sx={{ mt: '10px' }} display='flex' justifyContent='flex-end'>
+       {
+            !isLoading ? (
+                  <>
+                    <Box sx={{ mt: '10px' }} display='flex' justifyContent='flex-end'>
         <Paper
           component='form'
           sx={{
@@ -63,6 +68,7 @@ const TrailInfo = () => {
       </Box>
       <Box className='grid-cls'>
         <Grid className='grid-cls-container' container>
+         
           <Grid className='left-grid' item xs={12} md={8} lg={8}>
             <Box className='left-clm'>
               <Box className='des-box'>
@@ -143,6 +149,13 @@ const TrailInfo = () => {
           </Grid>
         </Grid>
       </Box>
+                  </>
+            ): (
+              <Box className='progress-cls'>
+              <CircularProgress />
+              </Box>
+            )
+          }
     </Container>
   );
 };

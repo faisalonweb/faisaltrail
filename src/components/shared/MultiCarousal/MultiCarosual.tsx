@@ -4,7 +4,8 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useGetAllCategoriesQuery } from 'src/store/reducers/api';
 import { ICategoryData } from 'src/utils/interfaces/Trail';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress'
 
 const responsive = {
   desktop: {
@@ -25,7 +26,7 @@ const responsive = {
 };
 
 const MultiCarosual = () => {
-  const { data: categories = { results: [] } } = useGetAllCategoriesQuery({});
+  const { data: categories = { results: []},isLoading } = useGetAllCategoriesQuery({});
   return (
     <div className='multi-carosual'>
       <Carousel
@@ -42,14 +43,21 @@ const MultiCarosual = () => {
         itemClass='image-item'
         shouldResetAutoplay={false}
       >
-        {categories?.results?.map((category: ICategoryData) => {
-          return (
-            <div className='head-container' key={category?.id}>
-              <img src={category?.image} alt='img' />
-              <Typography>{category?.title}</Typography>
-            </div>
-          );
-        })}
+         { !isLoading ? (
+          categories?.results?.map((category: ICategoryData) => {
+            return (
+              <div className='head-container' key={category?.id}>
+                <img src={category?.image} alt='img' />
+                <Typography>{category?.title}</Typography>
+              </div>
+            );
+          })
+         ):(
+           <Box className='progress-cls'>
+            <CircularProgress />
+           </Box>
+         )}
+        {}
       </Carousel>
     </div>
   );

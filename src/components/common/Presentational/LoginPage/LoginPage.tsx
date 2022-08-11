@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -27,7 +25,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
-  const { loginTitle, rememberMe, signinBtn, signupLink, forgotPassword } = constantData.loginPage;
+  const { loginTitle, signinBtn, signupLink, forgotPassword } = constantData.loginPage;
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(e.target.value);
@@ -137,22 +135,6 @@ const LoginPage = () => {
                 <p className='errorText'>{passwordError}</p>
               </Grid>
             </Grid>
-
-            <FormControlLabel
-              control={
-                <Checkbox
-                  value='remember'
-                  sx={{
-                    '&.Mui-checked': {
-                      '&, & + .MuiFormControlLabel-label': {
-                        color: 'var(--normal-text)',
-                      },
-                    },
-                  }}
-                />
-              }
-              label={<Typography className='remember-me'>{rememberMe}</Typography>}
-            />
             <Button
               className='submit-button'
               type='submit'

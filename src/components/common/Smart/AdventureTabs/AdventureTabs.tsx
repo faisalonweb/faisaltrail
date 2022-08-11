@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import AdventureTabsCard from 'src/components/common/Presentational/AdventureTabsCard/AdventureTabsCard';
 import { useGetAllCategoriesQuery, useGetTrailsByCategoryIdQuery } from 'src/store/reducers/api';
 import { ITrailData1, ICategoryData } from 'src/utils/interfaces/Trail';
+import CircularProgress from '@mui/material/CircularProgress'
 import 'src/components/common/Smart/AdventureTabs/AdventureTabs.scss';
 
 interface TabPanelProps {
@@ -37,7 +38,7 @@ function TabPanel(props: TabPanelProps) {
 export default function AdventureTabs() {
   const { data: categories = { results: [] } } = useGetAllCategoriesQuery({});
   const [value, setValue] = React.useState(3);
-  const { data: getTrails = [] } = useGetTrailsByCategoryIdQuery(value);
+  const { data: getTrails = [], isLoading } = useGetTrailsByCategoryIdQuery(value);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -68,17 +69,26 @@ export default function AdventureTabs() {
       </Box>
       <TabPanel value={value} index={value}>
         <div className='trail-info-cls'>
-          {getTrails?.results?.map((trail: ITrailData1) => {
-            return (
-              <AdventureTabsCard
-                key={trail?.id}
-                trailImg={trail.properties[0]?.images[0]?.image}
-                trailDistance={trail.properties[0]?.distance}
-                trailTime={trail.properties[0]?.distance}
-                trailTitle={trail.title}
-              />
-            );
-          })}
+          {
+            !isLoading ? (
+              getTrails?.results?.map((trail: ITrailData1) => {
+                return (
+                  <AdventureTabsCard
+                    key={trail?.id}
+                    trailImg={trail.properties[0]?.images[0]?.image}
+                    trailDistance={trail.properties[0]?.distance}
+                    trailTime={trail.properties[0]?.distance}
+                    trailTitle={trail.title}
+                  />
+                );
+              })
+            ):(
+             <Box className='progress-cls'>
+                <CircularProgress />
+             </Box>
+            )
+          }
+        
         </div>
       </TabPanel>
     </Box>
