@@ -80,6 +80,11 @@ const ResponsiveAppBar = () => {
   const handleLogout = () => {
     setAnchorElUser(null);
     localStorage.removeItem('token');
+    navigate('/');
+  };
+  const handleChangePassword = () => {
+    setAnchorElUser(null);
+    navigate('/change-password');
   };
   return (
     <AppBar
@@ -231,6 +236,9 @@ const ResponsiveAppBar = () => {
                   </MenuItem>
                   <MenuItem onClick={handleLogout}>
                     <Typography textAlign='center'>Logout</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleChangePassword}>
+                    <Typography textAlign='center'>Change Password</Typography>
                   </MenuItem>
                 </Menu>
                 <IconButton onClick={toggleMode}>

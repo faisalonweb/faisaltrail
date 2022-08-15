@@ -38,6 +38,7 @@ function App() {
           <Route path='/signup' element={<SignUpPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
+
           <Route path='/explore' element={<ExplorePage />} />
           <Route path='/trails/trail-details/:id' element={<TrailDetail />} />
           <Route path='/trails' element={<Trails />} />

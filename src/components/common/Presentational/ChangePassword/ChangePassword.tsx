@@ -6,48 +6,55 @@ import Typography from '@mui/material/Typography';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { localizedData } from 'src/utils/helpers/language';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
-import { useForgotPasswordRequestMutation } from 'src/store/reducers/privateapi';
+import { useChangePasswordRequestMutation } from 'src/store/reducers/privateapis';
 import { checkValidPassword } from 'src/utils/helpers/helper';
 import { toast } from 'react-toastify';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import 'src/components/common/Presentational/ForgotPassword/ForgotPassword.scss';
+import 'src/components/common/Presentational/ChangePassword/ChangePassword.scss';
 
-const ForgotPassword = () => {
+const ChangePassword = () => {
   const constantData: LocalizationInterface = localizedData();
-  const [searchParams] = useSearchParams();
-  const [forgotPasswordRequest] = useForgotPasswordRequestMutation();
+  const [changePasswordRequest] = useChangePasswordRequestMutation();
+  const [password2, setPassword2] = React.useState('');
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
   const { changePassword, submit } = constantData.forgotPage;
 
-  const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOldPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
     if (checkValidPassword(password)) {
+      setPasswordError('');
+    }
+  };
+  const handleNewPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword2(e.target.value);
+    if (checkValidPassword(password2)) {
       setPasswordError('');
     }
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    /* eslint-disable */
     const payload = {
-      password: password,
-      token: searchParams.get('token'),
-      uidb64: searchParams.get('uidb64'),
+      old_password: password,
+      new_password: password2,
     };
+    /* eslint-enable */
     if (handleErrors()) {
-      await forgotPasswordRequest(payload)
+      await changePasswordRequest(payload)
         .unwrap()
         .then((resp) => {
-          navigate('/login');
           toast.success(resp.message);
+          navigate('/');
         })
         .catch((error) => {
-          toast.error(error.data.error);
+          toast.error(error.data?.old_password[0]);
         });
     }
   };
@@ -55,9 +62,9 @@ const ForgotPassword = () => {
     if (password?.length && checkValidPassword(password)) {
       return true;
     } else {
-      if (!password) {
+      if (!password || !password2) {
         setPasswordError('Password is required.');
-      } else if (!checkValidPassword(password)) {
+      } else if (!checkValidPassword(password2)) {
         setPasswordError('Minimum eight characters, at least one letter and one number');
       } else {
         setPasswordError('');
@@ -66,7 +73,7 @@ const ForgotPassword = () => {
     return false;
   };
   return (
-    <Box className='forgot-login'>
+    <Box className='change-login'>
       <Container component='main' maxWidth='sm' className='container-cls'>
         <Box
           className='Login-Page'
@@ -98,12 +105,27 @@ const ForgotPassword = () => {
                   margin='normal'
                   required
                   fullWidth
+                  name='Enter Old Password'
+                  label='Enter Old Password'
+                  type='password'
+                  id='password'
+                  onChange={handleOldPassword}
+                  value={password}
+                  autoComplete='current-password'
+                />
+                <p className='errorText'>{passwordError}</p>
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  margin='normal'
+                  required
+                  fullWidth
                   name='Enter New Password'
                   label='Enter New Password'
                   type='password'
                   id='password'
-                  onChange={handlePassword}
-                  value={password}
+                  onChange={handleNewPassword}
+                  value={password2}
                   autoComplete='current-password'
                 />
                 <p className='errorText'>{passwordError}</p>
@@ -125,4 +147,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default ChangePassword;

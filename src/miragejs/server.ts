@@ -15,6 +15,7 @@ export function makeServer({ environment = 'test' }) {
       this.passthrough('http://localhost:8000/api/token/');
       this.passthrough('http://localhost:8000/request-reset-email/');
       this.passthrough('http://localhost:8000/password-reset-complete/');
+      this.passthrough('http://localhost:8000/change-password/');
       this.passthrough('http://localhost:8000/api/trails/');
       this.passthrough('http://localhost:8000/api/trails/*');
       this.passthrough('http://localhost:8000/api/categories/');
