@@ -41,5 +41,9 @@
     "length": "Length",
     "elevation": "Elevation Gain",
     "route": "Route Type"
+  },
+  "forgotPage": {
+    "changePassword": "Change Password",
+    "submit": "Submit"
   }
 }

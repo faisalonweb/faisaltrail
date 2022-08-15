@@ -5,6 +5,7 @@ import SignUpPage from 'src/components/common/Presentational/SignUpPage/SignUpPa
 import LoginPage from 'src/components/common/Presentational/LoginPage/LoginPage';
 import ExplorePage from './components/common/Smart/Explore/Explore';
 import NotFoundPage from 'src/components/shared/NotFoundPage/NotFoundPage';
+import ForgotPassword from 'src/components/common/Presentational/ForgotPassword/ForgotPassword';
 import TokenRestrictedRouter from 'src/components/hoc/TokenRestrictedRouter';
 import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from 'src/routes/PrivateRoute';
@@ -36,6 +37,7 @@ function App() {
           <Route path='/' element={<HomeView />} />
           <Route path='/signup' element={<SignUpPage />} />
           <Route path='/login' element={<LoginPage />} />
+          <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/explore' element={<ExplorePage />} />
           <Route path='/trails/trail-details/:id' element={<TrailDetail />} />
           <Route path='/trails' element={<Trails />} />

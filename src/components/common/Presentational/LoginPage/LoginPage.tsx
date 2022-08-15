@@ -16,9 +16,11 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import 'src/components/common/Presentational/LoginPage/LoginPage.scss';
+import { useRequestResetEmailMutation } from 'src/store/reducers/privateapi';
 
 const LoginPage = () => {
   const constantData: LocalizationInterface = localizedData();
+  const [requestResetEmail] = useRequestResetEmailMutation();
   const [signinUser] = useSigninUserMutation();
   const [username, setUserName] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -26,7 +28,7 @@ const LoginPage = () => {
   const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
   const { loginTitle, signinBtn, signupLink, forgotPassword } = constantData.loginPage;
-
+  const url = `${process.env.REACT_APP_FORGOT_URL}`;
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(e.target.value);
     if (checkValidEmail(username)) {
@@ -71,6 +73,29 @@ const LoginPage = () => {
       }
     }
     return false;
+  };
+  const handleLinkClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    /* eslint-disable */
+    const user = {
+      email: username,
+      redirect_url: url,
+    };
+    /* eslint-enable */
+    if (!username) {
+      setEmailError('Email is required.');
+    } else if (!checkValidEmail(username)) {
+      setEmailError('Invalid Email.');
+    } else {
+      await requestResetEmail(user)
+        .unwrap()
+        .then((resp) => {
+          toast.success(resp.success);
+        })
+        .catch((error) => {
+          toast.error(error.data.error);
+        });
+    }
   };
   return (
     <Box className='Parent-Login'>
@@ -146,9 +171,9 @@ const LoginPage = () => {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link className='forgot-link' href='#' variant='body2'>
+                <Button className='forgot-link' onClick={handleLinkClick}>
                   {forgotPassword}
-                </Link>
+                </Button>
               </Grid>
               <Grid item>
                 <Link className='signup-link' href='/signup' variant='body2'>

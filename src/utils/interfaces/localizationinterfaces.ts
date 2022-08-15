@@ -37,6 +37,10 @@ export interface TrailInfo {
   elevation: string;
   route: string;
 }
+export interface ForgotPage {
+  changePassword: string;
+  submit: string;
+}
 
 export interface LocalizationInterface {
   loginPage: LoginPage;
@@ -46,4 +50,5 @@ export interface LocalizationInterface {
   trailPhotos: TrailPhotos;
   home: Home;
   trailInfo: TrailInfo;
+  forgotPage: ForgotPage;
 }

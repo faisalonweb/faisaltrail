@@ -114,7 +114,7 @@ export default function SignUpPage() {
       if (!password || !password2) {
         setPasswordError('Password is required.');
       } else if (!checkValidPassword(password)) {
-        setPasswordError('Password must be eight characters, at least one letter and one number');
+        setPasswordError('Minimum eight characters, at least one letter and one number');
       } else {
         setPasswordError('');
       }
@@ -235,7 +235,13 @@ export default function SignUpPage() {
                 <p className='errorText'>{passwordError}</p>
               </Grid>
             </Grid>
-            <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
+            <Button
+              type='submit'
+              className='submit-cls'
+              fullWidth
+              variant='contained'
+              sx={{ mt: 3, mb: 2 }}
+            >
               {signupBtn}
             </Button>
             <Grid container justifyContent='flex-end'>
