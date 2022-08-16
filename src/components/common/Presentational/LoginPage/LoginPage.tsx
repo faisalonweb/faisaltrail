@@ -99,11 +99,7 @@ const LoginPage = () => {
   };
   return (
     <Box className='Parent-Login'>
-      <Container
-        component='main'
-        maxWidth='sm'
-        sx={{ height: '100vh', display: 'flex', justifyContent: 'center' }}
-      >
+      <Container component='main' maxWidth='sm' className='container-cls'>
         <Box
           className='Login-Page'
           sx={{

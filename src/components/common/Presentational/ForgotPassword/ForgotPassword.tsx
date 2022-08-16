@@ -69,9 +69,8 @@ const ForgotPassword = () => {
     <Box className='forgot-login'>
       <Container component='main' maxWidth='sm' className='container-cls'>
         <Box
-          className='Login-Page'
+          className='forgot-page'
           sx={{
-            my: 5,
             border: 0,
             boxShadow: 3,
             padding: 3,

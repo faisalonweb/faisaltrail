@@ -133,16 +133,11 @@ export default function SignUpPage() {
   };
 
   return (
-    <Box className='Parent-Signup'>
-      <Container
-        component='main'
-        maxWidth='sm'
-        sx={{ height: '100vh', display: 'flex', justifyContent: 'center' }}
-      >
+    <Box className='parent-signup'>
+      <Container component='main' maxWidth='sm' className='container-cls'>
         <Box
-          className='Signup-Page '
+          className='signup-page '
           sx={{
-            my: 5,
             border: 0,
             boxShadow: 3,
             padding: 3,

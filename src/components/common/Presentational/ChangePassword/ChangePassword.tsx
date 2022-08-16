@@ -78,7 +78,6 @@ const ChangePassword = () => {
         <Box
           className='Login-Page'
           sx={{
-            my: 5,
             border: 0,
             boxShadow: 3,
             padding: 3,
