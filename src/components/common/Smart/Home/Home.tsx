@@ -31,7 +31,9 @@ const Home = () => {
   const { findNext, exploreNear } = constantData.home;
   const [input, setInput] = useState('');
   const debouncedSearchTerm = useDebounce(input, 500);
-  const { data: searchTrails = [] } = useSearchTrailQuery(debouncedSearchTerm,{skip: debouncedSearchTerm.length < 3});
+  const { data: searchTrails = [] } = useSearchTrailQuery(debouncedSearchTerm, {
+    skip: debouncedSearchTerm.length < 3,
+  });
 
   function useDebounce(value: string, delay: number): string {
     const [debouncedValue, setDebouncedValue] = useState(value);
