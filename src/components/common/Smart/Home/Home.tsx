@@ -14,13 +14,11 @@ import 'src/components/common/Smart/Home/Home.scss';
 import { ITrailData1, TrailsCount } from 'src/utils/interfaces/Trail';
 import { useNavigate } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
+
 let topTrails = [
-  { id: 1, label: 'The Shawshank Redemption' },
-  { id: 2, label: 'The Godfather' },
-  { id: 3, label: 'The Godfather: Part II' },
-  { id: 4, label: 'The Dark Knight' },
-  { id: 5, label: '12 Angry Men' },
-  { id: 6, label: 'Schindler List' },
+  { id: 1, label: 'Task grow choice student return wish. Specific affect international.' },
+  { id: 2, label: 'Tax character car long similar reach next' },
+  { id: 3, label: 'Situation watch hot score any meeting environmental.' },
 ];
 interface ChangeValues {
   id: number;
@@ -33,7 +31,9 @@ const Home = () => {
   const { findNext, exploreNear } = constantData.home;
   const [input, setInput] = useState('');
   const debouncedSearchTerm = useDebounce(input, 500);
-  const { data: searchTrails = [] } = useSearchTrailQuery(debouncedSearchTerm);
+  const { data: searchTrails = [] } = useSearchTrailQuery(debouncedSearchTerm, {
+    skip: debouncedSearchTerm.length < 3,
+  });
 
   function useDebounce(value: string, delay: number): string {
     const [debouncedValue, setDebouncedValue] = useState(value);
