@@ -8,7 +8,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import HikingIcon from '@mui/icons-material/Hiking'
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Avatar from '@mui/material/Avatar';
@@ -183,7 +183,7 @@ const ResponsiveAppBar = () => {
             </Menu>
           </Box>
           <Box className='logo-class' sx={{ flexGrow: 5 }}>
-            <AdbIcon
+            <HikingIcon
               sx={{ display: { xs: 'flex', md: 'flex' }, mr: 1, color: 'buttontext.default' }}
             />
             <Typography
