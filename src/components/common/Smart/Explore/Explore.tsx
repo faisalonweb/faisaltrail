@@ -5,15 +5,17 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import TrailDetailCard from 'src/components/shared/TrailDetailCard/TrailDetailCard';
+import { useGetAllTrailsQuery } from 'src/store/reducers/api';
 import mapimg1 from 'src/assets/images/map1.png';
-import { useAppSelector } from 'src/store/hooks';
+import { ITrailData1 } from 'src/utils/interfaces/Trail';
+import CircularProgress from '@mui/material/CircularProgress';
 import 'src/components/common/Smart/Explore/Explore.scss';
 
 const Explore = () => {
-  const { trailCards } = useAppSelector((state) => state.appData);
+  const { data: trails = [], isLoading: isLoader } = useGetAllTrailsQuery({});
   return (
-    <Grid className='explore-cls' container style={{ width: '100%' }}>
-      <Grid className='explore-cards-section' item xs={12} md={2}>
+    <Grid className='explore-cls' container>
+      <Grid className='explore-cards-section' item xs={12} md={2} lg={2}>
         <Box className='cards-section'>
           <Box sx={{ mt: '10px' }}>
             <Paper
@@ -43,25 +45,31 @@ const Explore = () => {
           <Typography variant='h6' fontWeight='bold'>
             Curated trails
           </Typography>
-          <>
-            {trailCards.map((trail) => (
-              <div key={trail.id}>
-                <TrailDetailCard
-                  title={trail.title}
-                  time={trail.time}
-                  rating={trail.rating}
-                  img={trail.image}
-                  info={trail.info}
-                  difficulty={trail.difficulty}
-                  reviews={trail.reviews}
-                  length={trail.length}
-                />
-              </div>
-            ))}
-          </>
+          {!isLoader ? (
+            <>
+              {trails?.results?.map((trail: ITrailData1) => (
+                <div key={trail.id}>
+                  <TrailDetailCard
+                    title={trail.title}
+                    time={trail?.properties[0]?.distance}
+                    rating={trail?.properties[0]?.distance}
+                    img={trail?.properties[0]?.images[0]?.image}
+                    info={trail?.properties[0]?.trail_type}
+                    difficulty={trail?.properties[0]?.technical_difficulty}
+                    reviews={trail?.properties[0]?.distance}
+                    length={trail?.properties[0]?.distance}
+                  />
+                </div>
+              ))}
+            </>
+          ) : (
+            <Box className='progress-cls'>
+              <CircularProgress />
+            </Box>
+          )}
         </Box>
       </Grid>
-      <Grid item xs={12} md={10}>
+      <Grid item xs={12} md={10} lg={10} className='img-grid'>
         <img
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           src={mapimg1}

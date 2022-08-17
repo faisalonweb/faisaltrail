@@ -1,6 +1,14 @@
+@import 'src/styles/main.scss';
 .explore-cls {
   .explore-cards-section {
     display: flex;
     justify-content: center;
+    .cards-section {
+      .progress-cls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 }

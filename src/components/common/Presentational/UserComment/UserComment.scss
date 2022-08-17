@@ -13,12 +13,16 @@
     }
     .total-stars {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
+      @include sm {
+        display: flex;
+        flex-wrap: wrap;
+      }
       .review-btn {
         button {
           min-width: 180px;
           @include sm {
-            min-width: 100px;
+            min-width: 40px;
           }
           text-transform: capitalize;
         }

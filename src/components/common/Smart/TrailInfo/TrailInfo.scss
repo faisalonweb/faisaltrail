@@ -33,6 +33,11 @@
       .right-grid {
         display: flex;
         justify-content: center;
+        .progress-cls {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
   }
