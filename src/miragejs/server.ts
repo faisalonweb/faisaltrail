@@ -9,16 +9,15 @@ export function makeServer({ environment = 'test' }) {
       this.get('/api/trails', () => {
         return trailsListData;
       });
-      this.passthrough('http://194.195.118.247/signup/');
-      this.passthrough('http://127.0.0.1:8000');
-      this.passthrough('http://localhost:8000');
-      this.passthrough('http://localhost:8000/api/token/');
-      this.passthrough('http://localhost:8000/request-reset-email/');
-      this.passthrough('http://localhost:8000/password-reset-complete/');
-      this.passthrough('http://localhost:8000/change-password/');
-      this.passthrough('http://localhost:8000/api/trails/');
-      this.passthrough('http://localhost:8000/api/trails/*');
-      this.passthrough('http://localhost:8000/api/categories/');
+      this.passthrough(`${process.env.REACT_APP_SERVER_URL}/signup/`);
+      this.passthrough(`{${process.env.REACT_APP_SERVER_URL}}`);
+      this.passthrough(`${process.env.REACT_APP_SERVER_URL}/api/token/`);
+      this.passthrough(`${process.env.REACT_APP_SERVER_URL}/request-reset-email/`);
+      this.passthrough(`${process.env.REACT_APP_SERVER_URL}/password-reset-complete/`);
+      this.passthrough(`${process.env.REACT_APP_SERVER_URL}/change-password/`);
+      this.passthrough(`${process.env.REACT_APP_SERVER_URL}/api/trails/`);
+      this.passthrough(`${process.env.REACT_APP_SERVER_URL}/api/categories/`);
+      this.passthrough(`${process.env.REACT_APP_SERVER_URL}/api/trails/*`);
       this.passthrough();
     },
   });
