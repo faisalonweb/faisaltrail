@@ -12,7 +12,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import 'src/components/common/Smart/Explore/Explore.scss';
 
 const Explore = () => {
-  const { data: trails = [], isLoading:isLoader} = useGetAllTrailsQuery({});
+  const { data: trails = [], isLoading: isLoader } = useGetAllTrailsQuery({});
   return (
     <Grid className='explore-cls' container>
       <Grid className='explore-cards-section' item xs={12} md={2} lg={2}>
@@ -45,33 +45,28 @@ const Explore = () => {
           <Typography variant='h6' fontWeight='bold'>
             Curated trails
           </Typography>
-          {
-            !isLoader ? (
-              <>
-              {trails?.results?.map((trail:ITrailData1) => (
-                          <div key={trail.id}>
-                            <TrailDetailCard
-                              title={trail.title}
-                              time={trail?.properties[0]?.distance}
-                              rating={trail?.properties[0]?.distance}
-                              img={trail?.properties[0]?.images[0]?.image}
-                              info={trail?.properties[0]?.trail_type}
-                              difficulty={trail?.properties[0]?.technical_difficulty}
-                              reviews={trail?.properties[0]?.distance}
-                              length={trail?.properties[0]?.distance}
-                            />
-                          </div>
-                        ))}
-              </>
-            ):
-            (
-              <Box className='progress-cls'>
+          {!isLoader ? (
+            <>
+              {trails?.results?.map((trail: ITrailData1) => (
+                <div key={trail.id}>
+                  <TrailDetailCard
+                    title={trail.title}
+                    time={trail?.properties[0]?.distance}
+                    rating={trail?.properties[0]?.distance}
+                    img={trail?.properties[0]?.images[0]?.image}
+                    info={trail?.properties[0]?.trail_type}
+                    difficulty={trail?.properties[0]?.technical_difficulty}
+                    reviews={trail?.properties[0]?.distance}
+                    length={trail?.properties[0]?.distance}
+                  />
+                </div>
+              ))}
+            </>
+          ) : (
+            <Box className='progress-cls'>
               <CircularProgress />
-              </Box>
-            )
-
-          }
-         
+            </Box>
+          )}
         </Box>
       </Grid>
       <Grid item xs={12} md={10} lg={10} className='img-grid'>

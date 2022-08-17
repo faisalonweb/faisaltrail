@@ -51,9 +51,9 @@ const TrailPhotos = () => {
         <>
           {trails.map((trail) => (
             <div key={trail.id}>
-               <div className='trail-img'>
-                  <img src={trail.trailImage} alt='img' />
-                </div>
+              <div className='trail-img'>
+                <img src={trail.trailImage} alt='img' />
+              </div>
             </div>
           ))}
         </>
