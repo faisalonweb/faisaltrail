@@ -14,15 +14,14 @@ import ReviewsTabs from 'src/components/common/Smart/ReviewsTabs/ReviewsTabs';
 import { localizedData } from 'src/utils/helpers/language';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useGetTrailByIdQuery } from 'src/store/reducers/api';
-import { useAppSelector } from 'src/store/hooks';
+import { useGetTrailByIdQuery, useGetAllTrailsQuery } from 'src/store/reducers/api';
 import { chipList } from 'src/utils/constants/constants';
 import { useParams } from 'react-router-dom';
 
 const TrailInfo = () => {
-  const { trailCards } = useAppSelector((state) => state.appData);
   const { id } = useParams();
   const { data: getTrail, isLoading } = useGetTrailByIdQuery(id);
+  const { data: trails = [], isLoading:isLoader} = useGetAllTrailsQuery({});
   const constantData: LocalizationInterface = localizedData();
   const { length, elevation, route } = constantData.trailInfo;
   const [expanded, setExpanded] = useState(false);
@@ -78,7 +77,7 @@ const TrailInfo = () => {
                   </Box>
 
                   <Divider sx={{ marginY: '20px' }} />
-                  <Stack className='stack-cls' direction='row' spacing={{ xs: 10, md: 15, lg: 15 }}>
+                  <Stack className='stack-cls' direction='row' spacing={{ xs: 8, md: 15, lg: 15 }}>
                     <Box>
                       <Typography fontWeight='bold'>{length}</Typography>
                       <Typography variant='subtitle2'>{trail?.properties[0]?.distance}</Typography>
@@ -128,22 +127,34 @@ const TrailInfo = () => {
                   <Typography variant='h6' fontWeight='bold'>
                     Nearby trails
                   </Typography>
-                  <>
-                    {trailCards.map((trail) => (
+                  {
+                    !isLoader ? (
+                      <>
+                
+                    {trails?.results?.map((trail:ITrailData1) => (
                       <div key={trail.id}>
                         <TrailDetailCard
-                          title={trail.title}
-                          time={trail.time}
-                          rating={trail.rating}
-                          img={trail.image}
-                          info={trail.info}
-                          difficulty={trail.difficulty}
-                          reviews={trail.reviews}
-                          length={trail.length}
+                          title={trail?.title}
+                          time={trail?.properties[0]?.distance}
+                          rating={trail?.properties[0]?.distance}
+                          img={trail?.properties[0]?.images[0]?.image}
+                          info={trail?.properties[0]?.trail_type}
+                          difficulty={trail?.properties[0]?.technical_difficulty}
+                          reviews={trail?.properties[0]?.distance}
+                          length={trail?.properties[0]?.distance}
                         />
                       </div>
                     ))}
                   </>
+                    ):
+                    (
+                      <Box className='progress-cls'>
+                      <CircularProgress />
+                      </Box>
+
+                    )
+                  }
+                  
                 </Box>
               </Grid>
             </Grid>

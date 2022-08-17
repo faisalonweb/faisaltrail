@@ -12,7 +12,7 @@ import {
 import 'src/components/shared/TrailDetailCard/TrailDetailCard.scss';
 interface Props {
   title: string;
-  time: string;
+  time: number;
   rating: number | undefined;
   img: string;
   info: string;
@@ -54,7 +54,7 @@ export default function TrailDetailCard({
               {length} km
             </Typography>
             <Typography variant='body2' color='text.secondary'>
-              {time}
+              {time}m
             </Typography>
           </Box>
         </CardContent>

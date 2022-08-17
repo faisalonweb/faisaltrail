@@ -6,7 +6,6 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
 import { useAppSelector } from 'src/store/hooks';
-import AdventureTabsCard from 'src/components/common/Presentational/AdventureTabsCard/AdventureTabsCard';
 import { localizedData } from 'src/utils/helpers/language';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
 import 'src/components/common/Presentational/TrailPhotos/TrailPhotos.scss';
@@ -52,7 +51,9 @@ const TrailPhotos = () => {
         <>
           {trails.map((trail) => (
             <div key={trail.id}>
-              <AdventureTabsCard trailImg={trail.trailImage} />
+               <div className='trail-img'>
+                  <img src={trail.trailImage} alt='img' />
+                </div>
             </div>
           ))}
         </>

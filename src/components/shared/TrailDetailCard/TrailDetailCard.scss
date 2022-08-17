@@ -1,8 +1,9 @@
 @import 'src/styles/main.scss';
 .card-cls {
   margin-top: 10px;
+  width: 300px;
   @include md {
-    width: 700px;
+    width: 550px;
   }
   @include sm {
     width: 300px;
