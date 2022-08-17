@@ -28,7 +28,6 @@ const LoginPage = () => {
   const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
   const { loginTitle, signinBtn, signupLink, forgotPassword } = constantData.loginPage;
-  const url = `${process.env.REACT_APP_FORGOT_URL}`;
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(e.target.value);
     if (checkValidEmail(username)) {
@@ -79,7 +78,7 @@ const LoginPage = () => {
     /* eslint-disable */
     const user = {
       email: username,
-      redirect_url: url,
+      redirect_url: `${window.location.origin}/api`,
     };
     /* eslint-enable */
     if (!username) {

@@ -1,0 +1,11 @@
+.git
+.gitignore
+.gitlab-ci.yml
+.dockerignore
+.eslintrc.json
+.prettierignore
+.pre-commit-config.yaml
+node_modules
+sample.env
+docker-compose*
+build

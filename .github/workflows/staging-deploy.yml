@@ -1,0 +1,46 @@
+name: deploy-to-staging
+on:
+  push:
+    branches:
+      # When someone push to `master` branch
+      - master
+
+jobs:
+  pre-commit_and_test:
+    uses: ./.github/workflows/ci.yml
+  deploy:
+    concurrency:
+      group: ${{ github.ref }}
+    needs: pre-commit_and_test
+    name: 'Deploy to staging'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/staging.key
+          chmod 600 ~/.ssh/staging.key
+          cat >>~/.ssh/config <<END
+          Host staging
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/staging.key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_USER: ${{ secrets.STAGING_SSH_USER }}
+          SSH_KEY: ${{ secrets.STAGING_SSH_KEY }}
+          SSH_HOST: ${{ secrets.STAGING_SSH_HOST }}
+
+      - name: Pull the latest code to the staging environment
+        run: ssh staging 'cd trail-frontend && git pull'
+
+      - name: Start containers
+        run: |
+          ssh staging 'cd trail-frontend && docker-compose build'
+          ssh staging 'cd trail-frontend && docker-compose up nginx -d'
+
+      - name: Test the App
+        run: |
+          ssh staging 'if [ $( docker ps -a | grep trailfrontend | wc -l ) -gt 0 ]; then  echo "trail-frontend exists"; else   echo "trail-frontend does not exist" && raise error; fi'

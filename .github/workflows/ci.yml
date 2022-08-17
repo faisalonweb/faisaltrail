@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+  workflow_call:
+
+jobs:
+  eslint_prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: npm
+      - run: npm ci
+      - name: Run lint and prettier
+        run: |
+          npm run check
+          npm run lint
+
+  build_test:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: 'development'
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: npm
+      - name: install Node Dependencies and build test
+        run: npm ci
+      - name: build backend
+        run: |
+          npm run build

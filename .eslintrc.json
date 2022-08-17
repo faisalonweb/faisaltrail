@@ -26,7 +26,8 @@
     "camelcase": "error",
     "quotes": ["error", "single"],
     "no-duplicate-imports": "error",
-    "@typescript-eslint/ban-ts-comment": "off"
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-var-requires": "off"
   },
   "settings": {
     "import/resolver": {
