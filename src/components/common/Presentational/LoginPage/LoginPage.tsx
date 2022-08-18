@@ -8,7 +8,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { checkValidEmail } from 'src/utils/helpers/helper';
 import { localizedData } from 'src/utils/helpers/language';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
-import { useSigninUserMutation } from 'src/store/reducers/authapi';
+import { useSigninUserMutation, useRequestResetEmailMutation} from 'src/store/reducers/authapi';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,7 +16,6 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import 'src/components/common/Presentational/LoginPage/LoginPage.scss';
-import { useRequestResetEmailMutation } from 'src/store/reducers/privateapi';
 
 const LoginPage = () => {
   const constantData: LocalizationInterface = localizedData();
