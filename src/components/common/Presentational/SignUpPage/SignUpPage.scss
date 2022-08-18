@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  .container-cls {
+  .signup-container-cls {
     display: flex;
     justify-content: center;
     height: 700px;
@@ -20,11 +20,11 @@
       flex-direction: column;
       align-items: center;
       text-transform: capitalize;
-      .inputs {
+      .signup-inputs {
         .continue-box {
           width: 100%;
         }
-        .inputs-section {
+        .signup-inputs-section {
           .errorText {
             color: #ff1744;
             font-size: 0.8rem;

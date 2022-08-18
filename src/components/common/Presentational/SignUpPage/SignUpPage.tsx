@@ -134,7 +134,7 @@ export default function SignUpPage() {
 
   return (
     <Box className='parent-signup'>
-      <Container component='main' maxWidth='sm' className='container-cls'>
+      <Container component='main' maxWidth='sm' className='signup-container-cls'>
         <Box
           className='signup-page '
           sx={{
@@ -151,12 +151,12 @@ export default function SignUpPage() {
           </Typography>
           <Box
             component='form'
-            className='inputs'
+            className='signup-inputs'
             onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 3 }}
           >
-            <Grid className='inputs-section' container spacing={2}>
+            <Grid className='signup-inputs-section' container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete='given-name'
