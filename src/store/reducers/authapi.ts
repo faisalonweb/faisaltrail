@@ -24,6 +24,29 @@ export const authApi = createApi({
         };
       },
     }),
+    requestResetEmail: builder.mutation({
+      query: (user) => {
+        return {
+          url: '/request-reset-email/',
+          method: 'post',
+          body: user,
+        };
+      },
+    }),
+    forgotPasswordRequest: builder.mutation({
+      query: (payload) => {
+        return {
+          url: '/password-reset-complete/',
+          method: 'patch',
+          body: payload,
+        };
+      },
+    }),
   }),
 });
-export const { useSignupUserMutation, useSigninUserMutation } = authApi;
+export const {
+  useSignupUserMutation,
+  useSigninUserMutation,
+  useRequestResetEmailMutation,
+  useForgotPasswordRequestMutation,
+} = authApi;
