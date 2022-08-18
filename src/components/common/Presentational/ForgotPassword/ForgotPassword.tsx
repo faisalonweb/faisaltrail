@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { localizedData } from 'src/utils/helpers/language';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces';
-import {  useForgotPasswordRequestMutation } from 'src/store/reducers/authapi';
+import { useForgotPasswordRequestMutation } from 'src/store/reducers/authapi';
 import { checkValidPassword } from 'src/utils/helpers/helper';
 import { toast } from 'react-toastify';
 import { useNavigate, useSearchParams } from 'react-router-dom';
