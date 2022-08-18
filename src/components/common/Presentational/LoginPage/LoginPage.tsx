@@ -96,10 +96,10 @@ const LoginPage = () => {
     }
   };
   return (
-    <Box className='Parent-Login'>
-      <Container component='main' maxWidth='sm' className='container-cls'>
+    <Box className='parent-login'>
+      <Container component='main' maxWidth='sm' className='login-container-cls'>
         <Box
-          className='Login-Page'
+          className='login-page'
           sx={{
             my: 5,
             border: 0,
@@ -116,13 +116,13 @@ const LoginPage = () => {
             {loginTitle}
           </Typography>
           <Box
-            className='inputs'
+            className='login-inputs'
             onSubmit={handleSubmit}
             component='form'
             noValidate
             sx={{ mt: 3 }}
           >
-            <Grid className='inputs-section' container spacing={2}>
+            <Grid className='login-inputs-section' container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   margin='normal'

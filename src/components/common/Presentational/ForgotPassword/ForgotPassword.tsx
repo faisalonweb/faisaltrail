@@ -67,7 +67,7 @@ const ForgotPassword = () => {
   };
   return (
     <Box className='forgot-login'>
-      <Container component='main' maxWidth='sm' className='container-cls'>
+      <Container component='main' maxWidth='sm' className='forgot-container-cls'>
         <Box
           className='forgot-page'
           sx={{
@@ -85,13 +85,13 @@ const ForgotPassword = () => {
             {changePassword}
           </Typography>
           <Box
-            className='inputs'
+            className='forgot-inputs'
             onSubmit={handleSubmit}
             component='form'
             noValidate
             sx={{ mt: 3 }}
           >
-            <Grid className='inputs-section' container spacing={2}>
+            <Grid className='forgot-inputs-section' container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   margin='normal'

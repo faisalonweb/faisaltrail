@@ -74,9 +74,9 @@ const ChangePassword = () => {
   };
   return (
     <Box className='change-login'>
-      <Container component='main' maxWidth='sm' className='container-cls'>
+      <Container component='main' maxWidth='sm' className='container-change-cls'>
         <Box
-          className='Login-Page'
+          className='change-password-page'
           sx={{
             border: 0,
             boxShadow: 3,
@@ -88,17 +88,17 @@ const ChangePassword = () => {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography className='login-title' component='h1' variant='h5'>
+          <Typography className='change-password-title' component='h1' variant='h5'>
             {changePassword}
           </Typography>
           <Box
-            className='inputs'
+            className='change-password-inputs'
             onSubmit={handleSubmit}
             component='form'
             noValidate
             sx={{ mt: 3 }}
           >
-            <Grid className='inputs-section' container spacing={2}>
+            <Grid className='change-inputs-section' container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   margin='normal'
