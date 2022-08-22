@@ -89,12 +89,12 @@ const ResponsiveAppBar = () => {
   return (
     <AppBar
       sx={{ bgcolor: 'background.default' }}
-      className='app-bar'
+      className='app-bar-header'
       position='static'
       elevation={1}
     >
-      <Container className='container-class' maxWidth='xl'>
-        <Toolbar className='toolbar-class' disableGutters>
+      <Container className='container-class-header' maxWidth='xl'>
+        <Toolbar className='toolbar-class-header' disableGutters>
           <Box className='list-buttons' sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Link sx={{ color: 'buttontext.default' }} className='explore-btn' href='/explore'>
               Explore
@@ -187,18 +187,14 @@ const ResponsiveAppBar = () => {
               sx={{ display: { xs: 'flex', md: 'flex' }, mr: 1, color: 'buttontext.default' }}
             />
             <Typography
+              className='app-title'
               variant='h6'
               noWrap
               component={Link}
               href='/'
               sx={{
-                mr: 0,
                 display: { xs: 'flex', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
                 color: 'buttontext.default',
-                textDecoration: 'none',
               }}
             >
               PakTrails
@@ -276,90 +272,94 @@ const ResponsiveAppBar = () => {
             </Box>
           )}
 
-          <Box className='drw-class'>
-            <SwipeableDrawer
-              className='drw-cls-content'
-              anchor={'left'}
-              open={state['left']}
-              onClose={toggleDrawer('left', false)}
-              onOpen={toggleDrawer('left', true)}
-              PaperProps={{ style: { width: '200px' } }}
+          <SwipeableDrawer
+            className='header-drawer-cls'
+            anchor={'left'}
+            open={state['left']}
+            onClose={toggleDrawer('left', false)}
+            onOpen={toggleDrawer('left', true)}
+            PaperProps={{ style: { width: '200px' } }}
+          >
+            <Box
+              className='sidedraw-class'
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'start',
+                height: '100vh',
+                justifyContent: 'center',
+              }}
             >
-              <Box
-                className='sidedraw-class'
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'start',
-                  height: '100vh',
-                  justifyContent: 'center',
-                }}
+              <Button
+                className='list-item'
+                sx={{ color: 'buttontext.default', fontSize: '20px', fontWeight: 'bold' }}
+                onClick={() => navigate('/explore')}
               >
-                <Button
-                  className='list-item'
-                  sx={{ color: 'buttontext.default', fontSize: '20px', fontWeight: 'bold' }}
-                  onClick={() => navigate('/explore')}
-                >
-                  Explore
-                </Button>
-                <Button
-                  aria-owns={anchorEl ? 'simple-menu' : undefined}
-                  className='list-item'
-                  aria-haspopup='true'
-                  onClick={handleClick}
-                  sx={{ color: 'buttontext.default', fontSize: '20px', fontWeight: 'bold' }}
-                >
-                  Saved
-                </Button>
-                <Button
-                  aria-owns={anchorEl ? 'simple-menu' : undefined}
-                  aria-haspopup='true'
-                  className='list-item'
-                  sx={{ color: 'buttontext.default', fontSize: '20px', fontWeight: 'bold' }}
-                  onClick={handleShopClick}
-                >
-                  Shop
-                </Button>
-                <Button
-                  sx={{ color: 'buttontext.default', fontSize: '20px', fontWeight: 'bold' }}
-                  className='list-item'
-                >
-                  Help
-                </Button>
-                <Divider />
-                <Button
-                  sx={{
-                    color: 'white',
-                    background: '#219ad8',
-                    width: '40%',
-                    marginLeft: '10px',
-                    marginTop: '10px',
-                    height: '30px',
-                    fontSize: '13px',
-                  }}
-                  className='signup-btn'
-                  onClick={() => navigate('/signup')}
-                >
-                  Sign up
-                </Button>
-                <Button
-                  sx={{
-                    color: 'white',
-                    background: '#219ad8',
-                    width: '40%',
-                    marginLeft: '10px',
-                    marginTop: '10px',
-                    height: '30px',
-                    fontSize: '13px',
-                  }}
-                  onClick={() => navigate('/login')}
-                  className='login-btn'
-                >
-                  Login
-                </Button>
-              </Box>
-            </SwipeableDrawer>
-          </Box>
+                Explore
+              </Button>
+              <Button
+                aria-owns={anchorEl ? 'simple-menu' : undefined}
+                className='list-item'
+                aria-haspopup='true'
+                onClick={handleClick}
+                sx={{ color: 'buttontext.default', fontSize: '20px', fontWeight: 'bold' }}
+              >
+                Saved
+              </Button>
+              <Button
+                aria-owns={anchorEl ? 'simple-menu' : undefined}
+                aria-haspopup='true'
+                className='list-item'
+                sx={{ color: 'buttontext.default', fontSize: '20px', fontWeight: 'bold' }}
+                onClick={handleShopClick}
+              >
+                Shop
+              </Button>
+              <Button
+                sx={{ color: 'buttontext.default', fontSize: '20px', fontWeight: 'bold' }}
+                className='list-item'
+              >
+                Help
+              </Button>
+              <Divider />
+              {!authToken ? (
+                <>
+                  <Button
+                    sx={{
+                      color: 'white',
+                      background: '#219ad8',
+                      width: '40%',
+                      marginLeft: '10px',
+                      marginTop: '10px',
+                      height: '30px',
+                      fontSize: '13px',
+                    }}
+                    className='signup-btn'
+                    onClick={() => navigate('/signup')}
+                  >
+                    Sign up
+                  </Button>
+                  <Button
+                    sx={{
+                      color: 'white',
+                      background: '#219ad8',
+                      width: '40%',
+                      marginLeft: '10px',
+                      marginTop: '10px',
+                      height: '30px',
+                      fontSize: '13px',
+                    }}
+                    onClick={() => navigate('/login')}
+                    className='login-btn'
+                  >
+                    Login
+                  </Button>
+                </>
+              ) : (
+                <></>
+              )}
+            </Box>
+          </SwipeableDrawer>
         </Toolbar>
       </Container>
     </AppBar>

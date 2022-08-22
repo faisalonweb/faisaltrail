@@ -1,14 +1,21 @@
-.app-bar {
-  .container-class {
+.app-bar-header {
+  .container-class-header {
     padding: 0px;
     max-width: none;
-    .toolbar-class {
+    .toolbar-class-header {
       display: flex;
       margin: 0px 10px 0px 10px;
       justify-content: space-between;
       .logo-class {
         display: flex;
         justify-content: center;
+        .app-title {
+          font-family: monospace;
+          font-weight: 700;
+          letter-spacing: 0.3rem;
+          text-decoration: none;
+          margin-right: 0px;
+        }
       }
       .signin-avatar {
         display: flex;
@@ -41,17 +48,17 @@
           }
         }
       }
-      .drw-class {
-        background-color: #219ad8;
-        .drw-cls-content {
-          .sidedraw-class {
-            display: flex;
-            flex-direction: column;
-            .list-btns {
-              color: black;
-              font-size: 20px;
-              font-weight: bold;
-            }
+      .header-drawer-cls {
+        .sidedraw-class {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          height: 100vh;
+          .list-btns {
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
           }
         }
       }
