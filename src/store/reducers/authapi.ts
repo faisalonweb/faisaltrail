@@ -10,7 +10,7 @@ export const authApi = createApi({
       query: (user) => {
         return {
           url: '',
-          method: 'post',
+          method: 'POST',
           body: user,
         };
       },
@@ -19,7 +19,7 @@ export const authApi = createApi({
       query: ({ username, password }: { username: string; password: string }) => {
         return {
           url: '/api/token/',
-          method: 'post',
+          method: 'POST',
           body: { username, password },
         };
       },
@@ -28,7 +28,7 @@ export const authApi = createApi({
       query: (user) => {
         return {
           url: '/request-reset-email/',
-          method: 'post',
+          method: 'POST',
           body: user,
         };
       },
@@ -37,7 +37,7 @@ export const authApi = createApi({
       query: (payload) => {
         return {
           url: '/password-reset-complete/',
-          method: 'patch',
+          method: 'PATCH',
           body: payload,
         };
       },

@@ -16,7 +16,7 @@ export const appApi = createApi({
       query: (id) => {
         return {
           url: `/api/trails/${id}`,
-          method: 'get',
+          method: 'GET',
         };
       },
     }),
@@ -25,7 +25,7 @@ export const appApi = createApi({
       query: (category_id) => {
         return {
           url: '/api/trails/',
-          method: 'get',
+          method: 'GET',
           params: { category_id },
         };
       },
@@ -35,7 +35,7 @@ export const appApi = createApi({
       query: (title) => {
         return {
           url: '/api/trails/',
-          method: 'get',
+          method: 'GET',
           params: { title },
         };
       },

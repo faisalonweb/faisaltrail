@@ -16,7 +16,7 @@ export const privateApis = createApi({
       query: (payload) => {
         return {
           url: '/change-password/',
-          method: 'patch',
+          method: 'PATCH',
           body: payload,
         };
       },
