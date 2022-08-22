@@ -81,7 +81,7 @@
     "husky": "^6.0.0",
     "jest": "^26.6.3",
     "lint-prepush": "^2.2.1",
-    "lint-staged": "^11.2.6",
+    "lint-staged": "^13.0.3",
     "miragejs": "^0.1.45",
     "precise-commits": "^1.0.2",
     "prettier": "^2.7.1",
