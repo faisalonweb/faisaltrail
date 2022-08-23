@@ -15,12 +15,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import 'src/components/common/Presentational/LoginPage/LoginPage.scss';
 
 const LoginPage = () => {
   const constantData: LocalizationInterface = localizedData();
   const [requestResetEmail] = useRequestResetEmailMutation();
-  const [signinUser] = useSigninUserMutation();
+  const [signinUser, { isLoading: isUpdating }] = useSigninUserMutation();
   const [username, setUserName] = useState('');
   const [emailError, setEmailError] = useState('');
   const [password, setPassword] = useState('');
@@ -77,7 +78,7 @@ const LoginPage = () => {
     /* eslint-disable */
     const user = {
       email: username,
-      redirect_url: `${window.location.origin}/api`,
+      redirect_url: `${window.location.origin}/forgot-password`,
     };
     /* eslint-enable */
     if (!username) {
@@ -132,6 +133,7 @@ const LoginPage = () => {
                   label='Email Address'
                   name='email'
                   autoComplete='email'
+                  disabled={isUpdating}
                   autoFocus
                   value={username}
                   onChange={handleEmail}
@@ -143,6 +145,7 @@ const LoginPage = () => {
                   margin='normal'
                   required
                   fullWidth
+                  disabled={isUpdating}
                   name='password'
                   label='Password'
                   type='password'
@@ -154,15 +157,22 @@ const LoginPage = () => {
                 <p className='errorText'>{passwordError}</p>
               </Grid>
             </Grid>
-            <Button
-              className='submit-button'
-              type='submit'
-              fullWidth
-              variant='contained'
-              sx={{ mt: 3, mb: 2 }}
-            >
-              {signinBtn}
-            </Button>
+            {isUpdating ? (
+              <Box className='login-progress-cls'>
+                <CircularProgress />
+              </Box>
+            ) : (
+              <Button
+                className='submit-button'
+                type='submit'
+                disabled={isUpdating}
+                fullWidth
+                variant='contained'
+                sx={{ mt: 3, mb: 2 }}
+              >
+                {signinBtn}
+              </Button>
+            )}
             <Grid container>
               <Grid item xs>
                 <Button className='forgot-link' onClick={handleLinkClick}>

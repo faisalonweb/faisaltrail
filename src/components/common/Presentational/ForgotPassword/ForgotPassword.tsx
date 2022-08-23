@@ -14,12 +14,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import 'src/components/common/Presentational/ForgotPassword/ForgotPassword.scss';
 
 const ForgotPassword = () => {
   const constantData: LocalizationInterface = localizedData();
   const [searchParams] = useSearchParams();
-  const [forgotPasswordRequest] = useForgotPasswordRequestMutation();
+  const [forgotPasswordRequest, { isLoading: isUpdating }] = useForgotPasswordRequestMutation();
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
@@ -108,15 +109,21 @@ const ForgotPassword = () => {
                 <p className='errorText'>{passwordError}</p>
               </Grid>
             </Grid>
-            <Button
-              className='submit-button'
-              type='submit'
-              fullWidth
-              variant='contained'
-              sx={{ mt: 3, mb: 2 }}
-            >
-              {submit}
-            </Button>
+            {isUpdating ? (
+              <Box className='forgot-progress-cls'>
+                <CircularProgress />
+              </Box>
+            ) : (
+              <Button
+                className='submit-button'
+                type='submit'
+                fullWidth
+                variant='contained'
+                sx={{ mt: 3, mb: 2 }}
+              >
+                {submit}
+              </Button>
+            )}
           </Box>
         </Box>
       </Container>

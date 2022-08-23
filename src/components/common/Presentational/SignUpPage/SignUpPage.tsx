@@ -16,10 +16,11 @@ import 'src/components/common/Presentational/SignUpPage/SignUpPage.scss';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { userSignupSuccess } from 'src/store/reducers/dataSlice';
+import CircularProgress from '@mui/material/CircularProgress';
 import { useAppDispatch } from 'src/store/hooks';
 
 export default function SignUpPage() {
-  const [signupUser] = useSignupUserMutation();
+  const [signupUser, { isLoading: isUpdating }] = useSignupUserMutation();
   const constantData: LocalizationInterface = localizedData();
   const [email, setEmail] = React.useState('');
   const [emailError, setEmailError] = React.useState('');
@@ -165,6 +166,7 @@ export default function SignUpPage() {
                   fullWidth
                   id='firstName'
                   label='First Name'
+                  disabled={isUpdating}
                   autoFocus
                   value={firstName}
                   onChange={handleFirstName}
@@ -180,6 +182,7 @@ export default function SignUpPage() {
                   id='lastName'
                   label='Last Name'
                   name='lastName'
+                  disabled={isUpdating}
                   autoComplete='family-name'
                   value={lastName}
                   onChange={handleLastName}
@@ -195,6 +198,7 @@ export default function SignUpPage() {
                   id='email'
                   label='Email Address'
                   name='email'
+                  disabled={isUpdating}
                   autoComplete='email'
                   value={email}
                   onChange={handleEmail}
@@ -208,6 +212,7 @@ export default function SignUpPage() {
                   name='password'
                   label='Password'
                   type='password'
+                  disabled={isUpdating}
                   id='password'
                   onChange={handlePassword}
                   value={password}
@@ -222,6 +227,7 @@ export default function SignUpPage() {
                   name='confirmpassword'
                   label='ConfirmPassword'
                   type='password'
+                  disabled={isUpdating}
                   id='confirmpassword'
                   onChange={handleConfirmPassword}
                   value={password2}
@@ -230,15 +236,22 @@ export default function SignUpPage() {
                 <p className='errorText'>{passwordError}</p>
               </Grid>
             </Grid>
-            <Button
-              type='submit'
-              className='submit-cls'
-              fullWidth
-              variant='contained'
-              sx={{ mt: 3, mb: 2 }}
-            >
-              {signupBtn}
-            </Button>
+            {isUpdating ? (
+              <Box className='signup-progress-cls'>
+                <CircularProgress />
+              </Box>
+            ) : (
+              <Button
+                type='submit'
+                className='submit-cls'
+                fullWidth
+                disabled={isUpdating}
+                variant='contained'
+                sx={{ mt: 3, mb: 2 }}
+              >
+                {signupBtn}
+              </Button>
+            )}
             <Grid container justifyContent='flex-end'>
               <Grid item>
                 <Link href='/login' variant='body2'>

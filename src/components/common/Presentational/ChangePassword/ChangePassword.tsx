@@ -14,11 +14,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import 'src/components/common/Presentational/ChangePassword/ChangePassword.scss';
 
 const ChangePassword = () => {
   const constantData: LocalizationInterface = localizedData();
-  const [changePasswordRequest] = useChangePasswordRequestMutation();
+  const [changePasswordRequest, { isLoading: isUpdating }] = useChangePasswordRequestMutation();
   const [password2, setPassword2] = React.useState('');
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -104,6 +105,7 @@ const ChangePassword = () => {
                   margin='normal'
                   required
                   fullWidth
+                  disabled={isUpdating}
                   name='Enter Old Password'
                   label='Enter Old Password'
                   type='password'
@@ -119,6 +121,7 @@ const ChangePassword = () => {
                   margin='normal'
                   required
                   fullWidth
+                  disabled={isUpdating}
                   name='Enter New Password'
                   label='Enter New Password'
                   type='password'
@@ -130,15 +133,22 @@ const ChangePassword = () => {
                 <p className='errorText'>{passwordError}</p>
               </Grid>
             </Grid>
-            <Button
-              className='submit-button'
-              type='submit'
-              fullWidth
-              variant='contained'
-              sx={{ mt: 3, mb: 2 }}
-            >
-              {submit}
-            </Button>
+            {isUpdating ? (
+              <Box className='change-progress-cls'>
+                <CircularProgress />
+              </Box>
+            ) : (
+              <Button
+                className='submit-button'
+                type='submit'
+                disabled={isUpdating}
+                fullWidth
+                variant='contained'
+                sx={{ mt: 3, mb: 2 }}
+              >
+                {submit}
+              </Button>
+            )}
           </Box>
         </Box>
       </Container>
