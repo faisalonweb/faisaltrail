@@ -13,6 +13,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import Container from '@mui/material/Container';
+import { timeOut } from 'src/utils/constants/constants';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -50,7 +51,10 @@ const LoginPage = () => {
           navigate('/');
         })
         .catch((error) => {
-          toast.error(error.data.non_field_errors[0]);
+          toast.error(error.data.non_field_errors[0],{
+            autoClose:timeOut,
+            pauseOnHover:false
+          });
         });
     }
   };
@@ -89,10 +93,16 @@ const LoginPage = () => {
       await requestResetEmail(user)
         .unwrap()
         .then((resp) => {
-          toast.success(resp.success);
+          toast.success(resp.success,{
+            autoClose:timeOut,
+            pauseOnHover:false
+          });
         })
         .catch((error) => {
-          toast.error(error.data.error);
+          toast.error(error.data.error, {
+            autoClose: timeOut,
+            pauseOnHover: false
+          });
         });
     }
   };

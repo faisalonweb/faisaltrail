@@ -39,3 +39,4 @@ export const exploreData = [
   'Fee',
 ];
 export const sortbyData = ['Newest First', 'Kid Friendly', 'Hiking'];
+export const timeOut = 2000;
