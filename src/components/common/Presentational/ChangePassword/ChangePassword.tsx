@@ -52,16 +52,16 @@ const ChangePassword = () => {
       await changePasswordRequest(payload)
         .unwrap()
         .then((resp) => {
-          toast.success(resp.message,{
-            autoClose:timeOut,
-            pauseOnHover:false
+          toast.success(resp.message, {
+            autoClose: timeOut,
+            pauseOnHover: false,
           });
           navigate('/');
         })
         .catch((error) => {
-          toast.error(error.data?.old_password[0],{
-            autoClose:timeOut,
-            pauseOnHover:false
+          toast.error(error.data?.old_password[0], {
+            autoClose: timeOut,
+            pauseOnHover: false,
           });
         });
     }

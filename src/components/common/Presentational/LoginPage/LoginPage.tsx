@@ -51,9 +51,9 @@ const LoginPage = () => {
           navigate('/');
         })
         .catch((error) => {
-          toast.error(error.data.non_field_errors[0],{
-            autoClose:timeOut,
-            pauseOnHover:false
+          toast.error(error.data.non_field_errors[0], {
+            autoClose: timeOut,
+            pauseOnHover: false,
           });
         });
     }
@@ -93,15 +93,15 @@ const LoginPage = () => {
       await requestResetEmail(user)
         .unwrap()
         .then((resp) => {
-          toast.success(resp.success,{
-            autoClose:timeOut,
-            pauseOnHover:false
+          toast.success(resp.success, {
+            autoClose: timeOut,
+            pauseOnHover: false,
           });
         })
         .catch((error) => {
           toast.error(error.data.error, {
             autoClose: timeOut,
-            pauseOnHover: false
+            pauseOnHover: false,
           });
         });
     }

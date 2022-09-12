@@ -81,9 +81,9 @@ export default function SignUpPage() {
       await signupUser(user)
         .unwrap()
         .then((resp) => {
-          toast.success('User Successfully Added',{
-            autoClose:timeOut,
-            pauseOnHover:false
+          toast.success('User Successfully Added', {
+            autoClose: timeOut,
+            pauseOnHover: false,
           });
           localStorage.setItem('token', resp.token);
           dispatch(userSignupSuccess(resp.user));
@@ -91,14 +91,14 @@ export default function SignUpPage() {
         })
         .catch((error) => {
           if ('email' in error.data) {
-            toast.error(error.data.email[0],{
-              autoClose:timeOut,
-              pauseOnHover:false
+            toast.error(error.data.email[0], {
+              autoClose: timeOut,
+              pauseOnHover: false,
             });
           } else {
-            toast.error(error.data.password[0],{
-              autoClose:timeOut,
-              pauseOnHover:false
+            toast.error(error.data.password[0], {
+              autoClose: timeOut,
+              pauseOnHover: false,
             });
           }
         });

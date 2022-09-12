@@ -46,15 +46,15 @@ const ForgotPassword = () => {
         .unwrap()
         .then((resp) => {
           navigate('/login');
-          toast.success(resp.message,{
-            autoClose:timeOut,
-            pauseOnHover:false
+          toast.success(resp.message, {
+            autoClose: timeOut,
+            pauseOnHover: false,
           });
         })
         .catch((error) => {
-          toast.error(error.data.error,{
-            autoClose:timeOut,
-            pauseOnHover:false
+          toast.error(error.data.error, {
+            autoClose: timeOut,
+            pauseOnHover: false,
           });
         });
     }
