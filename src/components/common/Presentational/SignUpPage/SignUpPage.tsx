@@ -15,6 +15,7 @@ import { useSignupUserMutation } from 'src/store/reducers/authapi';
 import 'src/components/common/Presentational/SignUpPage/SignUpPage.scss';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { timeOut } from 'src/utils/constants/constants';
 import { userSignupSuccess } from 'src/store/reducers/dataSlice';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useAppDispatch } from 'src/store/hooks';
@@ -80,16 +81,25 @@ export default function SignUpPage() {
       await signupUser(user)
         .unwrap()
         .then((resp) => {
-          toast.success('User Successfully Added');
+          toast.success('User Successfully Added', {
+            autoClose: timeOut,
+            pauseOnHover: false,
+          });
           localStorage.setItem('token', resp.token);
           dispatch(userSignupSuccess(resp.user));
           navigate('/');
         })
         .catch((error) => {
           if ('email' in error.data) {
-            toast.error(error.data.email[0]);
+            toast.error(error.data.email[0], {
+              autoClose: timeOut,
+              pauseOnHover: false,
+            });
           } else {
-            toast.error(error.data.password[0]);
+            toast.error(error.data.password[0], {
+              autoClose: timeOut,
+              pauseOnHover: false,
+            });
           }
         });
     }

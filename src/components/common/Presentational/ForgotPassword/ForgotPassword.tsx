@@ -11,6 +11,7 @@ import { checkValidPassword } from 'src/utils/helpers/helper';
 import { toast } from 'react-toastify';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import { timeOut } from 'src/utils/constants/constants';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -45,10 +46,16 @@ const ForgotPassword = () => {
         .unwrap()
         .then((resp) => {
           navigate('/login');
-          toast.success(resp.message);
+          toast.success(resp.message, {
+            autoClose: timeOut,
+            pauseOnHover: false,
+          });
         })
         .catch((error) => {
-          toast.error(error.data.error);
+          toast.error(error.data.error, {
+            autoClose: timeOut,
+            pauseOnHover: false,
+          });
         });
     }
   };

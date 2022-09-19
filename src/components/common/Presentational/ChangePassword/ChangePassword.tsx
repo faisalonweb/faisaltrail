@@ -9,6 +9,7 @@ import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfac
 import { useChangePasswordRequestMutation } from 'src/store/reducers/privateapis';
 import { checkValidPassword } from 'src/utils/helpers/helper';
 import { toast } from 'react-toastify';
+import { timeOut } from 'src/utils/constants/constants';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import Container from '@mui/material/Container';
@@ -51,11 +52,17 @@ const ChangePassword = () => {
       await changePasswordRequest(payload)
         .unwrap()
         .then((resp) => {
-          toast.success(resp.message);
+          toast.success(resp.message, {
+            autoClose: timeOut,
+            pauseOnHover: false,
+          });
           navigate('/');
         })
         .catch((error) => {
-          toast.error(error.data?.old_password[0]);
+          toast.error(error.data?.old_password[0], {
+            autoClose: timeOut,
+            pauseOnHover: false,
+          });
         });
     }
   };
